@@ -12,6 +12,10 @@ class CarsController < ApplicationController
   def show
   end
 
+  def book
+    @car = Car.find(params[:car_id])
+  end
+
   # GET /cars/new
   def new
     @car = Car.new

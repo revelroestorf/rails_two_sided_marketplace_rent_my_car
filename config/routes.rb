@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
+  resources :charges
+
   resources :cars
+
+  get 'cars/book'
 
   devise_for :users
 

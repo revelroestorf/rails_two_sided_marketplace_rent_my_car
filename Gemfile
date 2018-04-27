@@ -55,3 +55,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Added at 2018-04-26 20:18:03 +1000 by macrev:
 gem "devise", "~> 4.4"
+
+# Added at 2018-04-27 20:47:46 +1000 by macrev:
+gem "stripe", "~> 3.13"
