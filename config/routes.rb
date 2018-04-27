@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   resources :cars
 
+  get ':controller(/:action(/:id))'
+
   get 'cars/book'
 
   devise_for :users
