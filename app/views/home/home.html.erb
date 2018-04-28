@@ -5,14 +5,13 @@
     <title>Home</title>
   </head>
   <body>
-    <!-- <%= image_tag('home.jpeg') %> -->
+    <!-- <%= image_tag 'home.jpeg', class: "background-image" %> -->
 
-    <div class="home-button">
-      <br>
-      <%= link_to('Find a car', cars_path) %>
-      <br>
-      <%= link_to('List my car', new_car_path) %>
-    </div>
+    <div class="w-100 h-100 d-flex justify-content-around align-items-center">
+      <%= link_to 'Find a car', cars_path,
+      class: "btn btn-lg btn-outline-dark d-flex align-items-center", style: "width: 140px; height: 60px" %>
+      <%= link_to 'List my car', new_car_path,
+      class: "btn btn-lg btn-outline-dark d-flex align-items-center", style: "width: 140px; height: 60px" %>
 
   </body>
 </html>

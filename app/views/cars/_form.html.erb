@@ -12,11 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id, id: :car_user_id %>
-  </div>
-
-  <div class="field">
     <%= form.label :make %>
     <%= form.text_field :make, id: :car_make %>
   </div>
@@ -47,6 +42,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit("List my car") %>
   </div>
 <% end %>

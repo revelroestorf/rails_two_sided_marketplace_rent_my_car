@@ -18,6 +18,7 @@ class CarsController < ApplicationController
 
   # GET /cars/new
   def new
+    redirect_to(new_user_registration_path) unless user_signed_in?
     @car = Car.new
   end
 
