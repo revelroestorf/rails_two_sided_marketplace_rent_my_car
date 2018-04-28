@@ -1,30 +1,26 @@
 <p id="notice"><%= notice %></p>
 
 <%= image_tag "#{@car.model.downcase}.jpeg" %>
-
-<p>
-  <%= @car.make %>
-</p>
-
-<p>
-  <%= @car.model %>
-</p>
-
-<p>
-  <%= @car.year %>
-</p>
-
-<p>
-  <%= @car.full_address %>
-</p>
-
-<p>
-  <%= number_to_currency(@car.price_per_day) %>
-</p>
-
-<p>
-  <%= number_to_currency(@car.price_per_km) %>
-</p>
+<div>
+  <p>
+    <%= "#{@car.user.firstname.capitalize}'s" %>
+  </p>
+  <h3>
+    <%= "#{@car.make.capitalize} #{@car.model}" %>
+  </h3>
+  <p>
+    <%= @car.year %>
+  </p>
+  <p>
+    <%= @car.full_address %>
+  </p>
+  <p>
+    <%= number_to_currency(@car.price_per_day) %>
+  </p>
+  <p>
+    <%= number_to_currency(@car.price_per_km) %>
+  </p>
+</div>
 
 <%= button_to 'Book', '/cars/book', method: :get, params: {car_id: @car.id} %>
 <%= link_to 'Back', cars_path %>

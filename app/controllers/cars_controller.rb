@@ -30,7 +30,7 @@ class CarsController < ApplicationController
   # POST /cars.json
   def create
     @car = Car.new(car_params)
-
+    @car.user = current_user
     respond_to do |format|
       if @car.save
         format.html { redirect_to @car, notice: 'Car was successfully created.' }
@@ -76,4 +76,5 @@ class CarsController < ApplicationController
     def car_params
       params.require(:car).permit(:user_id, :make, :model, :year, :location, :price_per_day, :price_per_km)
     end
+
 end
