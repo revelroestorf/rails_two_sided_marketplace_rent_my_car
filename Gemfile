@@ -61,3 +61,6 @@ gem "stripe", "~> 3.13"
 
 # Added at 2018-04-28 10:48:17 +1000 by macrev:
 gem "geocoder", "~> 1.4"
+
+# Added at 2018-04-28 13:25:04 +1000 by macrev:
+gem "rolify", "~> 5.2"
