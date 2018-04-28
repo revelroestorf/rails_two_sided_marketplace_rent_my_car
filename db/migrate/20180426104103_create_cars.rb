@@ -5,7 +5,7 @@ class CreateCars < ActiveRecord::Migration[5.1]
       t.string :make
       t.string :model
       t.integer :year
-      t.string :location
+      t.string :full_address
       t.float :price_per_day
       t.float :price_per_km
 

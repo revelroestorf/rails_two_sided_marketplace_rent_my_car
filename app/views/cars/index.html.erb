@@ -5,7 +5,6 @@
 <table>
   <thead>
     <tr>
-      <th>User</th>
       <th>Make</th>
       <th>Model</th>
       <th>Year</th>
@@ -19,11 +18,10 @@
   <tbody>
     <% @cars.each do |car| %>
       <tr>
-        <td><%= car.user_id %></td>
         <td><%= car.make %></td>
         <td><%= car.model %></td>
         <td><%= car.year %></td>
-        <td><%= car.location %></td>
+        <td><%= car.full_address %></td>
         <td><%= car.price_per_day %></td>
         <td><%= car.price_per_km %></td>
         <td><%= link_to 'Show', car %></td>
@@ -33,7 +31,28 @@
     <% end %>
   </tbody>
 </table>
-
+<br>
+<%= link_to 'New Car', new_car_path %>
 <br>
 
-<%= link_to 'New Car', new_car_path %>
+<!-- <% my_url = "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=15" %>
+<% @cars.each do |car| %>
+<% my_url += "&markers=#{car.latitude}%2C#{car.longitude}" %>
+<% end %>
+<%= image_tag my_url %> -->
+
+<!-- <iframe
+  width="600"
+  height="450"
+  frameborder="0" style="border:0"
+  src="http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=15
+  &markers=<%= @cars.first.latitude %>%2C<%= @cars.last.longitude %>" allowfullscreen>
+</iframe> -->
+
+<iframe
+  width="600"
+  height="450"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAwO3Lu4pCirBsm5UZHuto5Eqj0uDrSLvM
+    &q=<%= @cars.first.full_address %>" allowfullscreen>
+</iframe>
