@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20180429004203) do
   create_table "bookings", force: :cascade do |t|
     t.integer "user_id"
     t.integer "car_id"
+    t.integer "days"
     t.integer "odo_start"
     t.integer "odo_end"
     t.float "price_per_day"
