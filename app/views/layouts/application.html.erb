@@ -24,26 +24,30 @@
           <li class="nav-item mr-5">
             <a class="nav-link" style="color: white" href="#pricing">Pricing</a>
           </li>
-        <% current_user.cars.each do |car| %>
-          <% if car.bookings %>
-            <li class="nav-item mr-5">
-              <a><%= link_to 'My bookings', destroy_user_session_path, method: :delete, class: "nav-link", style: "color: white;" %></a>
-            </li>
-            <% break %>
+          <% if user_signed_in? %>
+            <%if @user.cars %>
+              <% @user.cars.each do |car| %>
+                <% if car.bookings %>
+                  <li class="nav-item mr-5">
+                    <a><%= link_to 'My bookings', bookings_owner_bookings_path, class: "nav-link", style: "color: white;" %></a>
+                  </li>
+                  <% break %>
+                <% end %>
+              <% end %>
+            <% end %>  
           <% end %>
-        <% end %>
-        <% if user_signed_in? %>
-          <li class="nav-item mr-5">
-            <a><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "nav-link", style: "color: white;" %></a>
-          </li>
-        <% else %>
-          <li class="nav-item mr-5">
-            <a><%= link_to 'login', new_user_session_path, class: "nav-link", style: "color: white;" %></a>
-          </li>
-          <li class="nav-item mr-5">
-            <a><%= link_to 'sign up', new_user_registration_path, class: "nav-link", style: "color: white;" %></a>
-          </li>
-        <% end %>
+          <% if user_signed_in? %>
+            <li class="nav-item mr-5">
+              <a><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "nav-link", style: "color: white;" %></a>
+            </li>
+          <% else %>
+            <li class="nav-item mr-5">
+              <a><%= link_to 'login', new_user_session_path, class: "nav-link", style: "color: white;" %></a>
+            </li>
+            <li class="nav-item mr-5">
+              <a><%= link_to 'sign up', new_user_registration_path, class: "nav-link", style: "color: white;" %></a>
+            </li>
+          <% end %>
         </ul>
       </div>
     </nav>

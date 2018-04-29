@@ -30,6 +30,7 @@ class ChargesController < ApplicationController
 
     @booking = Booking.new
     @booking.user_id = current_user.id
+    @booking.car_id = @car.id
     @booking.price_per_day = @car.price_per_day
     @booking.price_per_km = @car.price_per_km
     @booking.save
