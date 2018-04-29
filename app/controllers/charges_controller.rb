@@ -24,7 +24,7 @@ class ChargesController < ApplicationController
   end
 
   private
-  
+
   def create_booking
     @car = Car.find(params[:car_id])
 

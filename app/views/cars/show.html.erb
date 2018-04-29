@@ -37,7 +37,7 @@
 
     <div class="mt-4">
 
-      <!-- <% form_tag(booking_index_path, :method => "get", class: "btn btn-primary ml-2", style: "width:90px;") do %>
+      <!-- <% form_tag(bookings_index_path, :method => "get", class: "btn btn-primary ml-2", style: "width:90px;") do %>
         <%= label_tag(:days, "number of days:") %>
         <%= text_field_tag :days, class: "form-control" %>
         <%= submit_tag("Book") %>
@@ -51,7 +51,7 @@
       <input class="form-control form-inline mb-5" placeholder="number of days" style="max-width:188px;">
       <div class="form-inline">
         <span><%= link_to 'go back', cars_path, class: "btn btn-dark", style: "color: white; width:90px;" %></span>
-        <span><%= button_to 'Book', booking_index_path, method: :get, params: {car_id: @car.id}, class: "btn btn-primary ml-2", style: "width:90px;" %></span>
+        <span><%= button_to 'Book', bookings_index_path, method: :get, params: {car_id: @car.id}, class: "btn btn-primary ml-2", style: "width:90px;" %></span>
       </div>
     </div>
 

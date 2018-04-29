@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
-  get 'booking/index'
+  get 'bookings/index'
 
-  get 'booking/show'
+  get 'bookings/show'
+
+  get 'bookings/owner_bookings'
+
 
   # get ':controller(/:action(/:id))'
 

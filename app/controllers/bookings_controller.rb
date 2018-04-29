@@ -1,4 +1,4 @@
-class BookingController < ApplicationController
+class BookingsController < ApplicationController
 
   def index
     @car = Car.find(params[:car_id])
@@ -11,7 +11,7 @@ class BookingController < ApplicationController
   end
 
   def owner_bookings
-    
+
   end
 
   private
