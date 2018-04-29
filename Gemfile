@@ -64,3 +64,9 @@ gem "geocoder", "~> 1.4"
 
 # Added at 2018-04-28 13:25:04 +1000 by macrev:
 gem "rolify", "~> 5.2"
+
+# Added at 2018-04-29 13:05:22 +1000 by macrev:
+gem "gmaps4rails", "~> 2.1"
+
+# Added at 2018-04-29 13:10:33 +1000 by macrev:
+gem "underscore", "~> 0.0.0"
