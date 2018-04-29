@@ -6,15 +6,12 @@ class BookingController < ApplicationController
 
   end
 
-  def create
-    # @booking = Booking.new(:car_id)
-    # @booking.user = current_user
-    # @booking.save
-    # redirect_to(booking_show_path(@booking))
-  end
-
   def show
     @booking = Booking.find(params[:id])
+  end
+
+  def owner_bookings
+    
   end
 
   private

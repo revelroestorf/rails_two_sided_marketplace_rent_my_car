@@ -1,12 +1,16 @@
 
-<div class="amount">
+<div class="m-5">
   <h1>Payment confirmation</h1>
   <p>Your card has been charged with <%= number_to_currency(@amount) %></p>
+  <p>We've also sent you an email confirming your invoice booking details</p>
+  <p class="mt-5 lead">Enjoy your adventure</p>
 </div>
 
 <br><br>
 
 <%= @booking.inspect %>
+
+<br><br>
 
 <%= link_to 'back to cars', cars_path %>
 

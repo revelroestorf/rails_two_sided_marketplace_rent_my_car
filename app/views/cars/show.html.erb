@@ -9,11 +9,11 @@
 <div class="mx-4 my-2">
   <div class="row d-flex justify-content-around">
 
-    <div class="" style="width:227px;">
-        <span class="text-muted"><%= "#{@car.user.firstname.capitalize}'s" %></span>
+    <div class="">
+        <span class="text-muted"><%= "#{@car.user.firstname.downcase.capitalize}'s" %></span>
         <br>
-        <span class="h2"><%= "#{@car.make.capitalize} #{@car.model}" %></span>
-        <span class="ml-md-2 text-muted"><small><%= @car.year %></small></span>
+        <span class="h2"><%= "#{@car.make.downcase.capitalize} #{@car.model.downcase.capitalize}" %></span>
+        <span class="text-muted"><small><%= @car.year %></small></span>
     </div>
 
     <div class="car-deets mx-2 mt-4">
@@ -39,7 +39,7 @@
 
       <!-- <% form_tag(booking_index_path, :method => "get", class: "btn btn-primary ml-2", style: "width:90px;") do %>
         <%= label_tag(:days, "number of days:") %>
-        <%= text_field_tag(:days) %>
+        <%= text_field_tag :days, class: "form-control" %>
         <%= submit_tag("Book") %>
       <% end %>
 
@@ -55,6 +55,8 @@
       </div>
     </div>
 
+    <!-- <button type="submit" class="ml-2 btn btn-primary">Book</button> -->
+
   </div>
 
   <div class="row">
@@ -63,4 +65,3 @@
 </div>
 
 <br><br>
-<button type="submit" class="ml-2 btn btn-primary">Book</button>
