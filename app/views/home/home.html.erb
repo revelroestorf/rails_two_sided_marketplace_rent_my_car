@@ -8,16 +8,14 @@
 
     <div class="background-image pb-5">
 
-
       <div class="home-buttons container-fluid d-flex justify-content-around align-items-end"
            style="height: 80vh">
-
-          <%= link_to 'Find a car', cars_path,
-            class: "btn btn-lg btn-dark d-flex align-items-center justify-content-center",
-            style: "width: 250px; height: 100px; font-size: 25px; color: white;" %>
-          <%= link_to 'List my car', new_car_path,
-            class: "btn btn-lg btn-dark d-flex align-items-center justify-content-center",
-            style: "width: 250px; height: 100px; font-size: 25px; color: white;" %>
+        <%= link_to 'Find a car', cars_path,
+          class: "btn btn-lg btn-dark d-flex align-items-center justify-content-center",
+          style: "width: 250px; height: 100px; font-size: 25px; color: white;" %>
+        <%= link_to 'List my car', new_car_path,
+          class: "btn btn-lg btn-dark d-flex align-items-center justify-content-center",
+          style: "width: 250px; height: 100px; font-size: 25px; color: white;" %>
       </div>
 
     </div>
@@ -26,84 +24,86 @@
       <h1>How it works</h1>
     </div>
 
-    <div class="d-flex justify-content-around mb-5">
-      <h2 class="text-center">Renting</h2>
-      <h2 class="text-center">Listing</h2>
+    <div class="mx-lg-5">
+
+      <div class="d-flex justify-content-around mb-5">
+        <h2 class="text-center">Renting</h2>
+        <h2 class="text-center">Listing</h2>
+      </div>
+
+
+      <div class="d-flex justify-content-around mb-5">
+
+        <div class="card border-info" style="max-width: 17rem;">
+          <div class="card-body">
+            <h5 class="card-title">Find the perfect car</h5>
+            <p class="card-text text-info">Select cars from a map to view details and proceed.<br>
+              Choose how many days you want the car for and book it.</p>
+          </div>
+        </div>
+        <div class="card border-info" style="max-width: 17rem;">
+          <div class="card-body">
+            <h5 class="card-title">List your car</h5>
+            <p class="card-text text-info">Sign up and enter your car details.<br>
+              Respond to bookings.<br>
+              lias with guests to arrange pick up.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="d-flex justify-content-around mb-5">
+
+        <div class="card border-info" style="max-width: 17rem;">
+          <div class="card-body">
+            <h5 class="card-title">Pick up the car</h5>
+            <p class="card-text text-info">Receive an email with the booking confirming and car owner's details.<br>
+              Arrange to meet and pick up the car.<br>
+              Walk around the car, grab the keys and drive away into the sunset.</p>
+          </div>
+        </div>
+        <div class="card border-info" style="max-width: 17rem;">
+          <div class="card-body">
+            <h5 class="card-title">Meet your guests</h5>
+            <p class="card-text text-info">Enter the odometer reading on your app.<br>
+              Hand over the keys and send them on their way.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="d-flex justify-content-around mb-5">
+
+        <div class="card border-info" style="max-width: 17rem;">
+          <div class="card-body">
+            <h5 class="card-title">Return the car</h5>
+            <p class="card-text text-info">Replace the fuel you used and meet up with the car owner to drop off the car.<br>
+              Walk around the car again, handover the keys and start planning your next adventure.<br>
+              Receive an email confirming final payment.</p>
+          </div>
+        </div>
+        <div class="card border-info" style="max-width: 17rem;">
+          <div class="card-body">
+            <h5 class="card-title">Pick up your car</h5>
+            <p class="card-text text-info">Meet up your guest again to make sure everythings ok and send them them on their way.<br>
+              Enter the odometer reading on your app.<br>
+              Receive an email confirming final payment.</p>
+          </div>
+        </div>
+
+      </div>
+
     </div>
 
-    <div class="d-flex justify-content-around mb-5">
+    <hr>
 
-      <div class="card border-info" style="max-width: 15rem;">
-        <div class="card-body">
-          <h5 class="card-title">Find the perfect car</h5>
-          <p class="card-text text-info">Select cars from a map to view details and proceed.<br>
-            Choose how many days you want the car for and book it.</p>
-        </div>
-      </div>
-      <div class="card border-info" style="max-width: 15rem;">
-        <div class="card-body">
-          <h5 class="card-title">List your car</h5>
-          <p class="card-text text-info">Sign up and enter your car details.</p>
-        </div>
-      </div>
-
+    <div class="how-it-works mb-5 d-flex justify-content-center">
+      <h1>Pricing</h1>
     </div>
 
-    <div class="d-flex justify-content-around mb-5">
-
-      <div class="card border-info" style="max-width: 15rem;">
-        <div class="card-body">
-          <h5 class="card-title">Pick up the car</h5>
-          <p class="card-text text-info">Receive an email with the booking confirming and car owner's details.<br>
-            Arrange to meet and pick up the car.<br>
-            Walk around the car, grab the keys and drive away into the sunset.</p>
-        </div>
-      </div>
-      <div class="card border-info" style="max-width: 15rem;">
-        <div class="card-body">
-          <h5 class="card-title">Respond to bookings</h5>
-          <p class="card-text text-info">lias with guests to arrange pick up.</p>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="d-flex justify-content-around mb-5">
-
-      <div class="card border-info" style="max-width: 15rem;">
-        <div class="card-body">
-          <h5 class="card-title">Return the car</h5>
-          <p class="card-text text-info">Replace the fuel you used and meet up with the car owner to drop off the car.<br>
-            Walk around the car again, handover the keys and start planning your next adventure.<br>
-            Receive an email confirming final payment.</p>
-        </div>
-      </div>
-
-      <div class="card border-info" style="max-width: 15rem;">
-        <div class="card-body">
-          <h5 class="card-title">Meet your guests</h5>
-          <p class="card-text text-info">Enter the odometer reading on your app.<br>
-            Hand over the keys and send them on their way.</p>
-        </div>
-      </div>
-
-    </div>
-
-      <div class="card border-info" style="max-width: 15rem;">
-        <div class="card-body">
-          <h5 class="card-title">Pick up your car</h5>
-          <p class="card-text text-info">Meet up your guest again to make sure everythings ok and send them them on their way<br>
-            Enter the odometer reading on your app</p>
-        </div>
-      </div>
-
-      <div class="card border-info" style="max-width: 15rem;">
-        <div class="card-body">
-          <h5 class="card-title">Get paid</h5>
-          <p class="card-text text-info">Receive an email confirming final payment</p>
-        </div>
-
-      </div>
+      <ul>
+        
+      </ul>
 
 
   </body>
