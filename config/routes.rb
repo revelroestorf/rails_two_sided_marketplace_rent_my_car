@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'booking/index'
+
+  get 'booking/show'
+
   resources :charges
 
   resources :cars

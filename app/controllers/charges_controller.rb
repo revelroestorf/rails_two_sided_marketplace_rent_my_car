@@ -1,5 +1,7 @@
 class ChargesController < ApplicationController
   before_action :set_car_and_amount
+  before_action :set_booking
+
 
   def create
 
@@ -26,6 +28,10 @@ class ChargesController < ApplicationController
   def set_car_and_amount
     @car = Car.find(params[:car_id])
     @amount = @car.price_per_day
+  end
+
+  def set_booking
+    @booking = Booking.find(params[:booking_id])
   end
 
 end
