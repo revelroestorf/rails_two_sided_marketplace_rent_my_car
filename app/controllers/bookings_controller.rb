@@ -11,11 +11,7 @@ class BookingsController < ApplicationController
   end
 
   def owner_bookings
-
+    @bookings = current_user.cars.first.bookings
   end
 
-  private
-  # def booking_params
-  #   params.require(:booking).permit(:user_id, :car_id)
-  # end
 end

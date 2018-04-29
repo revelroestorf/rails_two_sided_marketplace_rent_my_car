@@ -1,1 +1,17 @@
 <h1>My bookings</h1>
+
+<% unless @bookings.each do |booking| %>
+  <%if booking.active %>
+    <% true %>
+    <% return %>
+  <% end %>
+  <h3>You have no avtice bookings</h3>
+<% end %>
+
+<% @bookings.each do |booking| %>
+
+  <%= booking %>
+
+  <%= "Enter odometer reading" %>
+
+<% end %>

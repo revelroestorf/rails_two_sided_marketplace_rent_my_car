@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20180429004203) do
     t.integer "odo_end"
     t.float "price_per_day"
     t.float "price_per_km"
+    t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
