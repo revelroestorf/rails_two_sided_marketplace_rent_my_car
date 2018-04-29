@@ -2,7 +2,7 @@ class BookingController < ApplicationController
 
   def index
     @car = Car.find(params[:car_id])
-    
+
   end
 
   def create
@@ -13,6 +13,7 @@ class BookingController < ApplicationController
   end
 
   def show
+    @booking = Booking.find(params[:id])
   end
 
   private

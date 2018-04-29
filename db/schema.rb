@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 20180429004203) do
     t.integer "car_id"
     t.integer "odo_start"
     t.integer "odo_end"
-    t.float "charge_days"
-    t.float "charge_kms"
+    t.float "price_per_day"
+    t.float "price_per_km"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

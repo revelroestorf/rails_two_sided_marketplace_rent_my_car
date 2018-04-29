@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get 'booking/show'
 
+  # get ':controller(/:action(/:id))'
+
   resources :charges
 
   resources :cars

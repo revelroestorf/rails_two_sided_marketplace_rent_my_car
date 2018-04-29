@@ -1,7 +1,6 @@
 class ChargesController < ApplicationController
-  before_action :set_car_and_amount
-  before_action :set_booking
-
+  before_action :create_booking
+  before_action :set_amount
 
   def create
 
@@ -17,21 +16,27 @@ class ChargesController < ApplicationController
     :currency    => 'aud' #or whatever currency you like
   )
 
-    rescue Stripe::CardError => e
-      flash[:error] = e.message
-      redirect_to new_charge_path
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to new_charge_path
+
 
   end
 
   private
-
-  def set_car_and_amount
+  
+  def create_booking
     @car = Car.find(params[:car_id])
-    @amount = @car.price_per_day
+
+    @booking = Booking.new
+    @booking.user_id = current_user.id
+    @booking.price_per_day = @car.price_per_day
+    @booking.price_per_km = @car.price_per_km
+    @booking.save
   end
 
-  def set_booking
-    @booking = Booking.find(params[:booking_id])
+  def set_amount
+    @amount = @booking.price_per_day
   end
 
 end

@@ -4,4 +4,14 @@
   <p>Your card has been charged with <%= number_to_currency(@amount) %></p>
 </div>
 
-<%= link_to "Show booking", booking_show_path(@booking), class: "btn btn-primary", style: "color: white" %>
+<br><br>
+
+<%= @booking.inspect %>
+
+<%= link_to 'back to cars', cars_path %>
+
+<!-- <%= link_to "Show booking", booking_show_path(@booking), class: "btn btn-primary", style: "color: white" %> -->
+
+<!-- <%= button_to "Show booking", booking_show_path, method: :get, params: {id: @booking.id}, class: "btn btn-primary", style: "color: white" %> -->
+
+<!-- <%= link_to "Show booking", method: :get, url: {controller: 'booking', action: 'show', id: @booking.id}, class: "btn btn-primary", style: "color: white" %> -->

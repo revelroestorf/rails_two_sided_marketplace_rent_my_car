@@ -12,10 +12,6 @@ class CarsController < ApplicationController
   def show
   end
 
-  def book
-    @car = Car.find(params[:car_id])
-  end
-
   # GET /cars/new
   def new
     redirect_to(new_user_registration_path) unless user_signed_in?
