@@ -8,6 +8,10 @@
       <% if current_user.has_role?(:admin) %>
         <th>User</th>
       <% end %>
+
+      <th>User</th>
+
+
       <th>Make</th>
       <th>Model</th>
       <th>Year</th>
@@ -22,8 +26,11 @@
     <% @cars.each do |car| %>
       <tr>
         <% if current_user.has_role?(:admin) %>
-          <td><%= car.user.id %></td>
+          <td><%= car.user.firstname %></td>
         <% end %>
+
+        <td><%= car.user.firstname %></td>
+
         <td><%= car.make %></td>
         <td><%= car.model %></td>
         <td><%= car.year %></td>

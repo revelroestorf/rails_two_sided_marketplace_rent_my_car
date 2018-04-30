@@ -1,17 +1,45 @@
-<h1>My bookings</h1>
-
-<% unless @bookings.each do |booking| %>
-  <%if booking.active %>
-    <% true %>
-    <% return %>
+<% active_bookings_array = [] %>
+<% @bookings.each do |booking| %>
+  <% if booking.active == true %>
+    <% active_bookings_array.push(1) %>
   <% end %>
-  <h3>You have no avtice bookings</h3>
 <% end %>
 
+<% if active_bookings_array.length < 1 %>
+  <h3>You have no active bookings</h3>
+<% else %>
+  <h3>Your active bookings:</h3>
+
+  <% @bookings.each do |booking| %>
+    <% if booking.active == true %>
+
+      <p>Booking</p>
+
+
+
+
+    <% end %>
+  <% end %>
+<% end %>
+
+<% non_active_bookings_array = [] %>
 <% @bookings.each do |booking| %>
+  <% if booking.active == false %>
+    <% non_active_bookings_array.push(1) %>
+  <% end %>
+<% end %>
 
-  <%= booking %>
+<% if non_active_bookings_array.length > 0 %>
+  <h3>Your previous bookings:</h3>
 
-  <%= "Enter odometer reading" %>
+  <% @bookings.each do |booking| %>
+    <% if booking.active == false %>
 
+      <p>Old Booking</p>
+
+
+
+
+    <% end %>
+  <% end %>
 <% end %>

@@ -28,11 +28,11 @@
         </tr>
         <tr>
           <th scope="row">Days:</th>
-          <td>...add days selected</td>
+          <td><%= @days %></td>
         </tr>
         <tr>
-          <th scope="row">Payment due now:</th>
-          <td><%= number_to_currency(10 * @car.price_per_day) %></td>
+          <th scope="row">Payment due:</th>
+          <td><%= number_to_currency(@car.price_per_day * @days.to_i) %></td>
         </tr>
       </tbody>
     </table>
@@ -54,6 +54,8 @@
         <% end %>
       </article>
       <%= hidden_field_tag :car_id, @car.id %>
+      <%= hidden_field_tag :days, @cdays %>
+
       <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
               data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
               data-description="A month's subscription"

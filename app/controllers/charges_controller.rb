@@ -32,6 +32,7 @@ class ChargesController < ApplicationController
     @booking.user_id = current_user.id
     @booking.car_id = @car.id
     @booking.price_per_day = @car.price_per_day
+    @booking.days = params[:days]
     @booking.price_per_km = @car.price_per_km
     @booking.active = true
     @booking.save

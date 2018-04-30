@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'bookings/index'
+  post 'bookings/new'
 
   get 'bookings/show'
 
