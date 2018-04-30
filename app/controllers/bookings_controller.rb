@@ -19,8 +19,10 @@ class BookingsController < ApplicationController
       car.bookings.each do |booking|
         if booking.active == true
           if params[:odo_start]
-            @booking.find(params[:booking_id])
-            @booking.update(odo_start: params[:odo_start])
+            booking.update(odo_start: params[:odo_start])
+          end
+          if params[:odo_end]
+            booking.update(odo_end: params[:odo_end])
           end
           @active_bookings_array.push(booking)
         else
@@ -28,3 +30,7 @@ class BookingsController < ApplicationController
         end
       end
     end
+
+  end
+
+end

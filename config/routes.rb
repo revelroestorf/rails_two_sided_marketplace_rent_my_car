@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get 'bookings/owner_bookings'
 
+  
+
 
   # get ':controller(/:action(/:id))'
 

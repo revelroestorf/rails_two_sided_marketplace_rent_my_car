@@ -1,45 +1,149 @@
-<% active_bookings_array = [] %>
-<% @bookings.each do |booking| %>
-  <% if booking.active == true %>
-    <% active_bookings_array.push(1) %>
-  <% end %>
-<% end %>
+<div class="m-2 m-lg-5">
 
-<% if active_bookings_array.length < 1 %>
-  <h3>You have no active bookings</h3>
-<% else %>
-  <h3>Your active bookings:</h3>
+    <div class="mb-5" style="max-width: 500px;">
 
-  <% @bookings.each do |booking| %>
-    <% if booking.active == true %>
+      <% if @active_bookings_array %>
+        <h3>Your active bookings</h3>
+        <% @active_bookings_array.each do |booking| %>
 
-      <p>Booking</p>
+          <table class="table mt-5">
+            <tbody>
+              <tr>
+                <td>Car</td>
+                <td><%= "#{booking.car.make} #{booking.car.model}" %></td>
+              </tr>
+              <tr>
+                <td>Guest</td>
+                <td><%= booking.user.firstname %></td>
+              </tr>
+              <tr>
+                <td>Days</td>
+                <td><%= booking.days %></td>
+              </tr>
+              <tr>
+                <td>Price per day</td>
+                <td><%= number_to_currency(booking.price_per_day) %></td>
+              </tr>
+              <tr style="border-top: solid grey 2px;">
+                <td class="d-flex justify-content-end pr-5">
+                  <strong>Sub-total</strong>
+                </td>
+                <% t1 = booking.price_per_day * booking.days %>
+                <td><strong><%= number_to_currency(t1) %></strong></td>
+              </tr>
+              <tr>
+                <td>Odometer reading - Start</td>
+                <% if booking.odo_start %>
+                  <td><%= booking.odo_start %></td>
+                <% else %>
+                  <td>
+                    <%= form_tag bookings_owner_bookings_path, method: :get, class: "form-inline" do %>
+                      <%= text_field_tag :odo_start, '', placeholder: "odo start", class: "form-control form-control-sm"  %>
+                      <%= submit_tag "Submit", class: "btn btn-sm btn-primary ml-2" %>
+                    <% end %>
+                  </td>
+                <% end %>
+              </tr>
+              <tr>
+                <td>Odometer reading - End</td>
+                <% if booking.odo_end %>
+                  <td><%= booking.odo_end %></td>
+                <% else %>
+                  <td>
+                    <%= form_tag bookings_owner_bookings_path, method: :get, class: "form-inline" do %>
+                      <%= text_field_tag :odo_end, '', placeholder: "odo start", class: "form-control form-control-sm"  %>
+                      <%= submit_tag "Submit", class: "btn btn-sm btn-primary ml-2" %>
+                    <% end %>
+                  </td>
+                <% end %>
+              </tr>
+              <tr>
+                <td>Price per km</td>
+                <td><%= number_to_currency(booking.price_per_km) %></td>
+              </tr>
+              <tr style="border-top: solid grey 2px;">
+                <td class="d-flex justify-content-end pr-5">
+                  <strong>Sub-total</strong>
+                </td>
+                <% if booking.odo_start && booking.odo_end %>
+                  <% t2 = booking.price_per_km * (booking.odo_end - booking.odo_start) %>
+                  <td><strong><%= number_to_currency(t2) %></strong></td>
+                <% else %>
+                  <td>-</td>
+                <% end %>
+              </tr>
+              <tr class="" style="border-top: solid grey 2px;">
+                <td class="d-flex justify-content-end pr-5 lead">Total</td>
+                <td class="lead"><%= number_to_currency(t1.to_i + t2.to_i) %></td>
+              </tr>
+            </tbody>
+          </table>
 
+        <% end %>
+      <% end %>
 
+    </div>
 
+    <div class="" style="max-width: 500px;">
 
-    <% end %>
-  <% end %>
-<% end %>
+      <% if @non_active_bookings_array %>
+        <h3>Your previous bookings</h3>
+        <% @non_active_bookings_array.each do |booking| %>
 
-<% non_active_bookings_array = [] %>
-<% @bookings.each do |booking| %>
-  <% if booking.active == false %>
-    <% non_active_bookings_array.push(1) %>
-  <% end %>
-<% end %>
+          <table class="table mt-5">
+            <tbody>
+              <tr>
+                <td>Car</td>
+                <td><%= "#{booking.car.make} #{booking.car.model}" %></td>
+              </tr>
+              <tr>
+                <td>Guest</td>
+                <td><%= booking.user.firstname %></td>
+              </tr>
+              <tr>
+                <td>Days</td>
+                <td><%= booking.days %></td>
+              </tr>
+              <tr>
+                <td>Price per day</td>
+                <td><%= number_to_currency(booking.price_per_day) %></td>
+              </tr>
+              <tr style="border-top: solid grey 2px;">
+                <td class="d-flex justify-content-end pr-5">
+                  <strong>Sub-total</strong>
+                </td>
+                <% t1 = booking.price_per_day * booking.days %>
+                <td><strong><%= number_to_currency(t1) %></strong></td>
+              </tr>
+              <tr>
+                <td>Odometer reading - Start</td>
+                <td><%= booking.odo_start %></td>
+              </tr>
+              <tr>
+                <td>Odometer reading - End</td>
+                <td><%= booking.odo_end %></td>
+              </tr>
+              <tr>
+                <td>Price per km</td>
+                <td><%= number_to_currency(booking.price_per_km) %></td>
+              </tr>
+              <tr style="border-top: solid grey 2px;">
+                <td class="d-flex justify-content-end pr-5">
+                  <strong>Sub-total</strong>
+                </td>
+                <% t2 = booking.price_per_km * (booking.odo_end - booking.odo_start) %>
+                <td><strong><%= number_to_currency(t2) %></strong></td>
+              </tr>
+              <tr class="" style="border-top: solid grey 2px;">
+                <td class="d-flex justify-content-end pr-5 lead">Total</td>
+                <td class="lead"><%= number_to_currency(t1.to_i + t2.to_i) %></td>
+              </tr>
+            </tbody>
+          </table>
 
-<% if non_active_bookings_array.length > 0 %>
-  <h3>Your previous bookings:</h3>
+        <% end %>
+      <% end %>
 
-  <% @bookings.each do |booking| %>
-    <% if booking.active == false %>
+    </div>
 
-      <p>Old Booking</p>
-
-
-
-
-    <% end %>
-  <% end %>
-<% end %>
+  </div>

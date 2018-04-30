@@ -54,7 +54,7 @@
         <% end %>
       </article>
       <%= hidden_field_tag :car_id, @car.id %>
-      <%= hidden_field_tag :days, @cdays %>
+      <%= hidden_field_tag :days, @days %>
 
       <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
               data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
