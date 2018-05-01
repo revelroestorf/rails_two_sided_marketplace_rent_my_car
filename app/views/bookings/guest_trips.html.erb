@@ -1,17 +1,29 @@
 <div class="m-2 m-lg-5">
   <div class="mb-5" style="max-width: 500px;">
 
-    <% if @active_trips_array %>
+    <% if @active %>
+
       <h3>Your active trips</h3>
-      <% @active_trips_array.each do |booking| %>
+
+      <% @bookings.each do |booking| %>
         <%= render 'active_bookings', {booking: booking, guest: @guest} %>
       <% end %>
-    <% end %>
-    <% if @non_active_trips_array %>
-        <h3>Your previous trips</h3>
-        <% @non_active_trips_array.each do |booking| %>
+
+      <% if current_user.bookings.find_by(active: false) %>
+        <%= link_to 'previous trips', bookings_previous_trips_path %>
+      <% end %>
+
+    <% else %>
+
+      <h3>Your previous trips</h3>
+
+      <% @bookings.each do |booking| %>
         <%= render 'non_active_bookings', {booking: booking, guest: @guest} %>
       <% end %>
+
+      <%= link_to 'back', bookings_owner_bookings_path %>
+
+
     <% end %>
 
   </div>
