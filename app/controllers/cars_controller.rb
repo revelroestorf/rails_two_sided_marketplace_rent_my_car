@@ -25,8 +25,14 @@ class CarsController < ApplicationController
   # POST /cars
   # POST /cars.json
   def create
-    @car = Car.new(car_params)
-    @car.user = current_user
+    @car = Car.new
+    @car.user_id = current_user.id
+    @car.make = params[:make]
+    @car.model = params[:model]
+    @car.year = params[:year]
+    @car.full_address = params[:full_address]
+    @car.price_per_day = params[:price_per_day]
+    @car.price_per_km = params[:price_per_km]
     respond_to do |format|
       if @car.save
         format.html { redirect_to @car, notice: 'Car was successfully created.' }

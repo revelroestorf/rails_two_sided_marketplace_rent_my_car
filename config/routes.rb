@@ -6,7 +6,11 @@ Rails.application.routes.draw do
 
   get 'bookings/owner_bookings'
 
-  
+  get 'bookings/previous_bookings'
+
+  get 'bookings/guest_trips'
+
+  get 'bookings/previous_trips'
 
 
   # get ':controller(/:action(/:id))'

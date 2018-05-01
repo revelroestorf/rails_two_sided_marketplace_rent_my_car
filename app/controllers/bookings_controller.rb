@@ -11,8 +11,6 @@ class BookingsController < ApplicationController
   end
 
   def owner_bookings
-    # will need to update this to occomodate owners with multiple cars
-
     @active_bookings_array = []
     @non_active_bookings_array = []
     current_user.cars.each do |car|
@@ -30,7 +28,28 @@ class BookingsController < ApplicationController
         end
       end
     end
+    if @active_bookings_array || @non_active_bookings_array
+      @guest = false
+    end
+  end
 
+  def previous_bookings
+
+  end
+
+  def guest_trips
+    @active_trips_array = []
+    @non_active_trips_array = []
+    current_user.bookings.each do |booking|
+      if booking.active
+        @active_trips_array.push(booking)
+      else
+        @non_active_trips_array.push(booking)
+      end
+    end
+    if @active_trips_array || @non_active_trips_array
+      @guest = true
+    end
   end
 
 end

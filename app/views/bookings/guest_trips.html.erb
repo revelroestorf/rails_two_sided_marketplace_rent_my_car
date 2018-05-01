@@ -1,16 +1,15 @@
 <div class="m-2 m-lg-5">
   <div class="mb-5" style="max-width: 500px;">
 
-    <% if @active_bookings_array %>
-      <h3>Your active bookings</h3>
-      <% @active_bookings_array.each do |booking| %>
+    <% if @active_trips_array %>
+      <h3>Your active trips</h3>
+      <% @active_trips_array.each do |booking| %>
         <%= render 'active_bookings', {booking: booking, guest: @guest} %>
       <% end %>
     <% end %>
-
-    <% if @non_active_bookings_array %>
-        <h3>Your previous bookings</h3>
-        <% @non_active_bookings_array.each do |booking| %>
+    <% if @non_active_trips_array %>
+        <h3>Your previous trips</h3>
+        <% @non_active_trips_array.each do |booking| %>
         <%= render 'non_active_bookings', {booking: booking, guest: @guest} %>
       <% end %>
     <% end %>

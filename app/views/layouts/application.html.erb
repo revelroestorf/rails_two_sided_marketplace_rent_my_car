@@ -19,7 +19,7 @@
       <div class="collapse navbar-collapse p-2 justify-content-end" id="navbarNav">
         <ul class="navbar-nav d-flex">
           <li class="nav-item mr-5">
-            <a class="nav-link" style="color: white" href="#pricing"><%= "loged in as #{@user.firstname}" %></a>
+            <a class="nav-link" style="color: white" href="#pricing"><%= "loged in as #{current_user.firstname}" %></a>
           </li>
           <li class="nav-item mr-5">
             <a class="nav-link" style="color: white" href="#how-it-works">How it works</a>
@@ -27,16 +27,15 @@
           <li class="nav-item mr-5">
             <a class="nav-link" style="color: white" href="#pricing">Pricing</a>
           </li>
-          <% if user_signed_in? %>
-            <%if @user.cars %>
-              <% @user.cars.each do |car| %>
-                <% if car.bookings.first %>
-                  <li class="nav-item mr-5">
-                    <a><%= link_to 'My bookings', bookings_owner_bookings_path, class: "nav-link", style: "color: white;" %></a>
-                  </li>
-                <% end %>
-              <% end %>
-            <% end %>
+          <% if @trips %>
+            <li class="nav-item mr-5">
+              <a><%= link_to 'My trips', bookings_guest_trips_path, class: "nav-link", style: "color: white;" %></a>
+            </li>
+          <% end %>
+          <% if @bookings %>
+            <li class="nav-item mr-5">
+              <a><%= link_to 'My bookings', bookings_owner_bookings_path, class: "nav-link", style: "color: white;" %></a>
+            </li>
           <% end %>
           <% if user_signed_in? %>
             <li class="nav-item mr-5">
