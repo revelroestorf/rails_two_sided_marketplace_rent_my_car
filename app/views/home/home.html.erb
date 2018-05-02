@@ -6,19 +6,26 @@
   </head>
   <body>
 
-    <div class="background-image pb-5">
 
+    <div class="background-image pb-5">
       <div class="home-buttons container-fluid d-flex justify-content-around align-items-end"
            style="height: 80vh">
         <%= link_to 'Find a car', cars_path,
           class: "btn btn-lg btn-dark d-flex align-items-center justify-content-center",
           style: "width: 250px; height: 100px; font-size: 25px; color: white;" %>
-        <%= link_to 'List my car', new_car_path,
-          class: "btn btn-lg btn-dark d-flex align-items-center justify-content-center",
-          style: "width: 250px; height: 100px; font-size: 25px; color: white;" %>
+        <% if current_user.cars %>
+          <%= link_to 'List another car', new_car_path,
+            class: "btn btn-lg btn-dark d-flex align-items-center justify-content-center",
+            style: "width: 250px; height: 100px; font-size: 25px; color: white;" %>
+          <% else %>
+          <%= link_to 'List my car', new_car_path,
+            class: "btn btn-lg btn-dark d-flex align-items-center justify-content-center",
+            style: "width: 250px; height: 100px; font-size: 25px; color: white;" %>
+        <% end %>
       </div>
-
     </div>
+
+    <a name="how-it-works"></a>
 
     <div class="how-it-works mb-5 d-flex justify-content-center">
       <h1>How it works</h1>
@@ -30,10 +37,7 @@
         <h2 class="text-center">Renting</h2>
         <h2 class="text-center">Listing</h2>
       </div>
-
-
       <div class="d-flex justify-content-around mb-5">
-
         <div class="card border-info" style="max-width: 17rem;">
           <div class="card-body">
             <h5 class="card-title">Find the perfect car</h5>
@@ -49,11 +53,8 @@
               lias with guests to arrange pick up.</p>
           </div>
         </div>
-
       </div>
-
       <div class="d-flex justify-content-around mb-5">
-
         <div class="card border-info" style="max-width: 17rem;">
           <div class="card-body">
             <h5 class="card-title">Pick up the car</h5>
@@ -69,11 +70,8 @@
               Hand over the keys and send them on their way.</p>
           </div>
         </div>
-
       </div>
-
       <div class="d-flex justify-content-around mb-5">
-
         <div class="card border-info" style="max-width: 17rem;">
           <div class="card-body">
             <h5 class="card-title">Return the car</h5>
@@ -90,21 +88,22 @@
               Receive an email confirming final payment.</p>
           </div>
         </div>
-
       </div>
 
     </div>
 
     <hr>
-
-    <div class="how-it-works mb-5 d-flex justify-content-center">
-      <h1>Pricing</h1>
+    <a name="pricing"></a>
+    <div class="mx-5">
+      <div class="pricing d-flex justify-content-center">
+        <h1>Pricing</h1>
+      </div>
+      <h5>Price per day</h5>
+      <p>Set by the lister and applied to the number of days selected by the renter when booking, resulting in the initial booking charge.</p>
+      <h5>Price per km</h5>
+      <p>Set by the lister and applied to the number of km's travelled by the renter.</p>
+      <p>The lister enters the odometer reading into the app when the renter picks up the car and again when the car is returned, generating the final charge.</p>
     </div>
-
-      <ul>
-        
-      </ul>
-
 
   </body>
 </html>

@@ -1,0 +1,55 @@
+  <table class="table mt-5">
+    <tbody>
+      <tr>
+        <td>Car</td>
+        <td><%= "#{booking.car.make} #{booking.car.model}" %></td>
+      </tr>
+      <tr>
+        <% if @guest %>
+          <td>Owner</td>
+          <td><%= booking.car.user.firstname %></td>
+        <% else %>
+          <td>Guest</td>
+          <td><%= booking.user.firstname %></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>Days</td>
+        <td><%= booking.days %></td>
+      </tr>
+      <tr>
+        <td>Price per day</td>
+        <td><%= number_to_currency(booking.price_per_day) %></td>
+      </tr>
+      <tr style="border-top: solid grey 2px;">
+        <td class="d-flex justify-content-end pr-5">
+          <strong>Sub-total</strong>
+        </td>
+        <% t1 = booking.price_per_day * booking.days %>
+        <td><strong><%= number_to_currency(t1) %></strong></td>
+      </tr>
+      <tr>
+        <td>Odometer reading - Start</td>
+        <td><%= booking.odo_start %></td>
+      </tr>
+      <tr>
+        <td>Odometer reading - End</td>
+        <td><%= booking.odo_end %></td>
+      </tr>
+      <tr>
+        <td>Price per km</td>
+        <td><%= number_to_currency(booking.price_per_km) %></td>
+      </tr>
+      <tr style="border-top: solid grey 2px;">
+        <td class="d-flex justify-content-end pr-5">
+          <strong>Sub-total</strong>
+        </td>
+        <% t2 = booking.price_per_km * (booking.odo_end - booking.odo_start) %>
+        <td><strong><%= number_to_currency(t2) %></strong></td>
+      </tr>
+      <tr class="" style="border-top: solid grey 2px;">
+        <td class="d-flex justify-content-end pr-5 lead">Total</td>
+        <td class="lead"><%= number_to_currency(t1.to_i + t2.to_i) %></td>
+      </tr>
+    </tbody>
+  </table>

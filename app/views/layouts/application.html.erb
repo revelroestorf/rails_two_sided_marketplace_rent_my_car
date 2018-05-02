@@ -18,24 +18,39 @@
       </button>
       <div class="collapse navbar-collapse p-2 justify-content-end" id="navbarNav">
         <ul class="navbar-nav d-flex">
+          <% if user_signed_in? %>
+            <li class="nav-item mr-5">
+              <a class="nav-link" style="color: white" href="#pricing"><%= "logged in as #{current_user.firstname}" %></a>
+            </li>
+          <% end %>
           <li class="nav-item mr-5">
-            <a class="nav-link" href="#">How it works</a>
+            <a class="nav-link" style="color: white" href="#how-it-works">How it works</a>
           </li>
           <li class="nav-item mr-5">
-            <a class="nav-link" href="#">Pricing</a>
+            <a class="nav-link" style="color: white" href="#pricing">Pricing</a>
           </li>
-        <% if user_signed_in? %>
-          <li class="nav-item mr-5">
-            <a><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "nav-link" %></a>
-          </li>
-        <% else %>
-          <li class="nav-item mr-5">
-            <a><%= link_to 'login', new_user_session_path, class: "nav-link" %></a>
-          </li>
-        <% end %>
-          <li class="nav-item mr-5">
-            <a><%= link_to 'sign up', new_user_registration_path, class: "nav-link" %></a>
-          </li>
+          <% if @trips %>
+            <li class="nav-item mr-5">
+              <a><%= link_to 'My trips', bookings_guest_trips_path, class: "nav-link", style: "color: white;" %></a>
+            </li>
+          <% end %>
+          <% if @bookings %>
+            <li class="nav-item mr-5">
+              <a><%= link_to 'My bookings', bookings_owner_bookings_path, class: "nav-link", style: "color: white;" %></a>
+            </li>
+          <% end %>
+          <% if user_signed_in? %>
+            <li class="nav-item mr-5">
+              <a><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "nav-link", style: "color: white;" %></a>
+            </li>
+          <% else %>
+            <li class="nav-item mr-5">
+              <a><%= link_to 'login', new_user_session_path, class: "nav-link", style: "color: white;" %></a>
+            </li>
+            <li class="nav-item mr-5">
+              <a><%= link_to 'sign up', new_user_registration_path, class: "nav-link", style: "color: white;" %></a>
+            </li>
+          <% end %>
         </ul>
       </div>
     </nav>

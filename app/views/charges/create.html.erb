@@ -1,17 +1,21 @@
 
-<div class="amount">
+<div class="m-5">
   <h1>Payment confirmation</h1>
   <p>Your card has been charged with <%= number_to_currency(@amount) %></p>
+  <p>We've also sent you an email confirming your invoice booking details</p>
+  <p class="mt-5 lead">Enjoy your adventure</p>
 </div>
 
 <br><br>
 
 <%= @booking.inspect %>
 
+<br><br>
+
 <%= link_to 'back to cars', cars_path %>
 
-<!-- <%= link_to "Show booking", booking_show_path(@booking), class: "btn btn-primary", style: "color: white" %> -->
+<!-- <%= link_to "Show booking", bookings_show_path(@booking), class: "btn btn-primary", style: "color: white" %> -->
 
-<!-- <%= button_to "Show booking", booking_show_path, method: :get, params: {id: @booking.id}, class: "btn btn-primary", style: "color: white" %> -->
+<!-- <%= button_to "Show booking", bookings_show_path, method: :get, params: {id: @booking.id}, class: "btn btn-primary", style: "color: white" %> -->
 
-<!-- <%= link_to "Show booking", method: :get, url: {controller: 'booking', action: 'show', id: @booking.id}, class: "btn btn-primary", style: "color: white" %> -->
+<!-- <%= link_to "Show booking", method: :get, url: {controller: 'bookings', action: 'show', id: @booking.id}, class: "btn btn-primary", style: "color: white" %> -->

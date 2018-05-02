@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
 
-  get 'booking/index'
+  post 'bookings/new'
 
-  get 'booking/show'
+  get 'bookings/show'
+
+  get 'bookings/owner_bookings'
+
+  get 'bookings/previous_bookings'
+
+  get 'bookings/guest_trips'
+
+  get 'bookings/previous_trips'
+
 
   # get ':controller(/:action(/:id))'
 

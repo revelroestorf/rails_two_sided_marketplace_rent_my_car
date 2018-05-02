@@ -1,26 +1,53 @@
 <p id="notice"><%= notice %></p>
 
-<%= image_tag "#{@car.model.downcase}.jpeg" %>
-<div>
-  <p>
-    <%= "#{@car.user.firstname.capitalize}'s" %>
-  </p>
-  <h3>
-    <%= "#{@car.make.capitalize} #{@car.model}" %>
-  </h3>
-  <p>
-    <%= @car.year %>
-  </p>
-  <p>
-    <%= @car.full_address %>
-  </p>
-  <p>
-    <%= number_to_currency(@car.price_per_day) %>
-  </p>
-  <p>
-    <%= number_to_currency(@car.price_per_km) %>
-  </p>
 </div>
 
-<%= button_to 'Book', booking_index_path, method: :get, params: {car_id: @car.id} %>
-<%= link_to 'Back to cars', cars_path %>
+<div class="">
+  <%= image_tag "#{@car.model.downcase}.jpeg", style: "background-size: cover; width: 100vw;" %>
+</div>
+
+<div class="mx-4 my-2">
+  <div class="row d-flex justify-content-around">
+
+    <div class="">
+        <span class="text-muted"><%= "#{@car.user.firstname.downcase.capitalize}'s" %></span>
+        <br>
+        <span class="h2"><%= "#{@car.make.downcase.capitalize} #{@car.model.downcase.capitalize}" %></span>
+        <span class="text-muted"><small><%= @car.year %></small></span>
+        <br>
+        <%= link_to 'go back', cars_path, class: "btn btn-dark mt-5", style: "color: white; width:90px;" %>
+    </div>
+
+    <div class="car-deets mx-2 mt-4">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td>Location:</td>
+            <td><%= @car.full_address %></td>
+          </tr>
+          <tr>
+            <td>Price per day:</td>
+            <td><%= number_to_currency(@car.price_per_day) %></td>
+          </tr>
+          <tr>
+            <td>Price per km:</td>
+            <td><%= number_to_currency(@car.price_per_km) %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-4">
+      <%= form_tag bookings_new_path, class: "form-inline mb-3" do %>
+          <span><%= text_field_tag :days, '', placeholder: "Number of days", class: "form-control", style: "width: 150px;" %></span>
+          <span><%= submit_tag "Book", class: "btn btn-primary ml-2", style: "width: 90px;" %></span>
+          <%= hidden_field_tag :car_id, @car.id %>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div class="row">
+  </div>
+
+</div>
