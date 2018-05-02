@@ -12,17 +12,24 @@ class BookingsController < ApplicationController
 
   def owner_bookings
     @guest = false
-    @active = true
+    @active = false
+    @previous = false
+    @active2 = false
     @bookings = []
     current_user.cars.each do |car|
-      car.bookings.where(active: true).each do |booking|
-        if params[:odo_start]
-          booking.update(odo_start: params[:odo_start])
+      car.bookings.each do |booking|
+        if booking.active
+          @active = true
+          if params[:odo_start]
+            booking.update(odo_start: params[:odo_start])
+          end
+          if params[:odo_end]
+            booking.update(odo_end: params[:odo_end], active: false)
+          end
+          @bookings.push(booking)
+        else
+          @previous = true
         end
-        if params[:odo_end]
-          booking.update(odo_end: params[:odo_end])
-        end
-        @bookings.push(booking)
       end
     end
   end
@@ -30,6 +37,7 @@ class BookingsController < ApplicationController
   def previous_bookings
     @guest = false
     @active = false
+    @active2 = true
     @bookings = []
     current_user.cars.each do |car|
       car.bookings.where(active: false).each do |booking|
@@ -41,20 +49,29 @@ class BookingsController < ApplicationController
 
   def guest_trips
     @guest = true
-    @active = true
+    @active = false
+    @previous = false
+    @active2 = false
     @bookings = []
-    current_user.bookings.where(active: true).each do |booking|
-      @bookings.push(booking)
+    current_user.bookings.each do |booking|
+      if booking.active
+        @active = true
+        @bookings.push(booking)
+      else
+        @previous = true
+      end
     end
   end
 
   def previous_trips
     @guest = true
     @active = false
+    @active2 = true
     @bookings = []
-    car.bookings.where(active: false).each do |booking|
+    current_user.bookings.where(active: false).each do |booking|
         @bookings.push(booking)
     end
+    render(bookings_guest_trips_path)
   end
 
 end

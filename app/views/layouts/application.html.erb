@@ -18,9 +18,11 @@
       </button>
       <div class="collapse navbar-collapse p-2 justify-content-end" id="navbarNav">
         <ul class="navbar-nav d-flex">
-          <li class="nav-item mr-5">
-            <a class="nav-link" style="color: white" href="#pricing"><%= "loged in as #{current_user.firstname}" %></a>
-          </li>
+          <% if user_signed_in? %>
+            <li class="nav-item mr-5">
+              <a class="nav-link" style="color: white" href="#pricing"><%= "logged in as #{current_user.firstname}" %></a>
+            </li>
+          <% end %>
           <li class="nav-item mr-5">
             <a class="nav-link" style="color: white" href="#how-it-works">How it works</a>
           </li>
