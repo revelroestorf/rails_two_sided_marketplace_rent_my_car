@@ -33,6 +33,8 @@ class CarsController < ApplicationController
     @car.full_address = params[:full_address]
     @car.price_per_day = params[:price_per_day]
     @car.price_per_km = params[:price_per_km]
+    @car.image = params[:image]
+
     respond_to do |format|
       if @car.save
         format.html { redirect_to @car, notice: 'Car was successfully created.' }

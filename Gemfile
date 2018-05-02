@@ -64,3 +64,9 @@ gem "geocoder", "~> 1.4"
 
 # Added at 2018-04-28 13:25:04 +1000 by macrev:
 gem "rolify", "~> 5.2"
+
+# Added at 2018-05-02 20:37:56 +1000 by macrev:
+gem "carrierwave", "~> 1.2"
+
+# Added at 2018-05-02 20:38:39 +1000 by macrev:
+gem "cloudinary", "~> 1.9"

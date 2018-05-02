@@ -28,7 +28,7 @@
         <% if current_user.has_role?(:admin) %>
           <td><%= car.user.firstname %></td>
         <% end %>
-
+        <td><%= image_tag car.image_url(:thumb) %></td>
         <td><%= car.user.firstname %></td>
 
         <td><%= car.make %></td>
