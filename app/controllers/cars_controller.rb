@@ -29,15 +29,9 @@ class CarsController < ApplicationController
   # POST /cars
   # POST /cars.json
   def create
-    @car = Car.new
+    @car = Car.new(car_params)
     @car.user_id = current_user.id
-    @car.make = params[:make]
-    @car.model = params[:model]
-    @car.year = params[:year]
-    @car.full_address = params[:full_address]
-    @car.price_per_day = params[:price_per_day]
-    @car.price_per_km = params[:price_per_km]
-    @car.image = params[:image]
+
 
     respond_to do |format|
       if @car.save
@@ -82,7 +76,7 @@ class CarsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def car_params
-      params.require(:car).permit(:user_id, :make, :model, :year, :location, :price_per_day, :price_per_km)
+      params.require(:car).permit(:make, :model, :year, :location, :price_per_day, :price_per_km, :image)
     end
 
 end

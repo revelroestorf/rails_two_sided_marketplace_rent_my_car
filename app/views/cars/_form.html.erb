@@ -15,18 +15,14 @@
   <div class="container d-flex justify-contents-center" style="width:200px;">
     <div class="mt-5">
 
-
-
-    <%= form_tag new_car_path do %>
-      <%= text_field_tag :make, '', placeholder: "Make", class: "mb-2 form-control form-control-sm"  %>
-      <%= text_field_tag :model, '', placeholder: "Model", class: "mb-2 form-control form-control-sm"   %>
-      <%= number_field_tag :year, '', placeholder: "Year", class: "mb-2 form-control form-control-sm"   %>
-      <%= text_field_tag :full_address, '', placeholder: "Full Address", class: "mb-2 form-control form-control-sm"   %>
-      <%= text_field_tag :price_per_day, '', placeholder: "Price per day", class: "mb-2 form-control form-control-sm"   %>
-      <%= text_field_tag :price_per_km, '', placeholder: "Price per km", class: "mb-2 form-control form-control-sm"   %>
-      <%= file_field_tag :image, class: "mb-2 form-control form-control-sm" %>
-      <%= submit_tag "List it", class: "btn btn-sm btn-primary ml-2 form-inline" %>
-    <% end %>
+      <%= form.text_field :make, placeholder: "Make", class: "mb-2 form-control form-control-sm"  %>
+      <%= form.text_field :model, placeholder: "Model", class: "mb-2 form-control form-control-sm"   %>
+      <%= form.number_field :year, placeholder: "Year", class: "mb-2 form-control form-control-sm"   %>
+      <%= form.text_field :full_address, placeholder: "Full Address", class: "mb-2 form-control form-control-sm"   %>
+      <%= form.text_field :price_per_day, placeholder: "Price per day", class: "mb-2 form-control form-control-sm"   %>
+      <%= form.text_field :price_per_km, placeholder: "Price per km", class: "mb-2 form-control form-control-sm"   %>
+      <%= form.file_field :image, class: "mb-2 form-control form-control-sm" %>
+      <%= form.submit "List it", class: "btn btn-sm btn-primary ml-2 form-inline" %>
     </div>
   </div>
 

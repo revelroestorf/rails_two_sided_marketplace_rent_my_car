@@ -1,6 +1,7 @@
 
 <div class="">
-  <%= image_tag "#{@car.model.downcase}.jpeg", style: "background-size: cover; width: 100vw;" %>
+  <%= image_tag @car.image_url, style: "background-size: cover; width: 100vw;" %>
+
 </div>
 
 <div class="mx-4 my-2">
