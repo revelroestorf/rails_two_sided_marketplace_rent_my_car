@@ -76,19 +76,7 @@
 <div id="map"></div>
   <script>
 
-  var contentString =
-    '<div class="d-flex">'+
-      '</div class="">'+
-        '<span>    image    </span>' +
-      '</div>'+
-      '</div class="">'+
-        '<span class="">    make     </span>'+
-        '<span class="">    model     </span>'+
-        '<br>'+
-        '<span class="">    price_per_day     </span>'+
-        '<span class="">    price_per_km     </span>'+
-      '</div>'+
-    '</div>';
+
 
 
     var map;
@@ -96,7 +84,7 @@
 
       map = new google.maps.Map(document.getElementById('map'), {
         zoom: 10,
-        center: new google.maps.LatLng(<%= @user_location.first.latitude %>, <%= @user_location.first.longitude %>),
+        center: new google.maps.LatLng(<%= @latitude %>, <%= @longitude %>),
         mapTypeId: 'roadmap'
       });
 
@@ -112,11 +100,12 @@
         {
           position: new google.maps.LatLng(<%= car.latitude %>, <%= car.longitude %>),
           icon: 'info',
-          image: <%= image_tag car.image_url(:thumb) %>
-          make: <%= car.make %>,
-          model: <%= car.model %>,
-          price_per_day: <%= car.price_per_day %>,
-          price_per_km: <%= car.price_per_km %>,
+          url: '/cars/<%=car.id%>',
+          image: '<%= car.image %>',
+          make: '<%= car.make %>',
+          model: '<%= car.model %>',
+          price_per_day: '<%= car.price_per_day %>',
+          price_per_km: '<%= car.price_per_km %>',
 
         },
         <% end %>
@@ -124,16 +113,22 @@
 
       // Create markers.
       features.forEach(function(feature) {
+        var contentString =
+          '<div class="d-flex info-window" onclick="window.location=\''+feature.url+'\'">'+
+            '<div class="">'+
+              '<span  style="width:70">    <img src='+feature.image+'>    </span>' +
+            '</div>'+
+            '<div class="">'+
+              '<span class="">    '+feature.make+'     </span>'+
+              '<span class="">    '+feature.model+'     </span>'+
+              '<br>'+
+              '<span class="">    '+feature.price_per_day+'     </span>'+
+              '<span class="">    '+feature.price_per_km+'     </span>'+
+            '</div>'+
+          '</div>';
 
         var infowindow = new google.maps.InfoWindow({
-         content: contentString,
-         feature.position,
-         feature.image,
-         feature.make,
-         feature.model,
-         feature.price_per_day,
-         feature.price_per_km,
-
+         content: contentString
            });
 
         // Can delete this now?
@@ -144,7 +139,8 @@
 
 
         });
-          infowindow.open(map, marker);
+
+         infowindow.open(map, marker);
       });
     }
   </script>

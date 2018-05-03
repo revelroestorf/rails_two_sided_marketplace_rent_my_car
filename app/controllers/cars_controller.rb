@@ -1,13 +1,21 @@
 class CarsController < ApplicationController
   before_action :set_car, only: [:show, :edit, :update, :destroy]
-  before_action :car_params, only: [:show, :create, :edit, :update, :destroy]
+  before_action :car_params, only: [:create, :edit, :update, :destroy]
 
 
   # GET /cars
   # GET /cars.json
   def index
     @cars = Car.all
-    @user_location = Geocoder.search(params[:user_location])
+    if params[:user_location]
+      location = Geocoder.search(params[:user_location])
+      @latitude = location[0].latitude
+      @longitude = location[0].longitude
+    else
+      @latitude = -27.4698
+      @longitude = 153.0251
+    end
+
     # @hash = Gmaps4rails.build_markers(@cars) do |car, marker|
     #   marker.lat car.latitude
     #   marker.lng car.longitude
