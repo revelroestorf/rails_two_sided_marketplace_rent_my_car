@@ -1,10 +1,13 @@
 class CarsController < ApplicationController
   before_action :set_car, only: [:show, :edit, :update, :destroy]
+  before_action :car_params, only: [:show, :create, :edit, :update, :destroy]
+
 
   # GET /cars
   # GET /cars.json
   def index
     @cars = Car.all
+    @user_location = Geocoder.search(params[:user_location])
     # @hash = Gmaps4rails.build_markers(@cars) do |car, marker|
     #   marker.lat car.latitude
     #   marker.lng car.longitude
@@ -76,7 +79,7 @@ class CarsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def car_params
-      params.require(:car).permit(:make, :model, :year, :location, :price_per_day, :price_per_km, :image)
+      params.require(:car).permit(:make, :model, :year, :full_address, :price_per_day, :price_per_km, :image)
     end
 
 end

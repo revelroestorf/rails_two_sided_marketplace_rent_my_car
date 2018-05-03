@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20180502104250) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
+ 
   create_table "cars", force: :cascade do |t|
     t.integer "user_id"
     t.string "make"

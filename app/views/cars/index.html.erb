@@ -52,6 +52,13 @@
 <%= link_to 'New Car', new_car_path %>
 <br>
 
+<div class="m-2">
+  <%= form_tag cars_path, method: :get, class: "form-inline mb-3" do %>
+      <%= text_field_tag :user_location, '', placeholder: "Your location", class: "form-control", style: "width: 150px;" %>
+      <%= submit_tag "Go", class: "btn btn-primary ml-2", style: "width: 90px;" %>
+  <% end %>
+</div>
+
 <style>
   /* Always set the map height explicitly to define the size of the div
    * element that contains the map. */
@@ -69,18 +76,18 @@
 <div id="map"></div>
   <script>
 
-  var contentString = '<div id="content">'+
-    '<div id="siteNotice">'+
-    '</div>'+
-    '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
-    '<div id="bodyContent">'+
-    '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-    'sandstone rock formation in the southern part of the... '+
-    'Heritage Site.</p>'+
-    '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
-    'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-    '(last visited June 22, 2009).</p>'+
-    '</div>'+
+  var contentString =
+    '<div class="d-flex">'+
+      '</div class="">'+
+        '<span>    image    </span>' +
+      '</div>'+
+      '</div class="">'+
+        '<span class="">    make     </span>'+
+        '<span class="">    model     </span>'+
+        '<br>'+
+        '<span class="">    price_per_day     </span>'+
+        '<span class="">    price_per_km     </span>'+
+      '</div>'+
     '</div>';
 
 
@@ -89,7 +96,7 @@
 
       map = new google.maps.Map(document.getElementById('map'), {
         zoom: 10,
-        center: new google.maps.LatLng(-27.7161, 153.2019),
+        center: new google.maps.LatLng(<%= @user_location.first.latitude %>, <%= @user_location.first.longitude %>),
         mapTypeId: 'roadmap'
       });
 
@@ -105,11 +112,11 @@
         {
           position: new google.maps.LatLng(<%= car.latitude %>, <%= car.longitude %>),
           icon: 'info',
-          pic:
-          make: car.make,
-          model: car.model,
-          price_per_day: car.price_per_day,
-          price_per_km: car.price_per_km,
+          image: <%= image_tag car.image_url(:thumb) %>
+          make: <%= car.make %>,
+          model: <%= car.model %>,
+          price_per_day: <%= car.price_per_day %>,
+          price_per_km: <%= car.price_per_km %>,
 
         },
         <% end %>
@@ -119,9 +126,17 @@
       features.forEach(function(feature) {
 
         var infowindow = new google.maps.InfoWindow({
-         content: contentString
+         content: contentString,
+         feature.position,
+         feature.image,
+         feature.make,
+         feature.model,
+         feature.price_per_day,
+         feature.price_per_km,
+
            });
 
+        // Can delete this now?
         var marker = new google.maps.Marker({
           position: feature.position,
           map: map,
