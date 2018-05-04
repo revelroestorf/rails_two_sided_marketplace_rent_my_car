@@ -103,16 +103,16 @@
         var contentString =
           '<div class="d-flex info-window" onclick="window.location=\''+feature.url+'\'">'+
             '<div class="mr-2">'+
-              '<span class="">    <img style="width:70px;" src='+feature.image+'>    </span>' +
+              '<span class="">        <img style="width:70px;" src='+feature.image+'>    </span>' +
             '</div>'+
             '<div class="flex-columns">'+
               '<div class="mb-1">'+
-                '<span class="">    <strong>'+feature.make+'</strong>     </span>'+
-                '<span class="">    <strong>'+feature.model+'</strong>     </span>'+
+                '<span class="">      <strong>'+feature.make+'</strong>                  </span>'+
+                '<span class="">      <strong>'+feature.model+'</strong>                 </span>'+
               '</div>'+
               '<div class="text-success">'+
-                '<span class="">    '+feature.price_per_day+' <span>/day</span>   </span>'+
-                '<span class="ml-2">    '+feature.price_per_km+'  <span>/km</span>    </span>'+
+                '<span class="">      '+feature.price_per_day+' <span>/day</span>        </span>'+
+                '<span class="ml-2">  '+feature.price_per_km+'  <span>/km</span>         </span>'+
               '</div>'+
             '</div>'+
           '</div>';
@@ -121,7 +121,6 @@
          content: contentString
            });
 
-        // Can delete this now?
         var marker = new google.maps.Marker({
           position: feature.position,
           map: map,
