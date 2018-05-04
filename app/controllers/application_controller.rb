@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :check_user_for_owner_bookings
   before_action :check_user_for_guest_trips
-  # before_action :set_user
+  before_action :set_user
 
 
   private
