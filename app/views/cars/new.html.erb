@@ -1,7 +1,34 @@
-<div class="background-image">
+<div class="background-image" style="height:100vh;">
 
-  <%= render 'form', car: @car %>
+  <div class="d-flex justify-content-center align-items-end" style="height:42%;">
+    <div class="mb-3" style="width:250px;">
+      <%= form_with(model: @car, local: true) do |form| %>
+        <% if @car.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@car.errors.count, "error") %> prohibited this car from being saved:</h2>
+            <ul>
+            <% @car.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <%= form.text_field :make, placeholder: "Make", class: "mb-2 form-control form-control-sm"  %>
+        <%= form.text_field :model, placeholder: "Model", class: "mb-2 form-control form-control-sm"   %>
+        <%= form.number_field :year, placeholder: "Year", class: "mb-2 form-control form-control-sm"   %>
+        <%= form.text_field :full_address, placeholder: "Full Address", class: "mb-2 form-control form-control-sm"   %>
+        <%= form.text_field :price_per_day, placeholder: "Price per day", class: "mb-2 form-control form-control-sm"   %>
+        <%= form.text_field :price_per_km, placeholder: "Price per km", class: "mb-2 form-control form-control-sm"   %>
+        <%= form.file_field :image, class: "mb-2 form-control form-control-sm" %>
+    </div>
+  </div>
 
-  <%= link_to 'Back', cars_path %>
+  <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-between" style="width:250px;">
+      <%= link_to 'Back', cars_path, class: "btn btn-dark", style: "color: white; width: 90px;" %>
+      <%= form.submit "List it", class: "btn btn-primary form-inline", style: "color: white; width: 90px;" %>
+      <% end %>
+    </div>
+  </div>
 
 </div>
