@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!
+
   protect_from_forgery with: :exception
   before_action :check_user_for_owner_bookings
   before_action :check_user_for_guest_trips

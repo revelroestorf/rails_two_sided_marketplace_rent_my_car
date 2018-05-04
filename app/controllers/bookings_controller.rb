@@ -1,6 +1,10 @@
 class BookingsController < ApplicationController
 
   def new
+    unless user_signed_in?
+      redirect_to(new_user_registration_path)
+      flash[:notice] = "Nice choice! You'll have to sign in though before you book a car."
+    end
     @car = Car.find(params[:car_id])
     @days = params[:days]
 

@@ -14,11 +14,17 @@
           <%= link_to 'Find a car', cars_path,
             class: "btn btn-lg btn-info d-flex align-items-center justify-content-center mr-5",
             style: "width: 220px; height: 80px; font-size: 25px; color: white;" %>
-          <% if current_user.cars %>
-            <%= link_to 'List another car', new_car_path,
-              class: "btn btn-lg btn-info d-flex align-items-center justify-content-center",
-              style: "width: 220px; height: 80px; font-size: 25px; color: white;" %>
-            <% else %>
+          <% if user_signed_in? %>
+            <% if current_user.cars %>
+              <%= link_to 'List another car', new_car_path,
+                class: "btn btn-lg btn-info d-flex align-items-center justify-content-center",
+                style: "width: 220px; height: 80px; font-size: 25px; color: white;" %>
+              <% else %>
+              <%= link_to 'List my car', new_car_path,
+                class: "btn btn-lg btn-info d-flex align-items-center justify-content-center",
+                style: "width: 220px; height: 80px; font-size: 25px; color: white;" %>
+            <% end %>
+          <% else %>
             <%= link_to 'List my car', new_car_path,
               class: "btn btn-lg btn-info d-flex align-items-center justify-content-center",
               style: "width: 220px; height: 80px; font-size: 25px; color: white;" %>
