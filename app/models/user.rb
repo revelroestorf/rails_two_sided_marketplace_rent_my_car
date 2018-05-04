@@ -10,8 +10,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-    def send_mail
-     UserNotifierMailer.send_signup_email(self).deliver
-   end
+  def send_mail
+    UserNotifierMailer.signup_email(self).deliver
+  end
 
 end

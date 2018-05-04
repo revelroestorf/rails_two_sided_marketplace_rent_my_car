@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <h1>You're all set</h1>
+    <h3>Bookings details:</h3>
+
+    <table class="table mt-5">
+      <tbody>
+        <tr>
+          <td>You car</td>
+          <td><%= "#{booking.car.make} #{booking.car.model}" %></td>
+        </tr>
+        <tr>
+          <td>Owner</td>
+          <td><%= booking.car.user.firstname %></td>
+        </tr>
+        <tr>
+          <td>Days</td>
+          <td><%= booking.days %></td>
+        </tr>
+        <tr>
+          <td>Price per day</td>
+          <td><%= number_to_currency(booking.price_per_day) %></td>
+        </tr>
+        <tr style="border-top: solid grey 2px;">
+          <td class="d-flex justify-content-end pr-5">
+            <strong>Sub-total</strong>
+          </td>
+          <% t1 = booking.price_per_day * booking.days %>
+          <td><strong><%= number_to_currency(t1) %></strong><span class="text-success">PAID</span></td>
+        </tr>
+        <tr>
+          <td>Price per km</td>
+          <td><%= number_to_currency(booking.price_per_km) %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>We'll email you a receipt for the final payment after your trip, pending kilometers travelled.<br>
+       </p>
+
+  </body>
+</html>
