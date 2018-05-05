@@ -88,6 +88,8 @@ GEM
     faraday (0.15.0)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.23)
+    formtastic (3.1.5)
+      actionpack (>= 3.2.13)
     geocoder (1.4.7)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -229,6 +231,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise (~> 4.4)
   dotenv-rails
+  formtastic (~> 3.0)
   geocoder (~> 1.4)
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)

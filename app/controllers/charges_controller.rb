@@ -1,45 +1,37 @@
 class ChargesController < ApplicationController
-  before_action :create_booking
-  before_action :set_amount
+
+  # before_action :set_variables
+
+  def new
+    @booking = Booking.find(params[:booking])
+    @amount = @booking.price_per_day
+    @car = Car.find(@booking.car_id)
+
+  end
 
   def create
 
-  customer = Stripe::Customer.create(
-    :email => params[:stripeEmail],
-    :source  => params[:stripeToken]
-  )
-
-  charge = Stripe::Charge.create(
-    :customer    => customer.id,
-    :amount      => (@amount*100).to_i,
-    :description => 'Rails Stripe customer',
-    :currency    => 'aud' #or whatever currency you like
-  )
-
-  rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to new_charge_path
-
-
-  end
-
-  private
-
-  def create_booking
-    @car = Car.find(params[:car_id])
-
-    @booking = Booking.new
-    @booking.user_id = current_user.id
-    @booking.car_id = @car.id
-    @booking.price_per_day = @car.price_per_day
-    @booking.days = params[:days]
-    @booking.price_per_km = @car.price_per_km
-    @booking.active = true
-    @booking.save
-  end
-
-  def set_amount
+    @booking = Booking.find(params[:booking])
+    @booking.update(paid: true)
     @amount = @booking.price_per_day
+
+    customer = Stripe::Customer.create(
+      :email => params[:stripeEmail],
+      :source  => params[:stripeToken]
+    )
+
+    charge = Stripe::Charge.create(
+      :customer    => customer.id,
+      :amount      => (@amount*100).to_i,
+      :description => 'Rails Stripe customer',
+      :currency    => 'aud' #or whatever currency you like
+    )
+
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+      redirect_to root_path
+
+
   end
 
 end

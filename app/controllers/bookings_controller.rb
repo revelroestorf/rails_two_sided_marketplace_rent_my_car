@@ -1,13 +1,27 @@
 class BookingsController < ApplicationController
 
+  # before_action :booking_params, only: [:create]
+
   def new
+    @car = Car.find(params[:car_id])
+    @booking = Booking.new
+  end
+
+  def create
     unless user_signed_in?
       redirect_to(new_user_registration_path)
-      flash[:notice] = "Nice choice! You'll have to sign in though before you book a car."
+      flash[:notice] = "Nice choice! You'll have to sign in though before can you book a car."
+      return
     end
-    @car = Car.find(params[:car_id])
-    @days = params[:days]
-
+    @car = Car.find(params[:booking][:car_id])
+    @booking = Booking.new(booking_params)
+    # render plain: @booking.inspect
+    @booking.user_id = current_user.id
+    @booking.active = true
+    @booking.price_per_day = @car.price_per_day
+    @booking.price_per_km = @car.price_per_km
+    @booking.save
+    redirect_to new_charge_path(booking: @booking.id)
   end
 
   def show
@@ -84,6 +98,11 @@ class BookingsController < ApplicationController
         @bookings.push(booking)
     end
     render(bookings_guest_trips_path)
+  end
+
+  private
+  def booking_params
+    params.require(:booking).permit(:car_id, :date_from, :date_to)
   end
 
 end

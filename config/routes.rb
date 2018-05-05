@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
   post 'bookings/new'
+  get 'bookings/new'
 
-  get 'bookings/show'
+  post 'bookings/create'
+  get 'bookings/create'
 
   get 'bookings/owner_cars'
 

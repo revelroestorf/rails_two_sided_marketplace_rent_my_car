@@ -71,3 +71,5 @@ gem "carrierwave", "~> 1.2"
 
 # Added at 2018-05-02 20:38:39 +1000 by macrev:
 gem "cloudinary", "~> 1.9"
+
+gem 'formtastic', '~> 3.0'

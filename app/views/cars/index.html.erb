@@ -26,7 +26,7 @@
               <td><%= car.full_address %></td>
               <td><%= car.price_per_day %></td>
               <td><%= car.price_per_km %></td>
-              <td><%= link_to 'Show', car %></td>
+              <td><%= button_to 'Show', bookings_new_path, method: :post, params: {car_id: car.id} %></td>
               <td><%= link_to 'Edit', edit_car_path(car) %></td>
               <td><%= link_to 'Destroy', car, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
@@ -82,7 +82,7 @@
           {
             position: new google.maps.LatLng(<%= car.latitude %>, <%= car.longitude %>),
             icon: 'info',
-            url: '/cars/<%=car.id%>',
+            url: '/bookings/new',
             image: '<%= car.image %>',
             make: '<%= car.make %>',
             model: '<%= car.model %>',

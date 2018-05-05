@@ -1,69 +1,52 @@
-<div class="ml-2" style="margin-top: 100px;">
 
-  <h3>Check your booking details</h3>
+<div class="">
+  <%= image_tag @car.image_url, style: "background-size: cover; width: 100vw;" %>
 
-  <div class="row mt-5 d-flex justify-content-around">
+</div>
 
-    <div class="mb-5">
-      <div class="">
-        <span class="text-muted"><%= "#{@car.user.firstname.capitalize}'s" %></span>
-        <span class="lead"><%= "#{@car.make.capitalize} #{@car.model.capitalize}" %></span>
-      </div>
-        <%= image_tag @car.image_url, class: "img-thumbnail", style: "width: 400px;" %>
+<div class="mx-4 my-2">
+  <div class="row d-flex justify-content-around">
+
+    <div class="">
+        <span class="text-muted"><%= "#{@car.user.firstname.downcase.capitalize}'s" %></span>
+        <br>
+        <span class="h2"><%= "#{@car.make.downcase.capitalize} #{@car.model.downcase.capitalize}" %></span>
+        <span class="text-muted"><small><%= @car.year %></small></span>
+        <br>
+        <%= link_to 'go back', cars_path, class: "btn btn-dark mt-5", style: "color: white; width:90px;" %>
     </div>
 
-    <table class="table d-flex align-items-center" style="width:400px">
-      <tbody>
-        <tr>
-          <th scope="row">Located at:</th>
-          <td><%= @car.full_address %></td>
-        </tr>
-        <tr>
-          <th scope="row">Price per km:</th>
-          <td><%= number_to_currency(@car.price_per_km) %><span class="text-muted"> (pay later)</span></td>
-        </tr>
-        <tr>
-          <th scope="row">Price per day:</th>
-          <td><%= number_to_currency(@car.price_per_day) %></td>
-        </tr>
-        <tr>
-          <th scope="row">Days:</th>
-          <td><%= @days %></td>
-        </tr>
-        <tr>
-          <th scope="row">Payment due:</th>
-          <td><%= number_to_currency(@car.price_per_day * @days.to_i) %></td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="car-deets mx-2 mt-4">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td>Location</td>
+            <td><%= @car.full_address %></td>
+          </tr>
+          <tr>
+            <td>Price per day</td>
+            <td><%= number_to_currency(@car.price_per_day) %></td>
+          </tr>
+          <tr>
+            <td>Price per km</td>
+            <td><%= number_to_currency(@car.price_per_km) %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-4">
+      <%= render 'form', {car_id: @car} %>
+      <%= form_tag bookings_create_path, class: "form-inline mb-3" do %>
+          <span><%= text_field_tag :days, '', placeholder: "Number of days", class: "form-control", style: "width: 150px;" %></span>
+          <span><%= submit_tag "Book", class: "btn btn-primary ml-2", style: "width: 90px;" %></span>
+          <%= hidden_field_tag :car_id, @car.id %>
+      <% end %>
+    </div>
 
   </div>
 
   <div class="row">
-  </div>
-
-  <div class="mt-5 mx-sm-5 d-flex justify-content-between">
-    <span><%= link_to 'go back', car_path(@car), class: "btn btn-dark", style: "color: white; width:90px;" %></span>
-    <span>
-      <%= form_tag charges_path do %>
-      <article>
-        <% if flash[:error].present? %>
-          <div id="error_explanation">
-            <p><%= flash[:error] %></p>
-          </div>
-        <% end %>
-      </article>
-      <%= hidden_field_tag :car_id, @car.id %>
-      <%= hidden_field_tag :days, @days %>
-      <% end %>
-
-      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-              data-description="A month's subscription"
-              data-amount="<%= @car.price_per_day * 100 %>"
-              data-locale="auto">
-      </script>
-    </span>
   </div>
 
 </div>

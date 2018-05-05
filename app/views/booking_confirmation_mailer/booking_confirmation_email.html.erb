@@ -22,7 +22,7 @@
         <tr>
           <td>Days</td>
           <td><%= @booking.days %></td>
-        </tr> 
+        </tr>
         <tr>
           <td>Price per day</td>
           <td><%= number_to_currency(@booking.price_per_day) %></td>
@@ -31,8 +31,8 @@
           <td class="d-flex justify-content-end pr-5">
             <strong>Sub-total</strong>
           </td>
-          <% t1 = @booking.price_per_day * @booking.days %>
-          <td><strong><%= number_to_currency(t1) %></strong><span class="text-success">PAID</span></td>
+          <% t1 = @booking.price_per_day %>
+          <td><strong><%= number_to_currency(t1) %></strong><span class="text-success"> PAID</span></td>
         </tr>
         <tr>
           <td>Price per km</td>
