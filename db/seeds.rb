@@ -1,7 +1,7 @@
 
 User.create([{email: 'revsails@gmail.com', password: 'sparkle', firstname: 'Revel', lastname: 'Roestorf'},
   {email: 'jane@gmail', password: 'sparkle', firstname: 'Jane', lastname: 'Jensen'},
-  {email: 'zac@gmail', password: 'sparkle', firstname: 'Zac', lastname: 'Chop'},
+  {email: 'revel.roestorf@gmail.com', password: 'sparkle', firstname: 'Zac', lastname: 'Chop'},
   {email: 'holly@gmail', password: 'sparkle', firstname: 'Holly', lastname: 'May'},
   {email: 'ray@gmail', password: 'sparkle', firstname: 'Ray', lastname: 'Charles'},
   {email: 'jay@gmail', password: 'sparkle', firstname: 'Jay', lastname: 'Bart'},
