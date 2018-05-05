@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
-  before_action :check_user_for_owner_bookings
+  before_action :check_user_cars
   before_action :check_user_for_guest_trips
   before_action :set_user
 
@@ -11,14 +11,9 @@ class ApplicationController < ActionController::Base
     @user = current_user if user_signed_in?
   end
 
-  def check_user_for_owner_bookings
-    @bookings = false
+  def check_user_cars
     if user_signed_in?
-      current_user.cars.each do |car|
-        if car.bookings.first
-          @bookings = true
-        end
-      end
+      @cars = current_user.cars
     end
   end
 

@@ -1,5 +1,5 @@
-<div class="m-5">
-<br>
+<div class="ml-2" style="margin-top: 100px;">
+
   <h3>Check your booking details</h3>
 
   <div class="row mt-5 d-flex justify-content-around">
@@ -55,6 +55,7 @@
       </article>
       <%= hidden_field_tag :car_id, @car.id %>
       <%= hidden_field_tag :days, @days %>
+      <% end %>
 
       <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
               data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
@@ -64,12 +65,5 @@
       </script>
     </span>
   </div>
-
-  <% end %>
-
-  <br>
-  <br>
-
-
 
 </div>

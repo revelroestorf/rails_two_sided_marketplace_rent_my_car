@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get 'bookings/show'
 
+  get 'bookings/owner_cars'
+
   get 'bookings/owner_bookings'
 
   get 'bookings/previous_bookings'
@@ -18,8 +20,6 @@ Rails.application.routes.draw do
   resources :charges
 
   resources :cars
-
-  get 'cars/book'
 
   devise_for :users
 

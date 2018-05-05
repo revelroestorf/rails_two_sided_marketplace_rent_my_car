@@ -26,8 +26,6 @@ class ChargesController < ApplicationController
   private
 
   def create_booking
-    @user = current_user
-
     @car = Car.find(params[:car_id])
 
     @booking = Booking.new

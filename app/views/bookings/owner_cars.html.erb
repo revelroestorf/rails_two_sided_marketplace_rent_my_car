@@ -1,0 +1,47 @@
+<div class="ml-2" style="margin-top:100px;">
+
+  <h3>Your <%= "car".pluralize(@cars.count) %>:</h3>
+
+  <% current_user.cars.each do |car| %>
+
+    <div class="row mt-5 d-flex justify-content-around">
+
+
+      <div class="mb-5">
+        <div class="">
+          <span class="text-muted"><%= "#{current_user.firstname.capitalize}'s" %></span>
+          <span class="lead"><%= "#{car.make.capitalize} #{car.model.capitalize}" %></span>
+          <span class="text-muted"><small><%= car.year %></small></span>
+        </div>
+          <%= image_tag car.image_url, class: "img-thumbnail", style: "width: 400px;" %>
+      </div>
+
+      <table class="table d-flex align-items-center" style="width:400px">
+        <tbody>
+          <tr>
+            <th scope="row">Located at</th>
+            <td><%= car.full_address %></td>
+          </tr>
+          <tr>
+            <th scope="row">Price per day</th>
+            <td><%= number_to_currency(car.price_per_day) %></td>
+          </tr>
+          <tr>
+            <th scope="row">Price per km</th>
+            <td><%= number_to_currency(car.price_per_km) %></td>
+          </tr>
+          <tr>
+            <td scope="row"><%= link_to 'Edit', edit_car_path(car), class: "btn btn-dark", style: "color: white; width:90px;" %></td>
+            <td><%= link_to 'View bookings', bookings_owner_bookings_path, class: "btn btn-primary d-flex align-self-end", style: "color: white; width:145px;" %></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+    <div class="row">
+    </div>
+
+  <% end %>
+
+</div>

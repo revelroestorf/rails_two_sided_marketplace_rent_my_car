@@ -1,6 +1,6 @@
 class CarsController < ApplicationController
   before_action :set_car, only: [:show, :edit, :update, :destroy]
-  before_action :car_params, only: [:create, :edit, :update, :destroy]
+  before_action :car_params, only: [:create, :destroy]
 
 
   # GET /cars
@@ -38,6 +38,7 @@ class CarsController < ApplicationController
 
   # GET /cars/1/edit
   def edit
+    @car = Car.find(params[:id])
   end
 
   # POST /cars
@@ -61,15 +62,26 @@ class CarsController < ApplicationController
   # PATCH/PUT /cars/1
   # PATCH/PUT /cars/1.json
   def update
-    respond_to do |format|
-      if @car.update(car_params)
-        format.html { redirect_to @car, notice: 'Car was successfully updated.' }
-        format.json { render :show, status: :ok, location: @car }
-      else
-        format.html { render :edit }
-        format.json { render json: @car.errors, status: :unprocessable_entity }
-      end
-    end
+    @car.update(make: params[:make], model: params[:model], year: params[:year],
+                full_address: params[:full_address], price_per_day: params[:price_per_day],
+                price_per_km: params[:price_per_km], image: params[:image])
+    redirect_to(bookings_owner_cars_path)
+    flash[:notice] = 'Car was successfully updated.'
+
+    # respond_to do |format|
+    #   if @car.update(car_params)
+    #     if params[:x]
+    #       format.html { redirect_to @car, notice: 'Car was successfully updated.' }
+    #       format.json { render :show, status: :ok, location: @car }
+    #     else
+    #       redirect_to(bookings_owner_cars_path)
+    #       flash[:notice] = 'Car was successfully updated.'
+    #     end
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @car.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # DELETE /cars/1

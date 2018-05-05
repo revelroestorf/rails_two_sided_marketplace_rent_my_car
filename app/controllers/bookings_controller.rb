@@ -14,13 +14,21 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
   end
 
+
+  def owner_cars
+    @cars = current_user.cars
+  end
+
+
   def owner_bookings
     @guest = false
     @active = false
-    @previous = false
     @active2 = false
+    @previous = false
     @bookings = []
+    @cars = []
     current_user.cars.each do |car|
+      @cars.push(car)
       car.bookings.each do |booking|
         if booking.active
           @active = true
