@@ -4,8 +4,6 @@ Rails.application.routes.draw do
     resources :messages
   end
 
-  get 'conversations/index'
-
   post 'bookings/new'
   get 'bookings/new'
 

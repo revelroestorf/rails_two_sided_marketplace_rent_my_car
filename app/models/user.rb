@@ -2,6 +2,8 @@ class User < ApplicationRecord
 
   has_many :cars
   has_many :bookings
+  has_many :converations
+  has_many :messages, through: :conversations
 
   # after_create :send_mail
 

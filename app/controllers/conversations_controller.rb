@@ -8,6 +8,7 @@ class ConversationsController < ApplicationController
 
   def create
 
+
     exists = false
     conversation = nil
 
