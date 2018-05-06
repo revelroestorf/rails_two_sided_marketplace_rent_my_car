@@ -1,5 +1,7 @@
 class ChargesController < ApplicationController
 
+  after_action :send_mail, only: [:create]
+
   # before_action :set_variables
 
   def new
@@ -34,7 +36,15 @@ class ChargesController < ApplicationController
       flash[:error] = e.message
       redirect_to root_path
 
+      after_create :send_mail
 
+
+  end
+
+  private
+
+  def send_mail
+    BookingConfirmationMailer.booking_confirmation_email(@booking).deliver
   end
 
 end
