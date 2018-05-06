@@ -36,11 +36,11 @@
         </tr>
         <tr>
           <th scope="row">Total days</th>
-          <td><%= @booking.days %></td>
+          <td><%= @days %></td>
         </tr>
         <tr>
           <th scope="row">Payment due</th>
-          <td><%= number_to_currency(@booking.days * @booking.price_per_day) %></td>
+          <td><%= number_to_currency(@days * @booking.price_per_day) %></td>
         </tr>
       </tbody>
     </table>

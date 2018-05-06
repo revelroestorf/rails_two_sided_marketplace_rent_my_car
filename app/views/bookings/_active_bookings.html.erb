@@ -14,8 +14,12 @@
         <% end %>
       </tr>
       <tr>
-        <td>Days</td>
-        <td><%= booking.days %></td>
+        <td>Pick up date</td>
+        <td><%= booking.date_from %></td>
+      </tr>
+      <tr>
+        <td>Return date</td>
+        <td><%= booking.date_to %></td>
       </tr>
       <tr>
         <td>Price per day</td>
@@ -25,7 +29,7 @@
         <td class="d-flex justify-content-end pr-5">
           <strong>Sub-total</strong>
         </td>
-        <% t1 = booking.price_per_day * booking.days %>
+        <% t1 = booking.price_per_day * (booking.date_to - booking.date_from).to_i %>
         <td><strong><%= number_to_currency(t1) %></strong></td>
       </tr>
       <tr>

@@ -7,6 +7,9 @@ class ChargesController < ApplicationController
     @amount = @booking.price_per_day
     @car = Car.find(@booking.car_id)
 
+    @days = (@booking.date_to - @booking.date_from).to_i
+
+
   end
 
   def create
