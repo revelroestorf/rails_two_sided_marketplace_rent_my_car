@@ -35,13 +35,8 @@
       </table>
     </div>
 
-    <div class="mt-4">
-      <%= render 'form', {car_id: @car} %>
-      <%= form_tag bookings_create_path, class: "form-inline mb-3" do %>
-          <span><%= text_field_tag :days, '', placeholder: "Number of days", class: "form-control", style: "width: 150px;" %></span>
-          <span><%= submit_tag "Book", class: "btn btn-primary ml-2", style: "width: 90px;" %></span>
-          <%= hidden_field_tag :car_id, @car.id %>
-      <% end %>
+    <%= render 'form', {car_id: @car} %>
+
     </div>
 
   </div>
