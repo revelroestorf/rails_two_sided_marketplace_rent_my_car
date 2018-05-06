@@ -16,18 +16,12 @@ class CarsController < ApplicationController
       @longitude = 153.0251
     end
 
-    # @hash = Gmaps4rails.build_markers(@cars) do |car, marker|
-    #   marker.lat car.latitude
-    #   marker.lng car.longitude
-    # end
+
   end
 
-  # GET /cars/1
-  # GET /cars/1.json
   def show
   end
 
-  # GET /cars/new
   def new
     unless user_signed_in?
       redirect_to(new_user_registration_path)
@@ -36,13 +30,10 @@ class CarsController < ApplicationController
     @car = Car.new
   end
 
-  # GET /cars/1/edit
   def edit
     @car = Car.find(params[:id])
   end
 
-  # POST /cars
-  # POST /cars.json
   def create
     @car = Car.new(car_params)
     @car.user_id = current_user.id
@@ -59,8 +50,6 @@ class CarsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /cars/1
-  # PATCH/PUT /cars/1.json
   def update
     @car.update(make: params[:make], model: params[:model], year: params[:year],
                 full_address: params[:full_address], price_per_day: params[:price_per_day],
@@ -84,8 +73,6 @@ class CarsController < ApplicationController
     # end
   end
 
-  # DELETE /cars/1
-  # DELETE /cars/1.json
   def destroy
     @car.destroy
     respond_to do |format|
@@ -95,12 +82,10 @@ class CarsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_car
       @car = Car.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def car_params
       params.require(:car).permit(:make, :model, :year, :full_address, :price_per_day, :price_per_km, :image)
     end
