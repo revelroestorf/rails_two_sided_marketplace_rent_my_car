@@ -1,8 +1,8 @@
 
 User.create([
   {email: 'revsails@gmail.com', password: 'sparkle', firstname: 'Revel', lastname: 'Roestorf'},
-  {email: 'jane@gmail', password: 'sparkle', firstname: 'Jane', lastname: 'Jensen'},
-  {email: 'revel.roestorf@gmail.com', password: 'sparkle', firstname: 'Zac', lastname: 'Chop'},
+  {email: 'revel.roestorf@gmail.com', password: 'sparkle', firstname: 'Jane', lastname: 'Jensen'},
+  {email: 'zac@gmail', password: 'sparkle', firstname: 'Zac', lastname: 'Chop'},
   {email: 'holly@gmail', password: 'sparkle', firstname: 'Holly', lastname: 'May'},
   {email: 'ray@gmail', password: 'sparkle', firstname: 'Ray', lastname: 'Charles'},
   {email: 'jay@gmail', password: 'sparkle', firstname: 'Jay', lastname: 'Bart'},
@@ -10,6 +10,8 @@ User.create([
   {email: 'don@gmail', password: 'sparkle', firstname: 'Don', lastname: 'Jamin'},
   {email: 'butch@gmail', password: 'sparkle', firstname: 'Butch', lastname: 'Aspen'}
   ])
+
+User.first.add_role :admin
 
 Car.create([
   {user_id: 1, image: "image/upload/v1525310148/eswn9zwqoocuvyzztr73.jpg", make: 'Tesla', model: 'model x',

@@ -54,7 +54,7 @@
 
       <div class="d-flex justify-content-between" style="width: 80vw;">
         <% if current_user.has_role? :admin %>
-          <%= link_to "Back", cars_path(@car), class: "btn btn-dark" %>
+          <%= link_to "Back", cars_path(@car), class: "btn btn-dark", style: "color: white;" %>
         <% else %>
           <%= link_to "Back", bookings_owner_cars_path, class: "btn btn-dark" %>
         <% end %>
