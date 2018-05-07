@@ -1,58 +1,43 @@
 # README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
+---
+---
 ## Overview
 1. Summary
 2. Installation
-3. Requirements
+3. Future Updates
 4. User Stories
 5. Wireframing
 6. Workflow Diagram
 7. Entity Relationship Diagram
-8. List of Tools Used
-9. Project Plan
-10. Future Updates
+8. Gem List
+9. Other Tools
+10. Project Plan
+11. Assignment Requirements
 
+---
 ## 1 Summary
 
 This app was designed as part of the CoderAcademy assignment to build a two-sided marketplace.
 
-PROBLEM DEFINITION It is difficult to find a tutor cheaply and quickly. There was a time when finding a tutor relied upon recommendations from friends or looking through newspaper adverts. Often you have to sign up through an agency and tutors can be expensive and slow to find. I decided on a tutoring app whilst trying to find a piano teacher for my son. It was impossible to find a tutor to meet on my time and schedule. Students need to find a tutor in real time and cheaply.
+PROBLEM DEFINITION - Our cars are often one of our largest assets and in most cases they are under-utilised. Their high annual cost and depreciation further reduce asset value, producing poor investment outcomes.
 
-SOLUTION With the immense growth and popularity of on-demand services in other major industries, it makes sense that tutoring will follow. A tutoring app solves a real problem for students of all ages and parents — to find an affordable and knowledgeable tutor on-demand.
 
-The design is based on a two sided marketplace whereby tutors can advertise their skills and students can search for tutors based on their skills and locations. Tutors are offered and reviewed online. The app allows you to seamlessly contact tutors nearby and schedule a session at a fraction of the cost of traditional services.
+SOLUTION - Sharing platforms such as Airbnb have created market places to address this under-utilisation, offering financial incentive for the asset providers and a more personalised experience for the consumer. After all, if we're not using it, we may as well let it earn us some money. This application seeks to provide such a market place for our cars, thus increasing asset utilisation and value.
 
+VALUE PROPOSITION - There are currently similar applications available but no global market leaders or household names, and they all operate slightly differently. This application aims to provide a more seamless and intuitive solution whilst incorporating the best features of current providers.
+
+---
 ## 2 Installation
 
-Configuration - you will not have an ENV file as this has been ignored through Git. In order to run the App you will need to create a .env file with your own mailgun and stripe API keys.
+Configuration - you will not have an ENV file as this has been ignored through Git. In order to run the App you will need to create a .env file with your own environment (ENV) variables.
 
-Clone the repo then change into the directory.
-Run bundle install in terminal.
-Run rails db:migrate in terminal.
-Create a .env file in the root of the directory, then add your own ENV variables :
+To get started, clone the repo and then from your CLI, in the main application directory, run:
+
+`bundle install`
+
+`rails db:migrate`
+
+Create a .env file in the root of the directory and add ENV variables :
 
 `POSTGRES_PASSWORD=XXXX`
 
@@ -66,60 +51,70 @@ Create a .env file in the root of the directory, then add your own ENV variables
 
 `SEND_GRID_PASSWORD=XXXX`
 
-## 3. Requirements
+---
+## 3 Future Updates / Bug Fixes
 
-1. Create your application using Ruby on Rails
-2. Demonstrate knowledge of Rails conventions.
-3. Use postgresql database in development.
-4. Use an API (eg. Omniauth, Geocoding, Maps, other..).
-5. Use appropriate gems.
-6. Use environmental variables to protect API keys etc.
-7. Implement a payment system for your product.
-8. Your app must send transactional emails (eg. using Mailgun).
-9. Your app should have an internal user messaging system.
-10. Your app will have some type of searching, sorting and or filtering 11. capability.
-11. Your app will have some type of file uploading capability (eg. images).
-12. Your app will have authentication (eg. Devise, must have full functionality in place).
-13. Your app will have authorisation (users have restrictions on what they can see and edit).
-14. Your app will have an admin dashboard for the admin user to administrate the site.
-15. Document your application with a README that explains how to setup, configure and use your application.
 
+---
 ## 4 User Stories
 
 single screenshot
 
+---
 ## 5 Wireframing
 
 multiple screen screenshots
 
 or if time just one linking to others in repo
 
+---
 ## 6 Workflow Diagram
 
 
+---
 ## 7 Entity Relationship Diagram
 
-## 8 Gems Used
 
-1. Devise - authentication
-2. Webhosting - Heroku
-3. Sendgrid - emails
-4. Stripe - payments
-5. Carrierwave - image uploads
-6. Cloudinary - image storage
-7. dotenv-rails - environmental variables
-8. geocoder - longitude latitude geocoding
-9. Google Maps - map locations
+---
+## 8 Gems List
 
-## 9 Other Tools Used
+1. Ruby version 2.5.0
+2. pg - postgresql Database
+3. Devise - authentication
+4. Webhosting - Heroku
+5. Sendgrid - emails
+6. Stripe - payments
+7. Carrierwave - image uploads
+8. Cloudinary - image storage
+9. dotenv-rails - environmental variables
+10. geocoder - longitude latitude geocoding
+11. Google Maps - map locations
+
+---
+## 9 Other Tools
 
 1. Github - Version control
 2. Lucidchart - ERD
-3. postgresql - Database
+3. Excel - Gantt chart
 
-
-## 10 Project plan
+---
+## 10 Project Plan
 
 gant chart here
 
-## 11 Bug / Future Updates
+---
+## 11. Assignment Requirements
+
+1. Create your application using Ruby on Rails
+2. Demonstrate knowledge of Rails conventions.
+3. Use postgresql database in development.
+4. Use an API.
+5. Use appropriate gems.
+6. Use environmental variables to protect API keys etc.
+7. Implement a payment system for your product.
+8. Your app must send transactional emails.
+9. Your app will have some type of searching, sorting and or filtering capability.
+10. Your app will have some type of file uploading capability (eg. images).
+11. Your app will have authentication.
+12. Your app will have authorisation.
+13. Document your application with an appropriate README.md file.

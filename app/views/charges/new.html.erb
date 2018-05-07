@@ -63,6 +63,7 @@
         </article>
 
         <%= hidden_field_tag :booking, @booking.id %>
+        <%= hidden_field_tag :car_id, @car.id %>
 
         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                 data-key="<%= Rails.configuration.stripe[:publishable_key] %>"

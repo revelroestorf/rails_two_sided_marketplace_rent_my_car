@@ -1,15 +1,69 @@
 
-<div class="m-5">
-  <h1>Payment confirmation</h1>
-  <p>Your card has been charged with <%= number_to_currency(@amount) %></p>
-  <p>We've also sent you an email confirming your invoice booking details</p>
-  <p class="mt-5 lead">Enjoy your adventure</p>
+<div class="ml-2" style="margin-top:100px;">
+
+  <div class="">
+    <h1>Payment confirmation</h1>
+    <br>
+      <hr>
+    <br>
+    <p class="lead">Your card has been charged with <%= number_to_currency(@amount) %>.</p>
+    <p class="lead">We've also sent you an email confirming your invoice booking details.</p>
+    <p class="lead">Enjoy your adventure!</p>
+    <br>
+  </div>
+
+    <hr>
+  <h3>Your booking</h3>
+
+  <div class="row mt-5 d-flex justify-content-around">
+
+    <table class="table d-flex align-items-center" style="width:400px">
+      <tbody>
+        <tr>
+          <th scope="row">Located at</th>
+          <td><%= @car.full_address %></td>
+        </tr>
+        <tr>
+          <th scope="row">Pickup date</th>
+          <td><%= @booking.date_from %></td>
+        </tr>
+        <tr>
+          <th scope="row">Pickup date</th>
+          <td><%= @booking.date_to %></td>
+        </tr>
+        <tr>
+          <th scope="row">Price per km</th>
+          <td><%= number_to_currency(@booking.price_per_km) %><span class="text-muted"> (pay later)</span></td>
+        </tr>
+        <tr>
+          <th scope="row">Price per day</th>
+          <td><%= number_to_currency(@booking.price_per_day) %></td>
+        </tr>
+        <tr>
+          <th scope="row">Total days</th>
+          <td><%= @days %></td>
+        </tr>
+        <tr>
+          <th scope="row">Payment due</th>
+          <td><%= number_to_currency(@days * @booking.price_per_day) %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="mb-5">
+      <div class="">
+        <span class="text-muted"><%= "#{@car.user.firstname.capitalize}'s" %></span>
+        <span class="lead"><%= "#{@car.make.capitalize} #{@car.model.capitalize}" %></span>
+      </div>
+        <%= image_tag @car.image_url, class: "img-thumbnail", style: "width: 400px;" %>
+    </div>
+
+  </div>
+
+  <div class="row">
+  </div>
+
+
+  <%= link_to 'Back to cars', cars_path, class: "btn btn-dark", style: "color: white; width: 150px;" %>
+
 </div>
-
-<br><br>
-
-<%= @booking.inspect %>
-
-<br><br>
-
-<%= link_to 'back to cars', cars_path %>

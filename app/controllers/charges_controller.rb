@@ -16,8 +16,10 @@ class ChargesController < ApplicationController
 
   def create
 
+    @car = Car.find(params[:car_id])
     @booking = Booking.find(params[:booking])
     @booking.update(paid: true)
+    @days = (@booking.date_to - @booking.date_from).to_i
     @amount = @booking.price_per_day
 
     customer = Stripe::Customer.create(
@@ -35,9 +37,6 @@ class ChargesController < ApplicationController
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to root_path
-
-      after_create :send_mail
-
 
   end
 

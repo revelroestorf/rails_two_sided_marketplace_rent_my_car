@@ -40,7 +40,7 @@
               <a><%= link_to 'My trips', bookings_guest_trips_path, class: "nav-link", style: "color: white; background: none;" %></a>
             </li>
           <% end %>
-          <% if @cars %>
+          <% if @cars.first %>
             <li class="nav-item mr-5">
               <a><%= link_to 'My car'.pluralize(@cars.count), bookings_owner_cars_path, class: "nav-link", style: "color: white; background: none;" %></a>
             </li>
