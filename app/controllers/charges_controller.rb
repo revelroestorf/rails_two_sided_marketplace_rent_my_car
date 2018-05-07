@@ -1,6 +1,6 @@
 class ChargesController < ApplicationController
 
-  after_action :send_mail, only: [:create]
+  # after_action :send_mail, only: [:create]
 
   # before_action :set_variables
 
