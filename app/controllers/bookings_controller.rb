@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-
+  before_action :authenticate_user!, except: [:new]
   before_action :booking_params, only: [:create]
 
   def new
@@ -8,26 +8,16 @@ class BookingsController < ApplicationController
   end
 
   def create
-    unless user_signed_in?
-      redirect_to(new_user_registration_path)
-      flash[:notice] = "Nice choice! You'll have to sign in though before can you book a car."
-      return
-    end
+
     @car = Car.find(params[:booking][:car_id])
     @booking = Booking.new(booking_params)
     # render plain: @booking.inspect
     @booking.user_id = current_user.id
-    @booking.active = true
     @booking.price_per_day = @car.price_per_day
     @booking.price_per_km = @car.price_per_km
     @booking.save
     redirect_to new_charge_path(booking: @booking.id)
   end
-
-  def show
-    @booking = Booking.find(params[:id])
-  end
-
 
   def owner_cars
     @cars = current_user.cars
@@ -38,6 +28,24 @@ class BookingsController < ApplicationController
 
 
   def owner_bookings
+    # @bookings = []
+    # current_user.cars.each do |car|
+    #   @cars.push(car)
+    #   car.bookings.each do |booking|
+    #     if booking.active
+    #       @active_bookings = true
+    #       if params[:odo_start]
+    #         booking.update(odo_start: params[:odo_start])
+    #       end
+    #       if params[:odo_end]
+    #         booking.update(odo_end: params[:odo_end], active: false)
+    #       end
+    #       @bookings.push(booking)
+    #     else
+    #       @previous = true
+    #     end
+    #   end
+    # end
     @guest = false
     @active = false
     @active2 = false

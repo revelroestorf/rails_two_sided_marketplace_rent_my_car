@@ -1,4 +1,5 @@
 class ChargesController < ApplicationController
+  before_action :authenticate_user!
 
   # after_action :send_mail, only: [:create]
 

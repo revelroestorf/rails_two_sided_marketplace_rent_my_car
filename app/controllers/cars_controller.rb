@@ -1,4 +1,5 @@
 class CarsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
   before_action :set_car, only: [:show, :edit, :update, :destroy]
   before_action :car_params, only: [:create, :destroy]
 
@@ -22,10 +23,6 @@ class CarsController < ApplicationController
   end
 
   def new
-    unless user_signed_in?
-      redirect_to(new_user_registration_path)
-      flash[:notice] = "Please sign up before you list a car"
-    end
     @car = Car.new
   end
 
