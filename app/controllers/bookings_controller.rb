@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
 
-  # before_action :booking_params, only: [:create]
+  before_action :booking_params, only: [:create]
 
   def new
     @car = Car.find(params[:car_id])
@@ -31,6 +31,9 @@ class BookingsController < ApplicationController
 
   def owner_cars
     @cars = current_user.cars
+    if params[:car_id]
+      Car.find(params[:car_id]).update(active: params[:active])
+    end
   end
 
 
@@ -102,7 +105,7 @@ class BookingsController < ApplicationController
 
   private
   def booking_params
-    params.require(:booking).permit(:car_id, :date_from, :date_to)
+    params.require(:booking).permit(:car_id, :date_from, :date_to, :active)
   end
 
 end

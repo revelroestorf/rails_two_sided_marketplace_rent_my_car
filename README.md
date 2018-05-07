@@ -118,7 +118,8 @@ screenshot here
 
 To ensure continual focus on the software development aspects of this 'real world' application, I've made many assumptions. Below are some of these:
 
-* Agreement with a third party insurance provider
+* Agreement with a third party insurance provider for comprehensive cover on a per/km basis, at a fixed rate for all cars.
+* Agreement with a third party roadside assist provider.
 * We have the owner's bank details and can make payments in their account.
 * We have the guest's credit card information and are authorised to charge the final booking fee, which depends on the number of kilometres travelled.
 * Guests will record the condition of the car at pick-up and return, including odometer reading, fuel level and general mechanical condition.

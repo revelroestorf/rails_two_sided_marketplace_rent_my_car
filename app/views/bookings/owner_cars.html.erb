@@ -20,19 +20,32 @@
         <tbody>
           <tr>
             <th scope="row">Located at</th>
-            <td><%= car.full_address %></td>
+            <td colspan="2"><%= car.full_address %></td>
           </tr>
           <tr>
             <th scope="row">Price per day</th>
-            <td><%= number_to_currency(car.price_per_day) %></td>
+            <td colspan="2"><%= number_to_currency(car.price_per_day) %></td>
           </tr>
           <tr>
             <th scope="row">Price per km</th>
-            <td><%= number_to_currency(car.price_per_km) %></td>
+            <td colspan="2"><%= number_to_currency(car.price_per_km) %></td>
           </tr>
           <tr>
-            <td scope="row"><%= link_to 'Edit', edit_car_path(car), class: "btn btn-dark", style: "color: white; width:90px;" %></td>
-            <td><%= link_to 'View bookings', bookings_owner_bookings_path, class: "btn btn-primary d-flex align-self-end", style: "color: white; width:145px;" %></td>
+            <td scope="row"><%= link_to 'Edit', edit_car_path(car), class: "btn btn-dark", style: "color: white;" %></td>
+            <% if car.active %>
+              <%= form_tag bookings_owner_cars_path, method: :post do %>
+                <%= hidden_field_tag :car_id, car.id %>
+                <%= hidden_field_tag :active, false %>
+                <td><%= submit_tag "Deactivate", class: "btn btn-warning" %></td>
+              <% end %>
+            <% else %>
+              <%= form_tag bookings_owner_cars_path, method: :post do %>
+                <%= hidden_field_tag :car_id, car.id %>
+                <%= hidden_field_tag :active, true %>
+                <td><%= submit_tag "Activate", class: "btn btn-success" %></td>
+              <% end %>
+            <% end %>
+            <td><%= link_to 'View bookings', bookings_owner_bookings_path, class: "btn btn-primary", style: "color: white;" %></td>
           </tr>
         </tbody>
       </table>
