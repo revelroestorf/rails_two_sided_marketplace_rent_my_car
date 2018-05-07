@@ -13,9 +13,11 @@ class ApplicationController < ActionController::Base
 
   def check_user_cars
     if user_signed_in?
-      @cars = current_user.cars
-    else
-      @cars = false
+      if @cars = current_user.cars.first
+        @cars = current_user.cars
+      else
+        @cars = false
+      end
     end
   end
 
@@ -26,20 +28,6 @@ class ApplicationController < ActionController::Base
         @trips = true
       end
     end
-  end
-
-  def calendar_date_block(car_id)
-    bookings = Car.find(car_id).bookings.where(paid: true).all
-    block_dates = []
-
-    bookings.each do |booking|
-      (booking.date_from..booking.date_to).each do |date|
-        block_dates.push(date)
-      end
-    end
-
-    return block_dates
-
   end
 
 

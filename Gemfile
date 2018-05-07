@@ -74,4 +74,4 @@ gem "cloudinary", "~> 1.9"
 
 gem 'formtastic', '~> 3.0'
 
-gem 'bootstrap-datepicker-rails'
+# gem 'bootstrap-datepicker-rails'

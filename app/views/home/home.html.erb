@@ -9,120 +9,132 @@
 
 
     <div class="background-image">
-      <div class="d-flex">
-        <div class="home-buttons container-fluid d-flex justify-content-around align-items-end mb-5"
-             style="height: 100vh">
 
-             <form action="cars/index" method="get">
-               <input type="text" data-provide='datepicker' >
-               <input type="text" data-provide='datepicker' >
-               <input type="submit" value="Submit">
-             </form>
+      <div class="" style="">
 
-          <%= link_to 'Find a car', cars_path,
-            class: "btn btn-lg btn-info d-flex align-items-center justify-content-center mr-5",
-            style: "width: 220px; height: 80px; font-size: 25px; color: white;" %>
+          <div class="home-buttons row d-flex justify-content-around">
 
-            <input type="text" data-provide='datepicker' >
-            <input type="text" data-provide='datepicker' >
-
-          <% if user_signed_in? %>
-            <% if current_user.cars.first %>
-              <%= link_to 'List another car', new_car_path,
+            <div class="">
+              <%= link_to 'Find a car', cars_path,
                 class: "btn btn-lg btn-info d-flex align-items-center justify-content-center",
-                style: "width: 220px; height: 80px; font-size: 25px; color: white;" %>
+                style: "width: 220px; height: 80px; font-size: 25px; color: white;"
+                %>
+            </div>
+
+            <div class="d-flex align-items-center">
+              <form action="cars/index" method="get">
+                <input type="text" data-provide='datepicker' >
+                <input type="text" data-provide='datepicker' >
+                <input type="submit" value="Submit">
+              </form>
+            </div>
+
+            <div class="">
+              <% if user_signed_in? %>
+                <% if current_user.cars.first %>
+                  <%= link_to 'List another car', new_car_path,
+                    class: "btn btn-lg btn-info d-flex align-items-center justify-content-center",
+                    style: "width: 220px; height: 80px; font-size: 25px; color: white;" %>
+                  <% else %>
+                  <%= link_to 'List my car', new_car_path,
+                    class: "btn btn-lg btn-info d-flex align-items-center justify-content-center",
+                    style: "width: 220px; height: 80px; font-size: 25px; color: white;" %>
+                <% end %>
               <% else %>
-              <%= link_to 'List my car', new_car_path,
-                class: "btn btn-lg btn-info d-flex align-items-center justify-content-center",
-                style: "width: 220px; height: 80px; font-size: 25px; color: white;" %>
-            <% end %>
-          <% else %>
-            <%= link_to 'List my car', new_car_path,
-              class: "btn btn-lg btn-info d-flex align-items-center justify-content-center",
-              style: "width: 220px; height: 80px; font-size: 25px; color: white;" %>
-          <% end %>
-        </div>
+                <%= link_to 'List my car', new_car_path,
+                  class: "btn btn-lg btn-info d-flex align-items-center justify-content-center",
+                  style: "width: 220px; height: 80px; font-size: 25px; color: white;" %>
+              <% end %>
+            </div>
+
+          </div>
+          <div class="row">
+          </div>
       </div>
     </div>
 
-    <a name="how-it-works"></a>
+    <div class="info-section p-3">
 
-    <div class="how-it-works mb-5 d-flex justify-content-center">
-      <h1>How it works</h1>
-    </div>
+      <a name="how-it-works"></a>
 
-    <div class="mx-lg-5">
-
-      <div class="d-flex justify-content-around mb-5">
-        <h2 class="text-center">Renting</h2>
-        <h2 class="text-center">Listing</h2>
-      </div>
-      <div class="d-flex justify-content-around mb-5">
-        <div class="card border-info" style="max-width: 17rem;">
-          <div class="card-body">
-            <h5 class="card-title">Find the perfect car</h5>
-            <p class="card-text text-info">Select cars from a map to view details and proceed.<br>
-              Choose how many days you want the car for and book it.</p>
-          </div>
-        </div>
-        <div class="card border-info" style="max-width: 17rem;">
-          <div class="card-body">
-            <h5 class="card-title">List your car</h5>
-            <p class="card-text text-info">Sign up and enter your car details.<br>
-              Respond to bookings.<br>
-              Liase with guests to arrange pick up.</p>
-          </div>
-        </div>
-      </div>
-      <div class="d-flex justify-content-around mb-5">
-        <div class="card border-info" style="max-width: 17rem;">
-          <div class="card-body">
-            <h5 class="card-title">Pick up the car</h5>
-            <p class="card-text text-info">Receive an email with the booking confirming and car owner's details.<br>
-              Arrange to meet and pick up the car.<br>
-              Walk around the car, grab the keys and drive away into the sunset.</p>
-          </div>
-        </div>
-        <div class="card border-info" style="max-width: 17rem;">
-          <div class="card-body">
-            <h5 class="card-title">Meet your guests</h5>
-            <p class="card-text text-info">Enter the odometer reading on your app.<br>
-              Hand over the keys and send them on their way.</p>
-          </div>
-        </div>
-      </div>
-      <div class="d-flex justify-content-around mb-5">
-        <div class="card border-info" style="max-width: 17rem;">
-          <div class="card-body">
-            <h5 class="card-title">Return the car</h5>
-            <p class="card-text text-info">Replace the fuel you used and meet up with the car owner to drop off the car.<br>
-              Walk around the car again, handover the keys and start planning your next adventure.<br>
-              Receive an email confirming final payment.</p>
-          </div>
-        </div>
-        <div class="card border-info" style="max-width: 17rem;">
-          <div class="card-body">
-            <h5 class="card-title">Pick up your car</h5>
-            <p class="card-text text-info">Meet up your guest again to make sure everythings ok and send them them on their way.<br>
-              Enter the odometer reading on your app.<br>
-              Receive an email confirming final payment.</p>
-          </div>
-        </div>
+      <div class="">
+        <h1 class="text-center">How it Works</h1>
       </div>
 
-    </div>
+      <div class="mx-lg-5 mt-5">
 
-    <hr>
-    <a name="pricing"></a>
-    <div class="mx-5">
-      <div class="pricing d-flex justify-content-center">
-        <h1>Pricing</h1>
+        <div class="d-flex justify-content-around mb-5">
+          <h2 class="text-center text-muted">Renting</h2>
+          <h2 class="text-center text-muted">Listing</h2>
+        </div>
+        <div class="d-flex justify-content-around mb-5">
+          <div class="card border-info" style="max-width: 17rem;">
+            <div class="card-body">
+              <h5 class="card-title">Find the perfect car</h5>
+              <p class="card-text text-info">Select cars from a map to view details and proceed.<br>
+                Choose how many days you want the car for and book it.</p>
+            </div>
+          </div>
+          <div class="card border-info" style="max-width: 17rem;">
+            <div class="card-body">
+              <h5 class="card-title">List your car</h5>
+              <p class="card-text text-info">Sign up and enter your car details.<br>
+                Respond to bookings.<br>
+                Liase with guests to arrange pick up.</p>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-around mb-5">
+          <div class="card border-info" style="max-width: 17rem;">
+            <div class="card-body">
+              <h5 class="card-title">Pick up the car</h5>
+              <p class="card-text text-info">Receive an email with the booking confirming and car owner's details.<br>
+                Arrange to meet and pick up the car.<br>
+                Walk around the car, grab the keys and drive away into the sunset.</p>
+            </div>
+          </div>
+          <div class="card border-info" style="max-width: 17rem;">
+            <div class="card-body">
+              <h5 class="card-title">Meet your guests</h5>
+              <p class="card-text text-info">Enter the odometer reading on your app.<br>
+                Hand over the keys and send them on their way.</p>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-around mb-5">
+          <div class="card border-info" style="max-width: 17rem;">
+            <div class="card-body">
+              <h5 class="card-title">Return the car</h5>
+              <p class="card-text text-info">Replace the fuel you used and meet up with the car owner to drop off the car.<br>
+                Walk around the car again, handover the keys and start planning your next adventure.<br>
+                Receive an email confirming final payment.</p>
+            </div>
+          </div>
+          <div class="card border-info" style="max-width: 17rem;">
+            <div class="card-body">
+              <h5 class="card-title">Pick up your car</h5>
+              <p class="card-text text-info">Meet up your guest again to make sure everythings ok and send them them on their way.<br>
+                Enter the odometer reading on your app.<br>
+                Receive an email confirming final payment.</p>
+            </div>
+          </div>
+        </div>
+
       </div>
-      <h5>Price per day</h5>
-      <p>Set by the lister and applied to the number of days selected by the renter when booking, resulting in the initial booking charge.</p>
-      <h5>Price per km</h5>
-      <p>Set by the lister and applied to the number of km's travelled by the renter.</p>
-      <p>The lister enters the odometer reading into the app when the renter picks up the car and again when the car is returned, generating the final charge.</p>
+
+      <hr>
+      <a name="pricing"></a>
+
+          <h2 class="text-center">Pricing</h2>
+        <div class="d-flex justify-content-center" style="margin: auto;">
+          <div class="" style="width: 700px;">
+            <h5>Price per day</h5>
+            <p>Set by the lister and applied to the number of days selected by the renter when booking, resulting in the initial booking charge.</p>
+            <h5>Price per km</h5>
+            <p>Set by the lister and applied to the number of km's travelled by the renter.</p>
+            <p>The lister enters the odometer reading into the app when the renter picks up the car and again when the car is returned, generating the final charge.</p>
+          </div>
+        </div>
     </div>
 
   </body>

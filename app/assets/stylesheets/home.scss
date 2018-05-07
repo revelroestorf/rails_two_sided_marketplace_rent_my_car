@@ -3,19 +3,27 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-
-div .home-buttons {
-  padding: 0;
-  left: 0;
-}
-
 .background-image {
   background-image: image-url('home.jpeg');
+  position: fixed;
   background-size: cover;
+  height: 100vh;
   width: 100vw;
   border-bottom: solid grey 3px;
 
+  div .home-buttons {
+    position: relative;
+    top: 70vh;
+    width: 100%;
+    height: 100%;
+  }
 }
-.how-it-works {
-  margin-top: 30px;
+.info-section {
+  position: relative;
+  width: 90vw;
+  margin: auto;
+  top: 90vh;
+  background-color: white;
+  border-top: solid orange 5px;
+  border-radius: 2vw;
 }
