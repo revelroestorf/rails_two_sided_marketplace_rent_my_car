@@ -14,6 +14,8 @@ class ApplicationController < ActionController::Base
   def check_user_cars
     if user_signed_in?
       @cars = current_user.cars
+    else
+      @cars = false
     end
   end
 
