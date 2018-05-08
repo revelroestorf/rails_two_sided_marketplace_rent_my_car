@@ -45,7 +45,7 @@
                 <td><%= submit_tag "Activate", class: "btn btn-success" %></td>
               <% end %>
             <% end %>
-            <td><%= link_to 'View bookings', bookings_owner_bookings_path, class: "btn btn-primary", style: "color: white;" %></td>
+            <td><%= button_to 'View bookings', bookings_owner_bookings_path, method: 'post', params: {car_id: car.id}, class: "btn btn-primary", style: "color: white;" %></td>
           </tr>
         </tbody>
       </table>

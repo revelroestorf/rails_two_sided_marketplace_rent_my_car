@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20180507124425) do
     t.integer "odo_end"
     t.float "price_per_day"
     t.float "price_per_km"
-    t.boolean "active"
+    t.boolean "active", default: true
     t.boolean "paid"
     t.date "date_from"
     t.date "date_to"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20180507124425) do
     t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "active"
+    t.boolean "active", default: true
   end
 
   create_table "conversations", force: :cascade do |t|

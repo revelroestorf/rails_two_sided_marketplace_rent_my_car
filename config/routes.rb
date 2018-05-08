@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   post 'bookings/owner_cars'
 
   get 'bookings/owner_bookings'
+  post 'bookings/owner_bookings'
+
 
   get 'bookings/previous_bookings'
 
