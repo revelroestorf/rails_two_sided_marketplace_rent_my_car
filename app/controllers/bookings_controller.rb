@@ -2,6 +2,8 @@ class BookingsController < ApplicationController
   before_action :authenticate_user!, except: [:new]
   before_action :booking_params, only: [:create]
 
+
+
   def new
     @car = Car.find(params[:car_id])
     @booking = Booking.new
@@ -28,24 +30,7 @@ class BookingsController < ApplicationController
 
 
   def owner_bookings
-    # @bookings = []
-    # current_user.cars.each do |car|
-    #   @cars.push(car)
-    #   car.bookings.each do |booking|
-    #     if booking.active
-    #       @active_bookings = true
-    #       if params[:odo_start]
-    #         booking.update(odo_start: params[:odo_start])
-    #       end
-    #       if params[:odo_end]
-    #         booking.update(odo_end: params[:odo_end], active: false)
-    #       end
-    #       @bookings.push(booking)
-    #     else
-    #       @previous = true
-    #     end
-    #   end
-    # end
+
     @guest = false
     @active = false
     @active2 = false
@@ -69,6 +54,14 @@ class BookingsController < ApplicationController
         end
       end
     end
+
+    # @bookings = []
+    #
+    # Car.find(params[:car_id]).bookings.each do |booking|
+    #   @bookings.push(booking) if booking.active
+    #     @bookings.push(booking)
+    # 
+
   end
 
   def previous_bookings

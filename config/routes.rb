@@ -5,13 +5,20 @@ Rails.application.routes.draw do
   end
 
   resources :charges
+  get 'charges', to: 'cars#index'
 
-  resources :cars
+
+  resources :cars, except: [:index]
+
+  post 'cars/index'
+  get 'cars', to: 'cars#index'
+
 
   devise_for :users
 
   post 'bookings/new'
   get 'bookings/new'
+
 
   post 'bookings/create'
   get 'bookings/create'

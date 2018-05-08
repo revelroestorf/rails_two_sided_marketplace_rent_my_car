@@ -7,6 +7,10 @@ class CarsController < ApplicationController
   # GET /cars
   # GET /cars.json
   def index
+
+    # render plain: params.inspect
+    # return
+
     @cars = Car.all
     if params[:user_location]
       location = Geocoder.search(params[:user_location])
