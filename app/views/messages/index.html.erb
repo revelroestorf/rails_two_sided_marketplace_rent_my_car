@@ -1,4 +1,14 @@
 <div class="ml-2" style="margin-top: 100px;">
+
+  <% if current_user.id == @conversation.sender_id %>
+    <h3><%= User.find(@conversation.recipient_id).firstname %></h3>
+  <% else %>
+    <h3><%= User.find(@conversation.sender_id).firstname %></h3>
+  <% end %>
+
+  <br>
+  <br>
+
   <% if @over_ten %>
    <%= link_to 'Show Previous', '?m=all' %>
   <% end %>

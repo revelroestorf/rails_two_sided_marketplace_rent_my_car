@@ -1,5 +1,5 @@
 <div class="">
-  <%= button_to 'message guest', conversations_path, method: 'post', params: {booking_id: booking.id} %>
+  <%= button_to 'message guest', conversations_path, method: 'post', params: {booking_id: booking.id, guest: @guest} %>
 </div>
   <table class="table mt-5">
     <tbody>

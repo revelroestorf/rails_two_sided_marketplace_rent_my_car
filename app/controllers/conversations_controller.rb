@@ -8,16 +8,27 @@ class ConversationsController < ApplicationController
 
   def create
 
-    @booking = Booking.find(params[:booking_id])
-    @owner = @booking.car.user
-    @guest = @booking.user
+
+    booking = Booking.find(params[:booking_id])
+
+    # if @guest
+    #   sender_id = booking.user
+    #   recipient_id = booking.car.user
+    # else
+    #   sender_id = booking.car.user
+    #   recipient_id = booking.user
+    # end
+
+    owner_id = booking.car.user.id
+    guest_id = booking.user.id
+
 
     exists = false
     conversation = nil
 
-    if Conversation.where(sender_id: params[:sender_id]).first != nil
-      Conversation.where(sender_id: params[:sender_id]).each do |convo|
-        if convo.recipient_id == params[:recipient_id].to_i
+    if Conversation.where(sender_id: owner_id).first != nil
+      Conversation.where(sender_id: owner_id).each do |convo|
+        if convo.recipient_id == guest_id
           exists = true
           conversation = convo
 
@@ -25,18 +36,17 @@ class ConversationsController < ApplicationController
       end
     end
 
-    if Conversation.where(sender_id: params[:recipient_id]).first != nil
-      Conversation.where(sender_id: params[:recipient_id]).each do |convo|
-        if convo.recipient_id == params[:sender_id].to_i
-          exists = true
-          conversation = convo
-        end
-      end
-    end
+    # if Conversation.where(sender_id: guest_id).first != nil
+    #   Conversation.where(sender_id: guest_id).each do |convo|
+    #     if convo.recipient_id == owner_id
+    #       exists = true
+    #       conversation = convo
+    #     end
+    #   end
+    # end
 
     if exists == false
-
-      @conversation = Conversation.create(conversation_params)
+      @conversation = Conversation.create(sender_id: owner_id, recipient_id: guest_id)
     else
       @conversation = conversation
     end

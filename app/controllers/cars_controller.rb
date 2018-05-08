@@ -10,8 +10,11 @@ class CarsController < ApplicationController
 
     if params[:user_location]
       if location = Geocoder.coordinates(params[:user_location])
-        @latitude = location.first
-        @longitude = location.last
+
+        # render plain: location
+
+        @latitude = location[0]
+        @longitude = location[1]
       else
         @latitude = -27.4698
         @longitude = 153.0251
