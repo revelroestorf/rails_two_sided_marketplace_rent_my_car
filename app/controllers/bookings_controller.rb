@@ -31,31 +31,34 @@ class BookingsController < ApplicationController
 
   def owner_bookings
 
-    render plain: Car.find(params[:car_id]).bookings.inspect
-return
+    @car = Car.find(params[:car_id])
+
+    if params[:booking_id]
+      @booking = Booking.find(params[:booking_id])
+      if params[:odo_start]
+        @booking.update(odo_start: params[:odo_start])
+      end
+      if params[:odo_end]
+        @booking.update(odo_end: params[:odo_end], active: false)
+      end
+    end
 
     @guest = false
     @active = false
     @active2 = false
     @previous = false
+
     @bookings = []
-    @cars = []
-    Car.find(params[:car_id]).bookings.each do |booking|
+
+    @car.bookings.each do |booking|
       if booking.active
         @active = true
-        if params[:odo_start]
-          booking.update(odo_start: params[:odo_start])
-        end
-        if params[:odo_end]
-          booking.update(odo_end: params[:odo_end], active: false)
-        end
+
         @bookings.push(booking)
       else
         @previous = true
       end
     end
-    render plain: @bookings.inspect
-    return
   end
 
   def previous_bookings

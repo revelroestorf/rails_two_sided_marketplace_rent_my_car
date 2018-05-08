@@ -4,7 +4,7 @@
     <% if @active %>
       <h3>Your active bookings</h3>
       <% @bookings.each do |booking| %>
-        <%= render 'active_bookings', {booking: booking, guest: @guest} %>
+        <%= render 'active_bookings', {booking: booking, guest: @guest, car_id: @car.id} %>
       <% end %>
     <% else %>
       <% if @active2 == false %>

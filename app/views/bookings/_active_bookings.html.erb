@@ -46,6 +46,8 @@
             <td>
               <%= form_tag bookings_owner_bookings_path, method: :get, class: "form-inline" do %>
                 <%= text_field_tag :odo_start, '', placeholder: "odo start", class: "form-control form-control-sm"  %>
+                <%= hidden_field_tag :car_id, @car.id %>
+                <%= hidden_field_tag :booking_id, booking.id %>
                 <%= submit_tag "Submit", class: "btn btn-sm btn-primary ml-2" %>
               <% end %>
             </td>
@@ -63,6 +65,8 @@
             <td>
               <%= form_tag bookings_owner_bookings_path, method: :get, class: "form-inline" do %>
                 <%= text_field_tag :odo_end, '', placeholder: "odo start", class: "form-control form-control-sm"  %>
+                <%= hidden_field_tag :car_id, @car.id %>
+                <%= hidden_field_tag :booking_id, booking.id %>
                 <%= submit_tag "Submit", class: "btn btn-sm btn-primary ml-2" %>
               <% end %>
             </td>

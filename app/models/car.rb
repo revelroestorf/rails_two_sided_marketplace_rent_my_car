@@ -7,9 +7,9 @@ class Car < ApplicationRecord
 
   geocoded_by :full_address
 
-  # after_validation :geocode
+  after_validation :geocode
 
-  # mount_uploader :image, CarImageUploader
+  mount_uploader :image, CarImageUploader
 
 
 end
