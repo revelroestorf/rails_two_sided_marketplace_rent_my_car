@@ -1,5 +1,6 @@
-<div class="ml-2" style="margin-top:100px;">
+<div class="ml-2" style="margin-top:100px; height: 100%;">
 
+    <% if current_user.has_role? :admin %>
       <table>
         <thead>
           <tr>
@@ -36,6 +37,7 @@
       <br>
       <%= link_to 'New Car', new_car_path %>
       <br>
+    <% end %>
 
   <div class="m-2">
     <%= form_tag cars_path, method: :get, class: "form-inline mb-3" do %>
@@ -89,7 +91,7 @@
             price_per_day: '<%= number_to_currency(car.price_per_day) %>',
             price_per_km: '<%= number_to_currency(car.price_per_km) %>',
 
-          }
+          },
           <% end %>
         ];
 

@@ -8,6 +8,9 @@ class ConversationsController < ApplicationController
 
   def create
 
+    @booking = Booking.find(params[:booking_id])
+    @owner = @booking.car.user
+    @guest = @booking.user
 
     exists = false
     conversation = nil
