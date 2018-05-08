@@ -1,3 +1,5 @@
+
+
 <div class="ml-2" style="margin-top:100px; height: 100%;">
 
     <% if current_user.has_role? :admin %>
@@ -41,10 +43,14 @@
 
   <div class="m-2">
     <%= form_tag cars_path, method: :get, class: "form-inline mb-3" do %>
+        <%= label :user_location, "search" %>
+
         <%= text_field_tag :user_location, '', placeholder: "Your location", class: "form-control", style: "width: 350px;" %>
         <%= submit_tag "Go", class: "btn btn-primary ml-2", style: "width: 90px;" %>
     <% end %>
   </div>
+
+
 
   <style>
     /* Always set the map height explicitly to define the size of the div
@@ -64,6 +70,10 @@
     <script>
       var map;
       function initMap() {
+
+        var input = document.getElementById('user_location');
+        var autocomplete = new google.maps.places.Autocomplete(input);
+
 
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 10,
@@ -127,8 +137,9 @@
         });
       }
     </script>
-  <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSl2bo0vFAwrntL4R4GybQWzqHNSg8_9o&callback=initMap">
-  </script>
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSl2bo0vFAwrntL4R4GybQWzqHNSg8_9o&v=3.exp&sensor=false&libraries=places&callback=initMap">
+    </script>
 
 </div>
