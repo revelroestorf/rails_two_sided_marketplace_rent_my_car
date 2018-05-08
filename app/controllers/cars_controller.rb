@@ -8,19 +8,53 @@ class CarsController < ApplicationController
   # GET /cars.json
   def index
 
-    # render plain: params.inspect
-    # return
+    if params[:booking][:date_from] && params[:booking][:date_to]
 
-    @cars = Car.all
-    if params[:user_location]
-      location = Geocoder.search(params[:user_location])
-      @latitude = location[0].latitude
-      @longitude = location[0].longitude
+      @cars = []
+
+      @un_available_cars = []
+
+      search_dates = []
+
+      (params[:booking][:date_from]..params[:booking][:date_to]).each do |date|
+        search_dates.push(date.to_date)
+      end
+
+      Car.all.each do |car|
+
+        if car.bookings.first
+
+          car.bookings.each do |booking|
+
+            (booking.date_from..booking.date_to).each do |date|
+
+              if search_dates.include?(date)
+                @un_available_cars.push(car)
+              end
+
+            end
+          end
+        end
+      end
+
+      Car.all.each do |car|
+        unless @un_available_cars.include?(car)
+          @cars.push(car)
+        end
+      end
+
     else
-      @latitude = -27.4698
-      @longitude = 153.0251
-    end
 
+      @cars = Car.all
+      if params[:user_location]
+        location = Geocoder.search(params[:user_location])
+        @latitude = location[0].latitude
+        @longitude = location[0].longitude
+      else
+        @latitude = -27.4698
+        @longitude = 153.0251
+      end
+    end
   end
 
   def show
