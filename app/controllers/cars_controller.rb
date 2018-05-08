@@ -8,7 +8,21 @@ class CarsController < ApplicationController
   # GET /cars.json
   def index
 
-    if params[:booking][:date_from] && params[:booking][:date_to]
+    if params[:user_location]
+      if location = Geocoder.coordinates(params[:user_location])
+        @latitude = location.first
+        @longitude = location.last
+      else
+        @latitude = -27.4698
+        @longitude = 153.0251
+      end
+    else
+      @latitude = -27.4698
+      @longitude = 153.0251
+    end
+
+
+    if params[:booking]
 
       @cars = []
 
@@ -44,16 +58,7 @@ class CarsController < ApplicationController
       end
 
     else
-
       @cars = Car.all
-      if params[:user_location]
-        location = Geocoder.search(params[:user_location])
-        @latitude = location[0].latitude
-        @longitude = location[0].longitude
-      else
-        @latitude = -27.4698
-        @longitude = 153.0251
-      end
     end
   end
 
