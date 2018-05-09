@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   # get 'charges', to: 'cars#index'
 
 
-  resources :cars, except: [:index]
+  resources :cars, except: [:index, :show, :create]
+
+  post 'cars/create'
 
   post 'cars/index'
   get 'cars', to: 'cars#index'

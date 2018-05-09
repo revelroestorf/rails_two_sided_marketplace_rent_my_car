@@ -72,9 +72,6 @@ class CarsController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def new
     @car = Car.new
   end
@@ -83,6 +80,22 @@ class CarsController < ApplicationController
     @car = Car.find(params[:id])
   end
 
+  def create
+    @car = Car.new(make: params[:car][:make], model: params[:car][:model], year: params[:car][:year],
+      full_address: params[:car][:full_address], price_per_day: params[:car][:price_per_day],
+      price_per_km: params[:car][:price_per_km], image: params[:car][:image])
+      @car.user_id = current_user.id
+
+      respond_to do |format|
+        if @car.save
+          format.html { redirect_to bookings_owner_cars_path, notice: 'Car was successfully created.' }
+          format.json { render :show, status: :created, location: @car }
+        else
+          format.html { render :new }
+          format.json { render json: @car.errors, status: :unprocessable_entity }
+        end
+      end
+    end
 
   def update
 
@@ -107,22 +120,6 @@ class CarsController < ApplicationController
   end
 
 
-  def create
-    @car = Car.new(make: params[:car][:make], model: params[:car][:model], year: params[:car][:year],
-                   full_address: params[:car][:full_address], price_per_day: params[:car][:price_per_day],
-                   price_per_km: params[:car][:price_per_km], image: params[:car][:image])
-    @car.user_id = current_user.id
-
-    respond_to do |format|
-      if @car.save
-        format.html { redirect_to bookings_owner_cars_path, notice: 'Car was successfully created.' }
-        format.json { render :show, status: :created, location: @car }
-      else
-        format.html { render :new }
-        format.json { render json: @car.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
 
   def destroy
