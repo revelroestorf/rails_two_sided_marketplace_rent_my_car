@@ -1,6 +1,6 @@
 class UserNotifierMailer < ApplicationMailer
 
-  default default: 'noreply@rentmycar.com'
+  default :from => 'noreply@rentmycar.com'
 
   def signup_email(user)
     @user = user

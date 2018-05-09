@@ -1,7 +1,8 @@
 class ChargesController < ApplicationController
   before_action :authenticate_user!
 
-  after_action :send_mail, only: [:create]
+  after_action :send_guest_mail, only: [:create]
+  after_action :send_owner_mail, only: [:create]
 
   # before_action :set_variables
 
@@ -43,8 +44,12 @@ class ChargesController < ApplicationController
 
   private
 
-  def send_mail
+  def send_guest_mail
     BookingConfirmationMailer.booking_confirmation_email(@booking).deliver
+  end
+
+  def send_owner_mail
+    OwnerBookingNotifierMailer.owner_booking_email(@booking).deliver
   end
 
 end

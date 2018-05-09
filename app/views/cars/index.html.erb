@@ -74,7 +74,7 @@
 
 
         map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 12,
+          zoom: 10,
           center: new google.maps.LatLng(<%= @latitude %>, <%= @longitude %>),
           mapTypeId: 'roadmap'
         });
@@ -93,6 +93,10 @@
             position: new google.maps.LatLng(<%= car.latitude %>, <%= car.longitude %>),
             icon: 'info',
             url: '/bookings/new',
+            car_id: '<%= car.id %>',
+
+            // "@Url.Action("ExampleAction", "ExampleController", new { parameter1Id = "pr1Id", parameter2Id = "pr2Id", parameter3Id = "pr3Id" })",
+
             image: '<%= car.image %>',
             make: '<%= car.make %>',
             model: '<%= car.model %>',
@@ -106,7 +110,7 @@
         features.forEach(function(feature) {
 
           var contentString =
-            '<div class="d-flex info-window" onclick="window.location=\''+feature.url+'\'">'+
+            '<div class="d-flex info-window" onclick="window.location=\''+feature.url+'\?car_id='+feature.car_id+'\'">'+
               '<div class="mr-2">'+
                 '<span class="">        <img style="width:70px;" src='+feature.image+'>    </span>' +
               '</div>'+

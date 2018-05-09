@@ -1,6 +1,6 @@
 class BookingConfirmationMailer < ApplicationMailer
 
-  default default: 'noreply@rentmycar.com'
+  default :from => 'noreply@rentmycar.com'
 
   def booking_confirmation_email(booking)
     @booking = booking

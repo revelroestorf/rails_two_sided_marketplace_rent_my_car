@@ -6,7 +6,7 @@
   </head>
   <body>
 
-    <h1>You're all set!</h1>
+    <h1>You've got a new booking!</h1>
     <br>
     <h3>Bookings details:</h3>
     <br>
@@ -17,8 +17,8 @@
           <td><%= "#{@booking.car.make} #{@booking.car.model}" %></td>
         </tr>
         <tr>
-          <td>Owner</td>
-          <td><%= @booking.car.user.firstname %></td>
+          <td>Guest</td>
+          <td><%= @booking.user.firstname %></td>
         </tr>
         <tr>
           <td>Pick up date</td>
@@ -38,7 +38,7 @@
           </td>
           <% ppd = @booking.price_per_day %>
           <% days = (@booking.date_to - @booking.date_from).to_i %>
-          <td><strong><%= number_to_currency(ppd * days) %></strong><span class="text-success"> PAID</span></td>
+          <td><strong><%= number_to_currency(ppd * days) %></strong></td>
         </tr>
         <tr>
           <td>Price per km</td>
@@ -47,11 +47,10 @@
       </tbody>
     </table>
     <br>
-    <p>We'll email you a receipt for the final payment after your trip, pending kilometers travelled.</p>
-    <p>You can contact the owner via the application in 'My trip'</p>
+    <p>Once the trip is concluded and the odometer readings entered, we'll calculate the distance payment component
+      and transfer the combined total payment to your account.</p>
+    <p>Please contact your guest via the application in the active bookings section available through the navbar link 'My car'.</p>
     <p>Link to website: https://floating-plains-94998.herokuapp.com</p>
-    <br>
-    <p>Enjoy your adventure!</p>
     <br>
     <br>
     <p>Kind regards,</p>

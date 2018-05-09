@@ -1,8 +1,6 @@
 class CarsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :set_car, only: [:show, :edit, :update, :destroy]
-  before_action :car_params, only: [:create, :destroy]
-
 
   # GET /cars
   # GET /cars.json
@@ -83,7 +81,7 @@ class CarsController < ApplicationController
 
     respond_to do |format|
       if @car.save
-        format.html { redirect_to @car, notice: 'Car was successfully created.' }
+        format.html { redirect_to bookings_owner_cars_path(@car), notice: 'Car was successfully created.' }
         format.json { render :show, status: :created, location: @car }
       else
         format.html { render :new }
@@ -93,26 +91,21 @@ class CarsController < ApplicationController
   end
 
   def update
-    @car.update(make: params[:make], model: params[:model], year: params[:year],
-                full_address: params[:full_address], price_per_day: params[:price_per_day],
-                price_per_km: params[:price_per_km], image: params[:image])
-    redirect_to(bookings_owner_cars_path)
-    flash[:notice] = 'Car was successfully updated.'
 
-    # respond_to do |format|
-    #   if @car.update(car_params)
-    #     if params[:x]
-    #       format.html { redirect_to @car, notice: 'Car was successfully updated.' }
-    #       format.json { render :show, status: :ok, location: @car }
-    #     else
-    #       redirect_to(bookings_owner_cars_path)
-    #       flash[:notice] = 'Car was successfully updated.'
-    #     end
-    #   else
-    #     format.html { render :edit }
-    #     format.json { render json: @car.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    render plain: params.inspect
+    return
+
+    @car.update(car_params)
+
+    respond_to do |format|
+      if @car.update(car_params)
+        format.html { redirect_to bookings_owner_cars_path, notice: 'Car was successfully updated.' }
+        format.json { render :show, status: :ok, location: @car }
+      else
+      format.html { render :edit }
+      format.json { render json: @car.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
