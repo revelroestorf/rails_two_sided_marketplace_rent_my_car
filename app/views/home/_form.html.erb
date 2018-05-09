@@ -1,17 +1,3 @@
-<%= semantic_form_for @booking, url: '/cars/index' do |f| %>
-  <%= f.inputs do %>
-
-    <%= f.input :date_from, as: :date_picker %>
-    <%= f.input :date_to, as: :date_picker %>
-
-  <% end %>
-
-  <%= f.actions do %>
-    <%= f.action :submit, :button_html => { :class => "primary", :disable_with => 'Wait...' } %>
-  <% end %>
-
-<% end %>
-
 <script>
 var array = []
 

@@ -23,12 +23,10 @@ class BookingsController < ApplicationController
 
   def owner_cars
 
-    # render plain: params.inspect
-    # return
-    @cars = current_user.cars
     if params[:car_id]
       Car.find(params[:car_id]).update(active: params[:active])
     end
+    @cars = current_user.cars
   end
 
 

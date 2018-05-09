@@ -1,20 +1,30 @@
 <div class="">
-  <%= button_to 'message guest', conversations_path, method: 'post', params: {booking_id: booking.id, guest: @guest} %>
+
 </div>
   <table class="table mt-5">
     <tbody>
+      <% if @guest %>
+        <tr class="">
+          <td class="lead align-middle"><%= booking.car.user.firstname %></td>
+          <td><%= button_to 'message', conversations_path,
+                  params: {booking_id: booking.id, guest: @guest},
+                  class: "d-flex ml-auto btn btn-outline-success" %>
+          </td>
+        </tr>
+      <% else %>
+        <tr>
+          <td class="lead align-middle"><%= booking.car.user.firstname %></td>
+          <td><%= button_to 'message', conversations_path,
+                  params: {booking_id: booking.id, guest: @guest},
+                  class: "d-flex ml-auto btn btn-outline-success" %>
+          </td>
+        </tr>
+      <% end %>
       <tr>
-        <td>Car</td>
-        <td><%= "#{booking.car.make} #{booking.car.model}" %></td>
-      </tr>
-      <tr>
-        <% if @guest %>
-          <td>Owner</td>
-          <td><%= booking.car.user.firstname %></td>
-        <% else %>
-          <td>Guest</td>
-          <td><%= booking.user.firstname %></td>
-        <% end %>
+        <tr>
+          <td>Car</td>
+          <td><%= "#{booking.car.make} #{booking.car.model}" %></td>
+        </tr>
       </tr>
       <tr>
         <td>Pick up date</td>

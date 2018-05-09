@@ -74,28 +74,17 @@ class CarsController < ApplicationController
     @car = Car.find(params[:id])
   end
 
-  def create
-    @car = Car.new(car_params)
-    @car.user_id = current_user.id
-
-
-    respond_to do |format|
-      if @car.save
-        format.html { redirect_to bookings_owner_cars_path(@car), notice: 'Car was successfully created.' }
-        format.json { render :show, status: :created, location: @car }
-      else
-        format.html { render :new }
-        format.json { render json: @car.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   def update
 
-    render plain: params.inspect
-    return
+    # render plain: params.inspect
+    # return
 
     @car.update(car_params)
+
+    #UPDATE WORKS IF 'REQUIRE(:CAR)' REMOVED...
+    # params.require(:car)permit(:make, :model, :year, :full_address, :price_per_day, :price_per_km, :image)
+
 
     respond_to do |format|
       if @car.update(car_params)
@@ -108,6 +97,25 @@ class CarsController < ApplicationController
     end
   end
 
+
+  def create
+    @car = Car.new(make: params[:car][:make], model: params[:car][:model], year: params[:car][:year],
+                   full_address: params[:car][:full_address], price_per_day: params[:car][:price_per_day],
+                   price_per_km: params[:car][:price_per_km], image: params[:car][:image])
+    @car.user_id = current_user.id
+
+    respond_to do |format|
+      if @car.save
+        format.html { redirect_to bookings_owner_cars_path, notice: 'Car was successfully created.' }
+        format.json { render :show, status: :created, location: @car }
+      else
+        format.html { render :new }
+        format.json { render json: @car.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
   def destroy
     @car.destroy
     respond_to do |format|
@@ -116,13 +124,15 @@ class CarsController < ApplicationController
     end
   end
 
+
   private
+
     def set_car
       @car = Car.find(params[:id])
     end
 
     def car_params
-      params.require(:car).permit(:make, :model, :year, :full_address, :price_per_day, :price_per_km, :image)
+      params.permit(:make, :model, :year, :full_address, :price_per_day, :price_per_km, :image)
     end
 
 end

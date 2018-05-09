@@ -2,7 +2,8 @@
 
 <div class="ml-2" style="margin-top:100px; height: 100%;">
 
-    <% if current_user.has_role? :admin %>
+    <% if user_signed_in? %>
+      <% if current_user.has_role? :admin %>
       <table>
         <thead>
           <tr>
@@ -39,6 +40,7 @@
       <br>
       <%= link_to 'New Car', new_car_path %>
       <br>
+      <% end %>
     <% end %>
 
   <div class="m-2">

@@ -14,14 +14,26 @@
 
           <div class="home-buttons row d-flex justify-content-around">
 
+              <%= render 'form' %>
+              <%= semantic_form_for @booking, url: '/cars/index' do |f| %>
+              <%= f.actions do %>
+                <%= f.inputs do %>
+
             <div class="">
-              <%= link_to 'Find a car', cars_path,
-                class: "btn btn-lg btn-info d-flex align-items-center justify-content-center",
-                style: "width: 220px; height: 80px; font-size: 25px; color: white;"
-                %>
+                <%= f.action :submit, :button_html => { :value => 'Find a car',
+                  class: "btn btn-lg btn-info d-flex align-items-center justify-content-center",
+                    style: "width: 220px; height: 80px; font-size: 25px; color: white;", label: 'kbjrafc' }  %>
+            </div>
+            <div class="">
+            <%= f.input :date_from, as: :date_picker %>
+            <%= f.input :date_to, as: :date_picker %>
             </div>
 
-            <%= render 'form' %>
+                  <% end %>
+                <% end %>
+              <% end %>
+
+
 
             <div class="">
               <% if user_signed_in? %>
@@ -127,7 +139,8 @@
           <p>The lister enters the odometer reading into the app when the renter picks up the car and again when the car is returned, generating the final charge.</p>
         </div>
       </div>
-
+      
+      <hr>
       <h2 class="text-center">Payments</h2>
       <div class="d-flex justify-content-center" style="margin: auto;">
         <div class="" style="width: 700px;">
