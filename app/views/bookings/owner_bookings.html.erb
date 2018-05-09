@@ -6,6 +6,9 @@
       <% @bookings.each do |booking| %>
         <%= render 'active_bookings', {booking: booking, guest: @guest, car_id: @car.id} %>
       <% end %>
+      <% if @previous %>
+        <%= link_to 'previous bookings', bookings_previous_bookings_path, class: "btn btn-info", style: "color: white" %>
+      <% end %>
     <% else %>
       <% if @active2 == false %>
       <h3>You have no active bookings</h3>
@@ -19,8 +22,9 @@
       <h3>Your previous bookings</h3>
       <% @bookings.each do |booking| %>
         <%= render 'non_active_bookings', {booking: booking, guest: @guest} %>
+        <br>
       <% end %>
-      <%= link_to 'back', bookings_owner_bookings_path, class: "btn btn-dark", style: "color: white" %>
+      <%= button_to 'back', bookings_owner_cars_path, class: "btn btn-dark", style: "color: white" %>
     <% end %>
   </div>
 

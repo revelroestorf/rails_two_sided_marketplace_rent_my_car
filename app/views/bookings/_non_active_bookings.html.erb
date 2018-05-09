@@ -1,17 +1,17 @@
   <table class="table mt-5">
     <tbody>
       <tr>
-        <td>Car</td>
-        <td><%= "#{booking.car.make} #{booking.car.model}" %></td>
+        <% if @guest %>
+        <td>Owner</td>
+        <td><%= booking.car.user.firstname %></td>
+        <% else %>
+        <td>Guest</td>
+        <td><%= booking.user.firstname %></td>
+        <% end %>
       </tr>
       <tr>
-        <% if @guest %>
-          <td>Owner</td>
-          <td><%= booking.car.user.firstname %></td>
-        <% else %>
-          <td>Guest</td>
-          <td><%= booking.user.firstname %></td>
-        <% end %>
+        <td>Car</td>
+        <td><%= "#{booking.car.make} #{booking.car.model}" %></td>
       </tr>
       <tr>
         <td>Days</td>
@@ -25,7 +25,7 @@
         <td class="d-flex justify-content-end pr-5">
           <strong>Sub-total</strong>
         </td>
-        <% t1 = booking.price_per_day * booking.days %>
+        <% t1 = booking.price_per_day * (booking.date_to - booking.date_from).to_i %>
         <td><strong><%= number_to_currency(t1) %></strong></td>
       </tr>
       <tr>
@@ -44,7 +44,7 @@
         <td class="d-flex justify-content-end pr-5">
           <strong>Sub-total</strong>
         </td>
-        <% t2 = booking.price_per_km * (booking.odo_end - booking.odo_start) %>
+        <% t2 = booking.price_per_km * (booking.date_to - booking.date_from).to_i %>
         <td><strong><%= number_to_currency(t2) %></strong></td>
       </tr>
       <tr class="" style="border-top: solid grey 2px;">

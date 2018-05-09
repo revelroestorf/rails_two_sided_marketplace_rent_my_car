@@ -54,7 +54,6 @@ class BookingsController < ApplicationController
     @car.bookings.each do |booking|
       if booking.active
         @active = true
-
         @bookings.push(booking)
       else
         @previous = true

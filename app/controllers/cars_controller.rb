@@ -8,9 +8,6 @@ class CarsController < ApplicationController
 
     if params[:user_location]
       if location = Geocoder.coordinates(params[:user_location])
-
-        # render plain: location
-
         @latitude = location[0]
         @longitude = location[1]
       else
@@ -23,30 +20,45 @@ class CarsController < ApplicationController
     end
 
 
-    if params[:booking]
+    @cars = []
 
-      @cars = []
+    @un_available_cars = []
 
-      @un_available_cars = []
+    if params[:booking][:date_from].to_i == 0 || params[:booking][:date_to].to_i == 0
+
+      Car.all.each do |car|
+        if car.active
+          @cars.push(car)
+        end
+      end
+
+    else
+
+      # render plain: params[:booking][:date_to].inspect
+      # return
 
       search_dates = []
 
-      (params[:booking][:date_from]..params[:booking][:date_to]).each do |date|
-        search_dates.push(date.to_date)
+      (params[:booking][:date_from].to_date..params[:booking][:date_to].to_date).each do |date|
+        search_dates.push(date)
       end
 
       Car.all.each do |car|
 
+        if car.active == false
+          @un_available_cars.push(car)
+        end
+
         if car.bookings.first
 
           car.bookings.each do |booking|
+
 
             (booking.date_from..booking.date_to).each do |date|
 
               if search_dates.include?(date)
                 @un_available_cars.push(car)
               end
-
             end
           end
         end
@@ -57,9 +69,6 @@ class CarsController < ApplicationController
           @cars.push(car)
         end
       end
-
-    else
-      @cars = Car.all
     end
   end
 
