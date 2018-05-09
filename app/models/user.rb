@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :converations
   has_many :messages, through: :conversations
 
-  after_create :send_mail
+  # after_create :send_mail
 
   rolify
 

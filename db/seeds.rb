@@ -2,13 +2,13 @@
 User.create([
   {email: 'revsails@gmail.com', password: 'sparkle', firstname: 'Revel', lastname: 'Roestorf'},
   {email: 'revel.roestorf@gmail.com', password: 'sparkle', firstname: 'Jane', lastname: 'Jensen'},
-  {email: 'zac@gmail', password: 'sparkle', firstname: 'Zac', lastname: 'Chop'},
-  {email: 'holly@gmail', password: 'sparkle', firstname: 'Holly', lastname: 'May'},
-  {email: 'ray@gmail', password: 'sparkle', firstname: 'Ray', lastname: 'Charles'},
-  {email: 'jay@gmail', password: 'sparkle', firstname: 'Jay', lastname: 'Bart'},
-  {email: 'pat@gmail', password: 'sparkle', firstname: 'Pat', lastname: 'Smith'},
-  {email: 'don@gmail', password: 'sparkle', firstname: 'Don', lastname: 'Jamin'},
-  {email: 'butch@gmail', password: 'sparkle', firstname: 'Butch', lastname: 'Aspen'}
+  {email: 'zac@gmail.com', password: 'sparkle', firstname: 'Zac', lastname: 'Chop'},
+  {email: 'holly@gmail.com', password: 'sparkle', firstname: 'Holly', lastname: 'May'},
+  {email: 'ray@gmail.com', password: 'sparkle', firstname: 'Ray', lastname: 'Charles'},
+  {email: 'jay@gmail.com', password: 'sparkle', firstname: 'Jay', lastname: 'Bart'},
+  {email: 'pat@gmail.com', password: 'sparkle', firstname: 'Pat', lastname: 'Smith'},
+  {email: 'don@gmail.com', password: 'sparkle', firstname: 'Don', lastname: 'Jamin'},
+  {email: 'butch@gmail.com', password: 'sparkle', firstname: 'Butch', lastname: 'Aspen'}
   ])
 
 User.first.add_role :admin

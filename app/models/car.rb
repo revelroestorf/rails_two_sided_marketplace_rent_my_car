@@ -7,7 +7,9 @@ class Car < ApplicationRecord
 
   geocoded_by :full_address
 
-  after_validation :geocode
+  # after_validation :geocode
+
+  # rake geocode:all CLASS=YourModel
 
   mount_uploader :image, CarImageUploader
 

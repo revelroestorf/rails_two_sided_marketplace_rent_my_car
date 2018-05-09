@@ -1,10 +1,8 @@
 class ChargesController < ApplicationController
   before_action :authenticate_user!
 
-  after_action :send_guest_mail, only: [:create]
-  after_action :send_owner_mail, only: [:create]
-
-  # before_action :set_variables
+  # after_action :send_guest_mail, only: [:create]
+  # after_action :send_owner_mail, only: [:create]
 
   def new
     @booking = Booking.find(params[:booking])
