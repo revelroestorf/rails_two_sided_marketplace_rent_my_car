@@ -31,13 +31,13 @@
             <td colspan="2"><%= number_to_currency(car.price_per_km) %></td>
           </tr>
           <tr>
-            <td><%= button_to 'View bookings', bookings_owner_bookings_path, method: 'post', params: {car_id: car.id}, class: "btn btn-primary", style: "color: white;" %></td>
+            <td><%= button_to 'View bookings', bookings_owner_bookings_path(car), method: 'post', class: "btn btn-primary", style: "color: white;" %></td>
             <% if car.active %>
               <td><%= button_to 'Deactivate', bookings_owner_cars_path, method: 'post', params: {car_id: car.id, active: false}, class: "btn btn-warning" %></td>
             <% else %>
               <td><%= button_to 'Activate', bookings_owner_cars_path, method: 'post', params: {car_id: car.id, active: true}, class: "btn btn-success" %></td>
             <% end %>
-            <td scope="row"><%= link_to 'Edit', edit_car_path(car), class: "btn btn-dark", style: "color: white;" %></td>
+            <td scope="row"><%= link_to 'Update', edit_car_path(car), class: "btn btn-dark", style: "color: white;" %></td>
           </tr>
         </tbody>
       </table>

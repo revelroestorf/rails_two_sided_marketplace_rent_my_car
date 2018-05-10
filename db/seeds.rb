@@ -15,7 +15,7 @@ User.first.add_role :admin
 
 Car.create([
   {user_id: 1, image: "image/upload/v1525310148/eswn9zwqoocuvyzztr73.jpg", make: 'Tesla', model: 'model x',
-    year: '2016', full_address: '168 hedges ave, mermaid beach, qld', price_per_day: 90, price_per_km: 0.25},
+    year: '2016', full_address: '420 hotham creek road, willow vale, qld', price_per_day: 90, price_per_km: 0.25},
   {user_id: 1, image: "image/upload/v1525310084/bpu91s6qaf2lngmem6gc.jpg", make: 'Chevrolet', model: 'corvette',
     year: '2018', full_address: '168 hedges ave, mermaid beach, qld', price_per_day: 80, price_per_km: 0.4},
   {user_id: 2, image: "image/upload/v1525310097/zmbyia9pal1kkg0yey7d.jpg", make: 'Hyundai', model: 'elantra',

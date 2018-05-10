@@ -62,6 +62,8 @@ class BookingsController < ApplicationController
   end
 
   def previous_bookings
+    @car = Car.find(params[:car_id])
+
     @guest = false
     @active = false
     @active2 = true
@@ -71,7 +73,7 @@ class BookingsController < ApplicationController
         @bookings.push(booking)
       end
     end
-    render(bookings_owner_bookings_path)
+    render 'bookings/owner_bookings'
   end
 
   def guest_trips

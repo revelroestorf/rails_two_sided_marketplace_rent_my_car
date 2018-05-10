@@ -3,7 +3,7 @@
 
     <h1>Edit car details</h1>
 
-    <%= form_tag car_path(@car), method: :patch, class: "form-inline d-flex justify-content-center" do %>
+    <%= form_for @car, class: "form-inline d-flex justify-content-center" do |f|%>
 
       <table class="table m-5" style="max-width:800px;">
         <tbody>
@@ -13,7 +13,6 @@
             <td class="text-right"><%= file_field_tag :image %></td>
           </tr>
           <% if current_user.has_role? :admin %>
-           <% hidden_field_tag :x, true %>
             <tr>
               <td><strong>User_id</strong></td>
               <td class="lead text-center"><%= @car.user.id %></td>
@@ -22,32 +21,32 @@
           <tr>
             <td><strong>Make</strong></td>
             <td class="lead text-center"><%= @car.make %></td>
-            <td class="text-right"><%= text_field_tag :make, @car.make, class: "form-control form-control-sm" %></td>
+            <td class="text-right"><%= f.text_field :make, class: "form-control form-control-sm" %></td>
           </tr>
           <tr>
             <td><strong>Model</strong></td>
             <td class="lead text-center"><%= @car.model %></td>
-            <td class="text-right"><%= text_field_tag :model, @car.model, class: "form-control form-control-sm" %></td>
+            <td class="text-right"><%= f.text_field :model, class: "form-control form-control-sm" %></td>
           </tr>
           <tr>
             <td><strong>year</strong></td>
             <td class="lead text-center"><%= @car.year %></td>
-            <td class="text-right"><%= text_field_tag :year, @car.year, class: "form-control form-control-sm" %></td>
+            <td class="text-right"><%= f.text_field :year, class: "form-control form-control-sm" %></td>
           </tr>
           <tr>
             <td><strong>Price per day</strong></td>
             <td class="lead text-center"><%= number_to_currency(@car.price_per_day) %></td>
-            <td class="text-right"><%= text_field_tag :price_per_day, @car.price_per_day, class: "form-control form-control-sm" %></td>
+            <td class="text-right"><%= f.text_field :price_per_day, class: "form-control form-control-sm" %></td>
           </tr>
           <tr>
             <td><strong>Price per km</strong></td>
             <td class="lead text-center"><%= number_to_currency(@car.price_per_km) %></td>
-            <td class="text-right"><%= text_field_tag :price_per_km, @car.price_per_km, class: "form-control form-control-sm" %></td>
+            <td class="text-right"><%= f.text_field :price_per_km, class: "form-control form-control-sm" %></td>
           </tr>
           <tr>
             <td><strong>Located at</strong></td>
             <td class="text-center"><%= @car.full_address %></td>
-            <td class="text-right"><%= text_field_tag :full_address, @car.full_address, class: "form-control form-control-sm" %></td>
+            <td class="text-right"><%= f.text_field :full_address, class: "form-control form-control-sm" %></td>
           </tr>
         </body>
       </table>
@@ -58,7 +57,7 @@
         <% else %>
           <%= link_to "Back", bookings_owner_cars_path, class: "btn btn-dark", style: "color: white;" %>
         <% end %>
-          <%= submit_tag "Update", class: "btn btn-warning" %>
+          <%= f.submit "Update", class: "btn btn-warning" %>
       </div>
 
 

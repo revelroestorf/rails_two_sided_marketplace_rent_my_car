@@ -22,24 +22,24 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :bookings, except: [:show, :owner_cars]
+  resources :bookings, except: [:show]
 
 
-  post 'bookings/new'
-  get 'bookings/new'
-
-
-  post 'bookings/create'
-  get 'bookings/create'
+  # post 'bookings/new'
+  # get 'bookings/new'
+  #
+  #
+  # post 'bookings/create'
+  # get 'bookings/create'
 
   post 'bookings/owner_cars'
   get 'bookings/owner_cars'
 
-  post 'bookings/owner_bookings'
-  get 'bookings/owner_bookings'
+  post 'bookings/owner_bookings/:car_id', to: 'bookings#owner_bookings', as: 'bookings_owner_bookings'
+  get 'bookings/owner_bookings/:car_id', to: 'bookings#owner_bookings', as: 'owner_bookings'
 
 
-  get 'bookings/previous_bookings'
+  get 'bookings/previous_bookings/:car_id', to: 'bookings#previous_bookings', as: 'bookings_previous_bookings'
 
   get 'bookings/guest_trips'
 

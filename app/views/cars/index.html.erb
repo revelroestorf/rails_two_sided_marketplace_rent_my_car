@@ -30,7 +30,7 @@
               <td><%= car.full_address %></td>
               <td><%= car.price_per_day %></td>
               <td><%= car.price_per_km %></td>
-              <td><%= button_to 'Show', bookings_new_path, method: :post, params: {car_id: car.id} %></td>
+              <td><%= button_to 'Show', new_booking_path, method: 'get', params: {car_id: car.id} %></td>
               <td><%= link_to 'Edit', edit_car_path(car) %></td>
               <td><%= link_to 'Destroy', car, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
