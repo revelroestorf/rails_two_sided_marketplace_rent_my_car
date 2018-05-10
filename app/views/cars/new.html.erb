@@ -22,8 +22,9 @@
         <%= f.number_field :year, placeholder: "Year", class: "mb-2 form-control form-control-sm"   %>
         <%= f.text_field :full_address, placeholder: "Full Address", class: "mb-2 form-control form-control-sm"   %>
         <%= f.number_field :price_per_day, placeholder: "$ Price per day", class: "mb-2 form-control form-control-sm"   %>
-        <%= f.number_field :price_per_km, placeholder: "$ Price per km", class: "mb-2 form-control form-control-sm"   %>
+        <%= f.number_field :price_per_km, step: :any, placeholder: "$ Price per km", class: "mb-2 form-control form-control-sm" %>
         <%= f.file_field :image, class: "mb-2 form-control form-control-sm" %>
+
     </div>
   </div>
 

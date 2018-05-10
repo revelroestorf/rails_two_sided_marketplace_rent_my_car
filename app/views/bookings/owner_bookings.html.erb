@@ -26,11 +26,11 @@
 
         <div class="d-flex justify-content-end" style="width: 90vw;">
           <% if @previous %>
-          <%= link_to 'previous bookings', bookings_previous_bookings_path(@car), class: "btn btn-info", style: "color: white" %>
+          <%= link_to 'previous bookings', bookings_previous_bookings_path(@car), class: "btn btn-info mr-5", style: "color: white" %>
           <% end %>
 
           <% if @guest == false %>
-          <%= button_to 'back', bookings_owner_cars_path, class: "btn btn-dark", style: "color: white" %>
+          <%= button_to 'back', bookings_owner_cars_path, class: "btn btn-dark mr-5", style: "color: white" %>
           <% end %>
         </div>
       <% end %>
@@ -42,7 +42,7 @@
 
       <div class="d-flex justify-content-end" style="width: 90vw;">
       <% if @guest == false %>
-        <%= button_to 'back', bookings_owner_cars_path, class: "btn btn-dark", style: "color: white" %>
+        <%= button_to 'back', bookings_owner_cars_path, class: "btn btn-dark mr-5", style: "color: white" %>
       <% end %>
       </div>
 

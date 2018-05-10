@@ -11,7 +11,7 @@ class CreateCars < ActiveRecord::Migration[5.1]
       t.string :full_address
       t.float :latitude
       t.float :longitude
-      t.boolean :cars, :active, default: true
+      t.boolean :active, default: true
 
       t.timestamps
     end

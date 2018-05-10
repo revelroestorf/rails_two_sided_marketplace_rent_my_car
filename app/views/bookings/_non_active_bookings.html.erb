@@ -44,7 +44,7 @@
         <td class="d-flex justify-content-end pr-5">
           <strong>Sub-total</strong>
         </td>
-        <% t2 = booking.price_per_km * (booking.date_to - booking.date_from).to_i %>
+        <% t2 = booking.price_per_km * (booking.odo_end - booking.odo_start) %>
         <td><strong><%= number_to_currency(t2) %></strong></td>
       </tr>
       <tr class="" style="border-top: solid grey 2px;">

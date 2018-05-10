@@ -145,10 +145,13 @@ IMAGES - Following the design approach I've leaned heavily on powerful images to
 ---
 ## Future Updates / Bug Fixes
 
+* Currently car owners have the ability to activate/deactivate their individual cars, making them available/unavailable, bookings aside. They really should have a calendar they can use to manage their car's availability properly. For now I've left the ability to book your own car, which achieves the unavailability but is not reversible.
 
+* Currently users have no way of contacting the company. I would implement a contact form with some subject categories, like 'owner claim', 'guest claim' and 'feedback', which would then route to our appropriate internal email addresses.
 
+* I'd like to implement ratings and reviews, which I have some cool ideas about.
 
-
+* Currently the only role is :admin which provides a full list view of the cars index, with ability to create, update and destroy. I would like to implement a more appropriate admin interface, perhaps using Active Admin.
 
 ---
 ## Assignment Requirements

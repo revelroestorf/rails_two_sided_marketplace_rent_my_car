@@ -8,7 +8,7 @@ class CreateBookings < ActiveRecord::Migration[5.1]
       t.float :price_per_day
       t.float :price_per_km
       t.boolean :active, default: true
-      t.boolean :paid
+      t.boolean :paid, default: false
       t.date :date_from
       t.date :date_to
 

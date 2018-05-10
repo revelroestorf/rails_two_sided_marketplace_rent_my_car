@@ -11,12 +11,18 @@
 
     <%= javascript_include_tag 'https://code.jquery.com/jquery-3.3.1.js' %>
     <%= javascript_include_tag 'https://code.jquery.com/ui/1.12.1/jquery-ui.js' %>
+    <%= javascript_include_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js' %>
+
+
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   </head>
 
   <body>
+
+
+    <!-- navbar-static-top -->
 
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <a><%= link_to 'Rent My Car', root_path, class: "nav-link navbar-brand", style: "background: none;" %></a>
@@ -55,6 +61,15 @@
         </ul>
       </div>
     </nav>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
 
     <%= yield %>
 

@@ -15,5 +15,16 @@ class Car < ApplicationRecord
   mount_uploader :image, CarImageUploader
   # then uncomment
 
+  validates :make, presence: true
+  validates :model, presence: true
+  validates :year, presence: true
+  validates :price_per_day, presence: true,
+                            numericality: true
+  validates :price_per_km, presence: true,
+                            numericality: true
+  validates :full_address, presence: true
+
+
+
 
 end
