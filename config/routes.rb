@@ -11,17 +11,18 @@ Rails.application.routes.draw do
   # get 'charges', to: 'cars#index'
 
 
-  resources :cars, except: [:index, :show, :create]
-
-  post 'cars/create'
-
+  resources :cars
+  # , except: [:index, :show, :create]
+  #
+  # post 'cars/create'
+  #
   post 'cars/index'
-  get 'cars', to: 'cars#index'
+  # get 'cars', to: 'cars#index'
 
 
   devise_for :users
 
-  resources :bookings
+  resources :bookings, except: [:owner_cars]
 
 
   post 'bookings/new'
@@ -31,11 +32,11 @@ Rails.application.routes.draw do
   post 'bookings/create'
   get 'bookings/create'
 
-  get 'bookings/owner_cars'
   post 'bookings/owner_cars'
+  get 'bookings/owner_cars'
 
-  get 'bookings/owner_bookings'
   post 'bookings/owner_bookings'
+  get 'bookings/owner_bookings'
 
 
   get 'bookings/previous_bookings'

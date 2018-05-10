@@ -22,55 +22,60 @@ class CarsController < ApplicationController
 
     @cars = []
 
-    @un_available_cars = []
-
-    if params[:booking][:date_from].to_i == 0 || params[:booking][:date_to].to_i == 0
-
-      Car.all.each do |car|
-        if car.active
-          @cars.push(car)
-        end
+    Car.all.each do |car|
+      if car.active
+        @cars.push(car)
       end
+    end
 
-    else
 
-      # render plain: params[:booking][:date_to].inspect
-      # return
+    if params[:booking]
+      if params[:booking][:date_from].to_i == 0 || params[:booking][:date_to].to_i == 0
+      else
 
-      search_dates = []
+        @cars = []
+        @un_available_cars = []
+        search_dates = []
 
-      (params[:booking][:date_from].to_date..params[:booking][:date_to].to_date).each do |date|
-        search_dates.push(date)
-      end
-
-      Car.all.each do |car|
-
-        if car.active == false
-          @un_available_cars.push(car)
+        (params[:booking][:date_from].to_date..params[:booking][:date_to].to_date).each do |date|
+          search_dates.push(date)
         end
 
-        if car.bookings.first
+        Car.all.each do |car|
 
-          car.bookings.each do |booking|
+          if car.active == false
+            @un_available_cars.push(car)
+          end
+
+          if car.bookings.first
+
+            car.bookings.each do |booking|
 
 
-            (booking.date_from..booking.date_to).each do |date|
+              (booking.date_from..booking.date_to).each do |date|
 
-              if search_dates.include?(date)
-                @un_available_cars.push(car)
+                if search_dates.include?(date)
+                  @un_available_cars.push(car)
+                end
               end
             end
           end
         end
-      end
 
-      Car.all.each do |car|
-        unless @un_available_cars.include?(car)
-          @cars.push(car)
+        Car.all.each do |car|
+          unless @un_available_cars.include?(car)
+            @cars.push(car)
+          end
         end
       end
     end
+
+
   end
+
+
+
+
 
   def new
     @car = Car.new
@@ -81,10 +86,8 @@ class CarsController < ApplicationController
   end
 
   def create
-    @car = Car.new(make: params[:car][:make], model: params[:car][:model], year: params[:car][:year],
-      full_address: params[:car][:full_address], price_per_day: params[:car][:price_per_day],
-      price_per_km: params[:car][:price_per_km], image: params[:car][:image])
-      @car.user_id = current_user.id
+    @car = Car.new(car_params)
+    @car.user_id = current_user.id
 
       respond_to do |format|
         if @car.save
@@ -138,7 +141,7 @@ class CarsController < ApplicationController
     end
 
     def car_params
-      params.permit(:make, :model, :year, :full_address, :price_per_day, :price_per_km, :image)
+      params.require(:car).permit(:make, :model, :year, :full_address, :price_per_day, :price_per_km, :image)
     end
 
 end
