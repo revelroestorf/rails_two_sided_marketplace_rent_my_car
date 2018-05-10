@@ -1,7 +1,7 @@
 # README
 ---
 
-[View the site](https://floating-plains-94998.herokuapp.com)
+[View the site](https://rentmycar.herokuapp.com/)
 
 [GitHub Repo](https://github.com/revelroestorf/rails_two_sided_marketplace_rent_my_car)
 
@@ -168,3 +168,10 @@ To ensure continual focus on the software development aspects of this 'real worl
 11. Your app will have authentication.
 12. Your app will have authorisation.
 13. Document your application with an appropriate README.md file.
+
+---
+##### Code review
+
+>Like what you did with the bookings controller, nice use of logic to reduce the number of views and forms. I'd suggest some more thorough validations to ensure the data is going into the database in the correct format. That would reduce the need for formatting in views and help sanitise user inputs a bit more.
+>
+> -- [Shaun Spinelli](https://github.com/ShaunSpinelli/) 
