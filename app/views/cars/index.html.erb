@@ -91,14 +91,12 @@
 
         var features = [
           <% @cars.each do |car| %>
+            <% if car.latitude %>
           {
             position: new google.maps.LatLng(<%= car.latitude %>, <%= car.longitude %>),
             icon: 'info',
             url: '/bookings/new',
             car_id: '<%= car.id %>',
-
-            // "@Url.Action("ExampleAction", "ExampleController", new { parameter1Id = "pr1Id", parameter2Id = "pr2Id", parameter3Id = "pr3Id" })",
-
             image: '<%= car.image %>',
             make: '<%= car.make %>',
             model: '<%= car.model %>',
@@ -106,6 +104,7 @@
             price_per_km: '<%= number_to_currency(car.price_per_km) %>',
 
           },
+            <% end %>
           <% end %>
         ];
 
