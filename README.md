@@ -1,9 +1,9 @@
 # README
 ---
+
 [View the site](https://floating-plains-94998.herokuapp.com)
 
 [GitHub Repo](https://github.com/revelroestorf/rails_two_sided_marketplace_rent_my_car)
-
 
 ---
 ## Overview
@@ -14,8 +14,8 @@
 5. User Flow Diagram
 6. Entity Relationship Diagram
 7. Gems and Tools
-
-9. Project Plan
+8. Project Plan
+9. Design Decisions
 10. Assumptions
 11. Future Updates
 12. Assignment Requirements
@@ -27,8 +27,10 @@ This app was designed as part of the CoderAcademy assignment to build a two-side
 
 PROBLEM DEFINITION - Our cars are often one of our largest assets and in most cases they are under-utilised. Their high annual cost and depreciation further reduce asset value, producing poor investment outcomes.
 
+Renting cars, on the other hand, can be a rigid process of when, where and how, most of which are designed to suit the rental company.
 
-SOLUTION - Sharing platforms such as Airbnb have created market places to address this under-utilisation, offering financial incentive for the asset providers and a more personalised experience for the consumer. After all, if we're not using it, we may as well let it earn us some money. This application seeks to provide such a market place for our cars, thus increasing asset utilisation and value.
+
+SOLUTION - Sharing platforms such as Airbnb have created market places to address this under-utilisation, offering financial incentive for the asset providers and a more personalised experience for the consumer. This application seeks to provide such a market place for our cars, proving economic incentive to car owners with the available resource, and to consumers we offer flexibility, control, convenience and a more human interaction.
 
 VALUE PROPOSITION - There are currently similar applications available but no global market leaders or household names, and they all operate slightly differently. This application aims to provide a more seamless and intuitive solution whilst incorporating the best features of current providers.
 
@@ -43,15 +45,13 @@ To get started, clone the repo and then from your CLI, in the main application d
 
 `rails db:migrate`
 
-Create a .env file in the root of the directory and add ENV variables :
+Create an .env file in the root of the directory and add ENV variables :
 
 `POSTGRES_PASSWORD=XXXX`
 
 `STRIPE_PUBLISHABLE_KEY=XXXX`
 
 `STRIPE_SECRET_KEY=XXXX`
-
-`GOOGLE_MAPS_KEY=XXXX`
 
 `SEND_GRID_USER=XXXX`
 
@@ -60,33 +60,33 @@ Create a .env file in the root of the directory and add ENV variables :
 ---
 ## 3. User Stories
 
-screenshot(s) here
+![User Stories](https://github.com/revelroestorf/rails_two_sided_marketplace_rent_my_car/blob/master/readme_resources/user_stories.png)
 
-![User Stories]()
+[Link to User Stories](https://trello.com/b/Pb84o8vs/rent-my-car-user-stories-as-a-user-isbat)
 
 ---
 ## 4. Wireframes
 
-screenshot(s) here
+![Wireframe4](https://github.com/revelroestorf/rails_two_sided_marketplace_rent_my_car/blob/master/readme_resources/wireframe_4.jpg)
 
-![Wireframe]()
-
----
-## User Flow Diagram
-
-screenshot here
-
-![User flow diagram]()
+[Link to all wireframes](https://github.com/revelroestorf/rails_two_sided_marketplace_rent_my_car/tree/master/readme_resources)
 
 ---
-## Entity Relationship Diagram
+## 5. User Flow Diagram
 
-screenshot here
+![User flow diagram](https://github.com/revelroestorf/rails_two_sided_marketplace_rent_my_car/blob/master/readme_resources/user_flow_diagram.jpg)
 
-![Gantt Chart]()
+[Link to User Flow Diagram](https://github.com/revelroestorf/rails_two_sided_marketplace_rent_my_car/blob/master/readme_resources/user_flow_diagram.jpg)
 
 ---
-## Gems and Tools
+## 6. Entity Relationship Diagram
+
+![ERD](https://github.com/revelroestorf/rails_two_sided_marketplace_rent_my_car/blob/master/readme_resources/erd.png)
+
+[Link to ERD](https://github.com/revelroestorf/rails_two_sided_marketplace_rent_my_car/blob/master/readme_resources/erd.png)
+
+---
+## 7. Gems and Tools
 
 1. Ruby version 2.5.0
 2. pg - postgresql Database
@@ -107,27 +107,14 @@ screenshot here
 17. Bootstrap - Styling
 
 ---
-## Project Plan
+## 8. Project Plan
 
-screenshot here
+![Gantt Chart](https://github.com/revelroestorf/rails_two_sided_marketplace_rent_my_car/blob/master/readme_resources/gantt_chart.png)
 
-![Gantt Chart]()
-
----
-## Assumptions
-
-To ensure continual focus on the software development aspects of this 'real world' application, I've made many assumptions. Below are some of these:
-
-* Agreement with a third party insurance provider for comprehensive cover on a per/km basis, at a fixed rate for all cars.
-* Agreement with a third party roadside assist provider.
-* We have the owner's bank details and can make payments in their account.
-* We have the guest's credit card information and are authorised to charge the final booking fee, which depends on the number of kilometres travelled.
-* Guests will record the condition of the car at pick-up and return, including odometer reading, fuel level and general mechanical condition.
-* Owner's will enter the correct odometer readings, specifically to ensure guests are not overcharged.
-*   
+[Link to Gantt Chart](https://github.com/revelroestorf/rails_two_sided_marketplace_rent_my_car/blob/master/readme_resources/gantt_chart.png)
 
 ---
-## Design Decisions
+## 9. Design Decisions
 
 DATABASE TABLES - I wanted to keep them and their relationships as simple as possible, without repeating data. The bookings table was the only exception where additional columns were added for pricing so that they could be stored with the booking and not subject to change with pricing updates.
 
@@ -143,7 +130,19 @@ All proceed and submit buttons are Bootstrap Primary blue except for the 'Previo
 IMAGES - Following the design approach I've leaned heavily on powerful images to breath life into the very simply styled pages.
 
 ---
-## Future Updates / Bug Fixes
+## 10. Assumptions
+
+To ensure continual focus on the software development aspects of this 'real world' application, I've made many assumptions. Below are some of these:
+
+* Agreement with a third party insurance provider for comprehensive cover on a per/km basis, at a fixed rate for all cars.
+* Agreement with a third party roadside assist provider.
+* We have the owner's bank details and can make payments in their account.
+* We have the guest's credit card information and are authorised to charge the final booking fee, which depends on the number of kilometres travelled.
+* Guests will record the condition of the car at pick-up and return, including odometer reading, fuel level and general mechanical condition.
+* Owner's will enter the correct odometer readings, specifically to ensure guests are not overcharged.
+
+---
+## 11. Future Updates / Bug Fixes
 
 * Currently car owners have the ability to activate/deactivate their individual cars, making them available/unavailable, bookings aside. They really should have a calendar they can use to manage their car's availability properly. For now I've left the ability to book your own car, which achieves the unavailability but is not reversible.
 
@@ -154,7 +153,7 @@ IMAGES - Following the design approach I've leaned heavily on powerful images to
 * Currently the only role is :admin which provides a full list view of the cars index, with ability to create, update and destroy. I would like to implement a more appropriate admin interface, perhaps using Active Admin.
 
 ---
-## Assignment Requirements
+## 12. Assignment Requirements
 
 1. Create your application using Ruby on Rails
 2. Demonstrate knowledge of Rails conventions.
