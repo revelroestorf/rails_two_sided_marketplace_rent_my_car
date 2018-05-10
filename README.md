@@ -1,9 +1,10 @@
 # README
----
+
 [View the site](https://rentmycar.herokuapp.com/)
 
 [GitHub Repo](https://github.com/revelroestorf/rails_two_sided_marketplace_rent_my_car)
----
+
+
 ## Overview
 1. Summary
 2. Installation
@@ -17,7 +18,7 @@
 10. Assumptions
 11. Future Updates
 12. Assignment Requirements
----
+
 ## 1. Summary
 
 This app was designed as part of the CoderAcademy assignment to build a two-sided marketplace.
