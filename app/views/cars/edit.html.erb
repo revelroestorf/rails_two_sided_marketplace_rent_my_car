@@ -9,15 +9,9 @@
         <tbody>
           <tr>
             <td><strong>Photo</strong></td>
-            <td class="text-center"><%= image_tag @car.image_url, class: "img-thumbnail", style: "max-width:200px;" %></td>
-            <td class="text-right"><%= file_field_tag :image %></td>
+            <td class="text-center"><%= @car.image_url(:medium) %></td>
+            <td class="text-right"><%= f.file_field :image %></td>
           </tr>
-          <% if current_user.has_role? :admin %>
-            <tr>
-              <td><strong>User_id</strong></td>
-              <td class="lead text-center"><%= @car.user.id %></td>
-            </tr>
-          <% end %>
           <tr>
             <td><strong>Make</strong></td>
             <td class="lead text-center"><%= @car.make %></td>

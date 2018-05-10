@@ -33,7 +33,7 @@ class CarsController < ApplicationController
       if params[:booking][:date_from].to_i != 0 && params[:booking][:date_to].to_i != 0
 
         @cars = []
-        
+
         @un_available_cars = []
         search_dates = []
 
@@ -101,15 +101,13 @@ class CarsController < ApplicationController
   end
 
   def update
-
-    # render plain: params.inspect
-    # return
-
-    @car.update(car_params)
-
     #UPDATE WORKS IF 'REQUIRE(:CAR)' REMOVED...
     # params.require(:car)permit(:make, :model, :year, :full_address, :price_per_day, :price_per_km, :image)
 
+    # @car.update(image: params[:image])
+    #
+    # render plain: params.inspect
+    # return
 
     respond_to do |format|
       if @car.update(car_params)
