@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <h1>You've got a new booking!</h1>
+    <br>
+    <h3>Bookings details:</h3>
+    <br>
+    <table class="table mt-5">
+      <tbody>
+        <tr>
+          <td>Your car</td>
+          <td><%= "#{@booking.car.make} #{@booking.car.model}" %></td>
+        </tr>
+        <tr>
+          <td>Guest</td>
+          <td><%= @booking.user.firstname %></td>
+        </tr>
+        <tr>
+          <td>Pick up date</td>
+          <td><%= @booking.date_from%></td>
+        </tr>
+        <tr>
+          <td>Return date</td>
+          <td><%= @booking.date_to %></td>
+        </tr>
+        <tr>
+          <td>Price per day</td>
+          <td><%= number_to_currency(@booking.price_per_day) %></td>
+        </tr>
+        <tr style="border-top: solid grey 2px;">
+          <td class="d-flex justify-content-end pr-5">
+            <strong>Sub-total</strong>
+          </td>
+          <% ppd = @booking.price_per_day %>
+          <% days = (@booking.date_to - @booking.date_from).to_i %>
+          <td><strong><%= number_to_currency(ppd * days) %></strong></td>
+        </tr>
+        <tr>
+          <td>Price per km</td>
+          <td><%= number_to_currency(@booking.price_per_km) %></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <p>Once the trip is concluded and the odometer readings entered, we'll calculate the distance payment component
+      and transfer the combined total payment to your account.</p>
+    <p>Please contact your guest via the application in the active bookings section available through the navbar link 'My car'.</p>
+    <p>Link to website: https://rentmycar.herokuapp.com/</p>
+    <br>
+    <br>
+    <p>Kind regards,</p>
+    <p>The Rent-my-cat development team</p>
+
+  </body>
+</html>

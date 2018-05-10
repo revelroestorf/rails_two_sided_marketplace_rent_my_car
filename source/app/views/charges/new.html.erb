@@ -1,0 +1,78 @@
+<div class="ml-2" style="margin-top: 100px;">
+
+  <h3>New booking</h3>
+
+  <div class="row mt-5 d-flex justify-content-around">
+
+    <div class="mb-5">
+      <div class="">
+        <span class="text-muted"><%= "#{@car.user.firstname.capitalize}'s" %></span>
+        <span class="lead"><%= "#{@car.make.capitalize} #{@car.model.capitalize}" %></span>
+      </div>
+        <%= image_tag @car.image_url, class: "img-thumbnail", style: "width: 400px;" %>
+    </div>
+
+    <table class="table d-flex align-items-center" style="width:400px">
+      <tbody>
+        <tr>
+          <th scope="row">Located at</th>
+          <td><%= @car.full_address %></td>
+        </tr>
+        <tr>
+          <th scope="row">Pickup date</th>
+          <td><%= @booking.date_from %></td>
+        </tr>
+        <tr>
+          <th scope="row">Pickup date</th>
+          <td><%= @booking.date_to %></td>
+        </tr>
+        <tr>
+          <th scope="row">Price per km</th>
+          <td><%= number_to_currency(@booking.price_per_km) %><span class="text-muted"> (pay later)</span></td>
+        </tr>
+        <tr>
+          <th scope="row">Price per day</th>
+          <td><%= number_to_currency(@booking.price_per_day) %></td>
+        </tr>
+        <tr>
+          <th scope="row">Total days</th>
+          <td><%= @days %></td>
+        </tr>
+        <tr>
+          <th scope="row">Payment due</th>
+          <td><%= number_to_currency(@days * @booking.price_per_day) %></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div class="row">
+  </div>
+
+  <div class="mt-5 mx-sm-5 d-flex justify-content-between">
+    <span><%= link_to 'go back', new_booking_path(car_id: @car.id), class: "btn btn-dark", style: "color: white; width:90px;" %></span>
+    <span>
+      <%= form_tag charges_path do %>
+        <article>
+          <% if flash[:error].present? %>
+            <div id="error_explanation">
+              <p><%= flash[:error] %></p>
+            </div>
+          <% end %>
+        </article>
+
+        <%= hidden_field_tag :booking, @booking.id %>
+        <%= hidden_field_tag :car_id, @car.id %>
+
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                data-description="A month's subscription"
+                data-amount="<%= @amount * 100 %>"
+                data-locale="auto">
+        </script>
+      <% end %>
+    </span>
+  </div>
+
+</div>

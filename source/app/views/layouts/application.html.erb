@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RentMyCar</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' %>
+    <%= stylesheet_link_tag    'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <%= javascript_include_tag 'https://code.jquery.com/jquery-3.3.1.js' %>
+    <%= javascript_include_tag 'https://code.jquery.com/ui/1.12.1/jquery-ui.js' %>
+    <%= javascript_include_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+      <a><%= link_to 'Rent My Car', root_path, class: "nav-link navbar-brand", style: "background: none;" %></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse p-2 justify-content-end" id="navbarNav">
+        <ul class="navbar-nav d-flex">
+          <% if @trips %>
+            <li class="nav-item mr-5">
+              <a><%= link_to 'My trips', bookings_guest_trips_path, class: "nav-link", style: "color: white; background: none;" %></a>
+            </li>
+          <% end %>
+          <% if @cars %>
+            <li class="nav-item mr-5">
+              <a><%= link_to 'My car'.pluralize(@cars.count), bookings_owner_cars_path, class: "nav-link", style: "color: white; background: none;" %></a>
+            </li>
+            <% if user_signed_in? %>
+            <li class="nav-item nav-link mr-5" style="color: white; background: none;">
+              <a><%= "#{@user.firstname}" %></a>
+            </li>
+            <% end %>
+          <% end %>
+          <% if user_signed_in? %>
+            <li class="nav-item mr-5">
+              <a><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "nav-link", style: "color: white; background: none;" %></a>
+            </li>
+          <% else %>
+            <li class="nav-item mr-5">
+              <a><%= link_to 'login', new_user_session_path, class: "nav-link", style: "color: white; background: none;" %></a>
+            </li>
+            <li class="nav-item mr-5">
+              <a><%= link_to 'sign up', new_user_registration_path, class: "nav-link", style: "color: white;" %></a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+
+    <%= yield %>
+
+  </body>
+</html>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  car_id: 1
+  odo_start: 1
+  odo_end: 1
+  charge_days: 1.5
+  charge_kms: 1.5
+
+two:
+  user_id: 1
+  car_id: 1
+  odo_start: 1
+  odo_end: 1
+  charge_days: 1.5
+  charge_kms: 1.5

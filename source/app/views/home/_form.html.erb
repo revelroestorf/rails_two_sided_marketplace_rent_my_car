@@ -1,0 +1,16 @@
+<script>
+var array = []
+
+$(document).ready(function(){
+   $('#booking_date_from, #booking_date_to').datepicker({
+     dateFormat:'yy-mm-dd',
+     beforeShowDay: function(date){
+         var string = jQuery.datepicker.formatDate('yy-mm-dd', date);
+         return [ array.indexOf(string) == -1 ]
+       }
+     });
+
+    $('.list_another_car').off('click');
+});
+
+</script>
