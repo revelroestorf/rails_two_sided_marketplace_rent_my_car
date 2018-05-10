@@ -24,7 +24,4 @@ class Car < ApplicationRecord
                             numericality: true
   validates :full_address, presence: true
 
-
-
-
 end
