@@ -61,6 +61,7 @@ Create an .env file in the root of the directory and add ENV variables :
 ![User Stories](/readme_resources/user_stories.png)
 
 [Link to User Stories](https://trello.com/b/Pb84o8vs/rent-my-car-user-stories-as-a-user-isbat)
+
 ---
 ## 4. Wireframes
 
