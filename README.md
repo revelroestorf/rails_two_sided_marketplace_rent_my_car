@@ -6,6 +6,7 @@
 
 
 ## Overview
+
 1. Summary
 2. Installation
 3. User Stories
@@ -30,6 +31,7 @@ Renting cars, on the other hand, can be a rigid process of when, where and how, 
 SOLUTION - Sharing platforms such as Airbnb have created market places to address this under-utilisation, offering financial incentive for the asset providers and a more personalised experience for the consumer. This application seeks to provide such a market place for our cars, proving economic incentive to car owners with the available resource, and to consumers we offer flexibility, control, convenience and a more human interaction.
 
 VALUE PROPOSITION - There are currently similar applications available but no global market leaders or household names, and they all operate slightly differently. This application aims to provide a more seamless and intuitive solution whilst incorporating the best features of current providers.
+
 ---
 ## 2. Installation
 
@@ -52,6 +54,7 @@ Create an .env file in the root of the directory and add ENV variables :
 `SEND_GRID_USER=XXXX`
 
 `SEND_GRID_PASSWORD=XXXX`
+
 ---
 ## 3. User Stories
 
@@ -64,18 +67,21 @@ Create an .env file in the root of the directory and add ENV variables :
 ![Wireframe4](/readme_resources/wireframe_4.jpg)
 
 [Link to all wireframes](https://github.com/revelroestorf/rails_two_sided_marketplace_rent_my_car/tree/master/readme_resources)
+
 ---
 ## 5. User Flow Diagram
 
 ![User flow diagram](/readme_resources/user_flow_diagram.jpg)
 
 [Link to User Flow Diagram](https://github.com/revelroestorf/rails_two_sided_marketplace_rent_my_car/blob/master/readme_resources/user_flow_diagram.jpg)
+
 ---
 ## 6. Entity Relationship Diagram
 
 ![ERD](/readme_resources/erd.png)
 
 [Link to ERD](https://github.com/revelroestorf/rails_two_sided_marketplace_rent_my_car/blob/master/readme_resources/erd.png)
+
 ---
 ## 7. Gems and Tools
 
@@ -96,12 +102,14 @@ Create an .env file in the root of the directory and add ENV variables :
 15. Lucidchart - ERD
 16. Excel - Gantt chart
 17. Bootstrap - Styling
+
 ---
 ## 8. Project Plan
 
 ![Gantt Chart](/readme_resources/gantt_chart.png)
 
 [Link to Gantt Chart](https://github.com/revelroestorf/rails_two_sided_marketplace_rent_my_car/blob/master/readme_resources/gantt_chart.png)
+
 ---
 ## 9. Design Decisions
 
@@ -117,6 +125,7 @@ All the 'back' buttons are dark grey and placed to the bottom left to avoid detr
 All proceed and submit buttons are Bootstrap Primary blue except for the 'Previous bookings' button (Info blue) and the 'Update' button (Bootstrap Warning yellow).
 
 IMAGES - Following the design approach I've leaned heavily on powerful images to breath life into the very simply styled pages.
+
 ---
 ## 10. Assumptions
 
