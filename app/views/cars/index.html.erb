@@ -20,7 +20,7 @@
         </thead>
 
         <tbody>
-          <% Car.all.each do |car| %>
+          <% @cars.each do |car| %>
             <tr>
               <td><%= image_tag car.image_url(:thumb) %></td>
               <td><%= car.user.email %></td>

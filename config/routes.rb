@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :bookings, except: [:owner_cars]
+  resources :bookings, except: [:show, :owner_cars]
 
 
   post 'bookings/new'

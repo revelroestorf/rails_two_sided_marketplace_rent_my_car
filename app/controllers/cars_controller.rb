@@ -30,10 +30,10 @@ class CarsController < ApplicationController
 
 
     if params[:booking]
-      if params[:booking][:date_from].to_i == 0 || params[:booking][:date_to].to_i == 0
-      else
+      if params[:booking][:date_from].to_i != 0 && params[:booking][:date_to].to_i != 0
 
         @cars = []
+        
         @un_available_cars = []
         search_dates = []
 
@@ -67,12 +67,12 @@ class CarsController < ApplicationController
             @cars.push(car)
           end
         end
+
       end
     end
 
 
   end
-
 
 
 
@@ -89,16 +89,16 @@ class CarsController < ApplicationController
     @car = Car.new(car_params)
     @car.user_id = current_user.id
 
-      respond_to do |format|
-        if @car.save
-          format.html { redirect_to bookings_owner_cars_path, notice: 'Car was successfully created.' }
-          format.json { render :show, status: :created, location: @car }
-        else
-          format.html { render :new }
-          format.json { render json: @car.errors, status: :unprocessable_entity }
-        end
+    respond_to do |format|
+      if @car.save
+        format.html { redirect_to bookings_owner_cars_path, notice: 'Car was successfully created.' }
+        format.json { render :show, status: :created, location: @car }
+      else
+        format.html { render :new }
+        format.json { render json: @car.errors, status: :unprocessable_entity }
       end
     end
+  end
 
   def update
 
