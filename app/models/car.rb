@@ -8,11 +8,11 @@ class Car < ApplicationRecord
   geocoded_by :full_address
 
   # Before seed, comment out:
-  after_validation :geocode
+  # after_validation :geocode
   # then uncomment and run: $ rake geocode:all CLASS=Car in the terminal
 
   # Before seed, comment out:
-  mount_uploader :image, CarImageUploader
+  # mount_uploader :image, CarImageUploader
   # then uncomment
 
   validates :make, presence: true
