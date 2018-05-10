@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20180506103440) do
     t.float "price_per_day"
     t.float "price_per_km"
     t.boolean "active", default: true
-    t.boolean "paid"
+    t.boolean "paid", default: false
     t.date "date_from"
     t.date "date_to"
     t.datetime "created_at", null: false
@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 20180506103440) do
     t.string "full_address"
     t.float "latitude"
     t.float "longitude"
-    t.boolean "cars", default: true
     t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

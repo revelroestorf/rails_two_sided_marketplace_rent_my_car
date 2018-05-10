@@ -21,9 +21,6 @@
 
   <body>
 
-
-    <!-- navbar-static-top -->
-
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <a><%= link_to 'Rent My Car', root_path, class: "nav-link navbar-brand", style: "background: none;" %></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,15 +58,6 @@
         </ul>
       </div>
     </nav>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-    <% if flash[:error].present? %>
-      <div id="error_explanation">
-        <p><%= flash[:error] %></p>
-      </div>
-    <% end %>
 
     <%= yield %>
 
