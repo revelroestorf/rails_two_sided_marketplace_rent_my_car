@@ -6,6 +6,7 @@ class CarsController < ApplicationController
 
     if params[:user_location]
 
+
       if location = Geocoder.coordinates(params[:user_location])
         @latitude = location[0]
         @longitude = location[1]
@@ -116,7 +117,7 @@ class CarsController < ApplicationController
 
 
   def destroy
-    
+
     @car.destroy
     respond_to do |format|
       format.html { redirect_to cars_url, notice: 'Car was successfully destroyed.' }

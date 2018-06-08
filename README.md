@@ -24,7 +24,7 @@
 
 This app was designed as part of the CoderAcademy assignment to build a two-sided marketplace.
 
-PROBLEM DEFINITION - Our cars are often one of our largest assets and in most cases they are under-utilised. Their high annual cost and depreciation further reduce asset value, producing poor investment outcomes.
+PROBLEM - Our cars are often one of our largest assets and in most cases they are under-utilised. Their high annual cost and depreciation further reduce asset value, producing poor investment outcomes.
 
 Renting cars, on the other hand, can be a rigid process of when, where and how, most of which are designed to suit the rental company.
 
@@ -116,7 +116,7 @@ Create an .env file in the root of the directory and add ENV variables :
 
 DATABASE TABLES - I wanted to keep them and their relationships as simple as possible, without repeating data. The bookings table was the only exception where additional columns were added for pricing so that they could be stored with the booking and not subject to change with pricing updates.
 
-###### Styling
+#### Styling
 DESIGN APPROACH - Primarily focused on functionality, I decided for the styling to produce something simple and potentially generic but with a professional feel. I choose Bootstrap to achieve these ends.
 
 COLOURS - Following the design approach, I used mainly black, white and greys for the text, table borders, navbar and page backgrounds. I've used some colour (Orange and Bootstrap Info blue) in the 'How it works' section to bring the somewhat boring contents to life a bit.

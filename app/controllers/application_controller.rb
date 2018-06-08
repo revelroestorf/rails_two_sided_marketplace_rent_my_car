@@ -8,14 +8,14 @@ class ApplicationController < ActionController::Base
 
 
   private
-  
+
   def set_user
     @user = current_user if user_signed_in?
   end
 
   def check_user_cars
     if user_signed_in?
-      if @cars = current_user.cars.first
+      if current_user.cars.first
         @cars = current_user.cars
       else
         @cars = false

@@ -9,7 +9,7 @@
         <tbody>
           <tr>
             <td><strong>Photo</strong></td>
-            <td class="text-center"><%= @car.image_url(:medium) %></td>
+            <td class="text-center"><%= image_tag @car.image_url(:thumb) %></td>
             <td class="text-right"><%= f.file_field :image %></td>
           </tr>
           <tr>

@@ -33,7 +33,7 @@
             </li>
             <% if user_signed_in? %>
             <li class="nav-item nav-link mr-5" style="color: white; background: none;">
-              <a><%= "#{@user.firstname}" %></a>
+              <a><%= "#{@user.firstname.capitalize}" %></a>
             </li>
             <% end %>
           <% end %>

@@ -19,7 +19,7 @@ class ChargesController < ApplicationController
     @booking = Booking.find(params[:booking])
     @booking.update(paid: true)
     @days = (@booking.date_to - @booking.date_from).to_i
-    @amount = @booking.price_per_day
+    @amount = @booking.price_per_day * @days
 
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
